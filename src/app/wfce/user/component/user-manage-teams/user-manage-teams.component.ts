@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TopTeamsService } from '../../services/teams.service';
+import { ManageTeamService } from '../../services/manage-team.service';
 
 @Component({
   selector: 'app-user-manage-teams',
@@ -9,6 +10,7 @@ import { TopTeamsService } from '../../services/teams.service';
 export class UserManageTeamsComponent implements OnInit {
 
   private topTeams;
+  private selectedTeam;
 
   styleTopTeams={
     club: {
@@ -25,8 +27,9 @@ export class UserManageTeamsComponent implements OnInit {
     }
   };
 
-  constructor(private topTeamsService: TopTeamsService) {
+  constructor(private topTeamsService: TopTeamsService, private manageTeamService: ManageTeamService) {
     this.topTeams = topTeamsService.getTopTeams();
+    this.selectedTeam = manageTeamService.getTeam();
   }
 
   ngOnInit() { 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import { NavbarModule } from '../shared-modules/navbar/navbar.module';
 import { FooterModule } from '../shared-modules/footer/footer.module';
@@ -29,6 +30,8 @@ import { UserTeamsComponent } from './component/user-teams/user-teams.component'
 import { UserManageTeamsComponent } from './component/user-manage-teams/user-manage-teams.component';
 import { UserTableRowMatchComponent } from './component/user-table/user-table-data/user-table-row-match/user-table-row-match.component';
 import { UserManageTeamsBoxesComponent } from './component/user-manage-teams/user-manage-teams-boxes/user-manage-teams-boxes.component';
+import { UserChartAreaComponent } from './component/user-manage-teams/user-chart-area/user-chart-area.component';
+import { ManageTeamService } from './services/manage-team.service';
 
 
 
@@ -39,13 +42,15 @@ import { UserManageTeamsBoxesComponent } from './component/user-manage-teams/use
     NavbarModule,
     FooterModule,
     UserRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxChartsModule
   ],
-  declarations: [UserComponent, UserNavbarComponent, UserDataNavbarComponent, UserProfileComponent, UserBoxComponent, UserDashboardComponent, UserDashboardBoxesComponent, UserDashboardBoxComponent, UserDashboardBoxDataComponent, UserDashboardBoxTitleComponent, UserDashboardBoxFooterComponent, UserTableComponent, UserTableTitleComponent, UserTableDataComponent, UserTableRowClubComponent, UserTeamsComponent, UserManageTeamsComponent, UserTableRowMatchComponent, UserManageTeamsBoxesComponent],
+  declarations: [UserComponent, UserNavbarComponent, UserDataNavbarComponent, UserProfileComponent, UserBoxComponent, UserDashboardComponent, UserDashboardBoxesComponent, UserDashboardBoxComponent, UserDashboardBoxDataComponent, UserDashboardBoxTitleComponent, UserDashboardBoxFooterComponent, UserTableComponent, UserTableTitleComponent, UserTableDataComponent, UserTableRowClubComponent, UserTeamsComponent, UserManageTeamsComponent, UserTableRowMatchComponent, UserManageTeamsBoxesComponent, UserChartAreaComponent],
   providers: [UserService,
               CartService, 
               UserDataToggleService,
               TopTeamsService,
-              ScheduledMatchesService]
+              ScheduledMatchesService,
+              ManageTeamService]
 })
 export class UserModule { }

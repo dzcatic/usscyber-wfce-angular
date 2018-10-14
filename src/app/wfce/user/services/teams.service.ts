@@ -56,6 +56,30 @@ export class TopTeamsService {
                 value: 4670,
                 change: -0.1
             }
+        },
+        {
+            club: {
+                image: "assets/img/temp/avatar.png",
+                name: "Barcelona",
+                league: "La Liga"
+            },
+            points: 76,
+            marketPrice: {
+                value: 4670,
+                change: -0.1
+            }
+        },
+        {
+            club: {
+                image: "assets/img/temp/avatar.png",
+                name: "Barcelona",
+                league: "La Liga"
+            },
+            points: 76,
+            marketPrice: {
+                value: 4670,
+                change: -0.1
+            }
         }];
   }
 

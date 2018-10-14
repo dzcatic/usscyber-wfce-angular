@@ -1,0 +1,24 @@
+<div class="chartTitle">
+  <div>FCB token graph</div>
+  <ul class="navigation">
+    <li>LAST GAME</li>
+    <li>WEEKLY</li>
+    <li class="selected">MONTHLY</li>
+    <li>YEARLY</li>
+  </ul>
+</div>
+<div class="chartArea">
+  <ngx-charts-area-chart
+      [scheme]="colorScheme"
+      [results]="selectedTeam"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [autoScale]="autoScale">
+</ngx-charts-area-chart>
+</div>

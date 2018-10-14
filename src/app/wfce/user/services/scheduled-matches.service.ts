@@ -56,6 +56,30 @@ export class ScheduledMatchesService {
                 name: "Barcelona",
                 league: "La Liga"
             }
+        },
+        {
+            club1: {
+                image: "assets/img/temp/avatar.png",
+                name: "Barcelona",
+                league: "La Liga"
+            },
+            club2: {
+                image: "assets/img/temp/avatar.png",
+                name: "Barcelona",
+                league: "La Liga"
+            }
+        },
+        {
+            club1: {
+                image: "assets/img/temp/avatar.png",
+                name: "Barcelona",
+                league: "La Liga"
+            },
+            club2: {
+                image: "assets/img/temp/avatar.png",
+                name: "Barcelona",
+                league: "La Liga"
+            }
         }];
   }
   

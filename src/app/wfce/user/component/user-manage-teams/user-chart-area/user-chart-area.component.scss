@@ -1,0 +1,40 @@
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+:host{
+    background-color: $user-data-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid $user-data-border-color;
+    border-radius: 3px;
+    font-size: 18px;
+    color: white;
+    .chartTitle{
+        width: 80%;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        .navigation{
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            font-size: 12px;
+            opacity: 0.5;
+            li{
+                padding: 10px;
+                border-radius: 35px;
+                &.selected{
+                    opacity: 1;
+                    background-color: $green-color;
+                }
+            }
+        }
+    }
+    .chartArea{
+        width: 80%;
+        height: 200px;
+        display: flex;
+         justify-content: center;  
+    }
+    ::ng-deep .ngx-charts text { fill: #fff; }
+}
