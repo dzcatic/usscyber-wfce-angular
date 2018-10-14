@@ -1,9 +1,16 @@
 <table>
     <tr class="tableHeading">
-      <th *ngFor="let columnName of columnNames">{{columnName}}</th> <!--Translations will take care of the column names-->
+      <th class="oneColumnHeading" *ngIf="style['component']=='match'; else defaultHeading">{{dayOfTheWeek + ', ' + month + " " + dayOfTheMonth + ", " + year}}</th>
+      <ng-template #defaultHeading>
+        <th *ngFor="let columnName of columnNames">{{columnName}}</th> <!--Translations will take care of the column names-->
+      </ng-template>
     </tr>
     <tr *ngFor="let dataRow of data; index as i" >
-      <ng-container *ngFor="let columnName of columnNames" [ngSwitch]="true">
+     <ng-container *ngIf="style['component']=='match'; else defaultData">
+        <td><app-user-table-row-match [style]="style" [data]="dataRow"></app-user-table-row-match></td>
+    </ng-container>
+    <ng-template #defaultData>
+      <ng-container  *ngFor="let columnName of columnNames" [ngSwitch]="true">
           <ng-container *ngSwitchCase="style[columnName]['component']=='image-rows'">
                 <td><app-user-table-row-club [class.revert]="style[columnName]['revert']" [style]="style[columnName]" [columnName]="columnName" [data]="dataRow[columnName]"></app-user-table-row-club></td>
           </ng-container>
@@ -11,5 +18,6 @@
               <td>{{dataRow[columnName]}}</td>
           </ng-container>
       </ng-container>
+    </ng-template>
     </tr>
 </table>

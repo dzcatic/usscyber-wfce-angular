@@ -1,0 +1,4 @@
+<ng-container *ngFor="let rowName of rowNames;let last = last">
+  <app-user-table-row-club [class.revert]="style[rowName]['revert']" [style]="style[rowName]" [columnName]="rowName" [data]="data[rowName]"></app-user-table-row-club>
+  <div *ngIf="!last" class="small fade">vs.</div>
+</ng-container>

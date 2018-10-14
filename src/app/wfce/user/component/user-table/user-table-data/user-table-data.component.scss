@@ -7,14 +7,24 @@
     .revert{
         flex-direction: row-reverse;
     }
-    .tableHeading{
-        background-color: $user-data-border-color;
-        border:none;
-    }
+    
     table{
         width:100%;
+        .tableHeading{
+            background-color: $user-data-border-color;
+            border:none;
+            .oneColumnHeading{
+                text-align: center;
+            }
+        }
         tr{
             border-bottom: 1px solid $user-data-border-color;
+        }
+        td{
+            padding: 10px;
+        }
+        th{
+            padding: 10px;
         }
     }
 }

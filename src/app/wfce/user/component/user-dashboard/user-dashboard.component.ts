@@ -25,7 +25,16 @@ export class UserDashboardComponent implements OnInit {
   };
 
   styleScheduledMatches={
-    club2: "revert"
+    component: "match",
+    club1: {
+      component: "image-rows",
+      league: "small fade"
+    },
+    club2: {
+      revert: true,
+      component: "image-rows",
+      league: "small fade"
+    },
 };
 
 

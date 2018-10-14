@@ -27,6 +27,8 @@ import { UserTableRowClubComponent } from './component/user-table/user-table-dat
 import { ScheduledMatchesService } from './services/scheduled-matches.service';
 import { UserTeamsComponent } from './component/user-teams/user-teams.component';
 import { UserManageTeamsComponent } from './component/user-manage-teams/user-manage-teams.component';
+import { UserTableRowMatchComponent } from './component/user-table/user-table-data/user-table-row-match/user-table-row-match.component';
+import { UserManageTeamsBoxesComponent } from './component/user-manage-teams/user-manage-teams-boxes/user-manage-teams-boxes.component';
 
 
 
@@ -39,7 +41,7 @@ import { UserManageTeamsComponent } from './component/user-manage-teams/user-man
     UserRoutingModule,
     FormsModule
   ],
-  declarations: [UserComponent, UserNavbarComponent, UserDataNavbarComponent, UserProfileComponent, UserBoxComponent, UserDashboardComponent, UserDashboardBoxesComponent, UserDashboardBoxComponent, UserDashboardBoxDataComponent, UserDashboardBoxTitleComponent, UserDashboardBoxFooterComponent, UserTableComponent, UserTableTitleComponent, UserTableDataComponent, UserTableRowClubComponent, UserTeamsComponent, UserManageTeamsComponent],
+  declarations: [UserComponent, UserNavbarComponent, UserDataNavbarComponent, UserProfileComponent, UserBoxComponent, UserDashboardComponent, UserDashboardBoxesComponent, UserDashboardBoxComponent, UserDashboardBoxDataComponent, UserDashboardBoxTitleComponent, UserDashboardBoxFooterComponent, UserTableComponent, UserTableTitleComponent, UserTableDataComponent, UserTableRowClubComponent, UserTeamsComponent, UserManageTeamsComponent, UserTableRowMatchComponent, UserManageTeamsBoxesComponent],
   providers: [UserService,
               CartService, 
               UserDataToggleService,
