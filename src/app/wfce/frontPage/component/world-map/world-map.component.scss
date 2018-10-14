@@ -1,0 +1,66 @@
+//Local variables
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
+
+//Bootstrap variables
+@import "../../../../../../node_modules/bootstrap/scss/functions.scss";
+@import "../../../../../../node_modules/bootstrap/scss/variables.scss";
+@import "../../../../../../node_modules/bootstrap/scss/mixins/breakpoints.scss";
+:host{
+    .map{
+        position: relative;
+        //margin-top: $navbar-height;
+        padding-top: $navbar-height;
+        background-color: $base-color;
+        height: 90vh;
+        /* $lighter-color: lighten($base-color, 25%);
+        background-image: linear-gradient(to right, $base-color, $lighter-color, $base-color); */
+        svg{
+          height: 80vh;
+          //height: auto;
+          width: 100%;
+          /* @include media-breakpoint-down(lg) { 
+            height: 500px;
+          }
+          @include media-breakpoint-down(md) { 
+            height: 350px;
+          }
+          @include media-breakpoint-down(sm) { 
+            height: 300px;
+          } */
+        }
+        .areaName{
+          position: absolute;
+          bottom: 25px;
+          font-size: 20px;
+          font-weight: bold;
+          width: 100%;
+          text-align: center;
+        }
+    }
+    
+    
+}
+  .blob {
+    color: $grey-color;
+    
+    &:hover {
+      color: $green-color;
+      @include selectable;
+    }
+  }
+  
+
+  
+  .selected {
+    color: $green-color;
+  }
+
+  .backButton{
+    padding: 25px;
+    position: fixed;
+    bottom: 0;
+    left: 100px;
+    background-color: #aae4f1;
+    color: white;
+  }

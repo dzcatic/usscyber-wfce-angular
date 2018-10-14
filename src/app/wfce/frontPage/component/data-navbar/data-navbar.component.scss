@@ -1,0 +1,40 @@
+//Local variables
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
+
+:host{
+    //height: 60px;
+    background-color: $navbar-color;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    ul{
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        width: 80%;
+        //align-items: center;
+        li{
+            //height: 100%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            //padding: 15px;
+            &:hover {
+                @include selectableTab;
+            }
+            &.disabled{
+                opacity: 0.5;
+            }
+            i{
+                color: $green-color;
+                margin-right: 7px;
+            }
+        }   
+    }
+}

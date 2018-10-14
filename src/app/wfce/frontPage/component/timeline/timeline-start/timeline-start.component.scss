@@ -1,0 +1,10 @@
+//Local variables
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+
+svg{
+    height: 23px;
+    width: 23px;
+    fill: $green-color;
+    stroke: $green-color;
+}

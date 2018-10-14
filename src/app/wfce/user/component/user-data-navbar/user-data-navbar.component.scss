@@ -1,0 +1,43 @@
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
+:host{
+    width: 100%;
+    margin-top: $navbar-height;
+    height: $navbar-height;
+    background-color: $user-data-color;
+    border: 1px solid $user-data-border-color;
+    color: white;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    .navbarContent{
+        width: 80%;
+        display: flex;
+        //justify-content: space-between;
+        padding: 0px;
+        display: flex;
+        align-items: center;
+        div{
+            background-color: $green-color;
+            text-align: center;
+            border-radius: 3px;
+            padding: 10px;
+            margin-right: 10px;
+            &:hover {
+                @include selectableGlow;
+            }
+                
+        }
+        //}
+        .logo{
+            //padding: 20px 0px;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            img{
+                width: 40%;
+            }
+        }
+    }
+    
+}

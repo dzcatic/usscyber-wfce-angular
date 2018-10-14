@@ -1,0 +1,31 @@
+<div [class.colapsed]="inViewPort" class="dashboardMockups"> <!--[@fromBehindUp] *ngIf="inViewPort"-->
+  <app-dashboard-mockups  ></app-dashboard-mockups> <!--[@fromBehindUp]="''"-->
+  <app-dashboard-mockups  ></app-dashboard-mockups>
+  <app-dashboard-mockups  ></app-dashboard-mockups>
+  <app-dashboard-mockups  ></app-dashboard-mockups>
+</div>
+<div class="sliderTestimonials">
+  <div class="arrowLeftRight"><i (click)="oneBackTestimonial()" class="gi-slider_arrow_left"></i></div>
+  <div class="testimonalArea" [style.justify-content] = "justifyLeft ? 'flex-start' : 'flex-end'"> 
+    <!-- <ng-container *ngFor= "let testimonial of testimonials; let i=index">
+        <div *ngIf="activeIndex==i" [@widthTrigger]="{value: '', params:{from_x: fromX, to_x: toX}}">
+          <div >{{testimonial.words}}</div>
+          <div  class="testimonialSignature">{{testimonial.signature}}</div>
+        </div>
+    
+    </ng-container> -->
+    <ng-container *ngFor= "let testimonial of activeTestimonials; let i=index">
+      <div *ngIf="activeIndex==i" [@widthTrigger]="{value: '', params:{from_x: fromX, to_x: toX}}">
+        <div >{{testimonial.words}}</div>
+        <div  class="testimonialSignature">{{testimonial.signature}}</div>
+      </div>
+  
+    </ng-container>
+  </div>
+  <div class="arrowLeftRight"><i (click)="oneForwardTestimonial()" class="gi-slider_arrow_right"></i></div>
+</div>
+<div class="navigationalBullets">
+  <ng-container *ngFor="let testimonial of testimonials; let i=index">
+    <app-timeline-start class="navigationBullet" [class.active]="activeTestimonialIndex==i" (click)="setTestimonial(i)"></app-timeline-start>
+</ng-container>
+</div>

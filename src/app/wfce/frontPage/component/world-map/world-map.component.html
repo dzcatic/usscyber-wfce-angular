@@ -1,0 +1,41 @@
+<app-country-leagues-navigator [@flyInOut]="''" [currentCountry]="currentCountry" *ngIf="isCountrySelected"></app-country-leagues-navigator>
+<app-continent-country-navigator [@flyInOut]="''" [currentContinent]="currentContinent" *ngIf="displayCountriesList && !isCountrySelected"></app-continent-country-navigator>
+<app-map-guide [@fadeInOut]="''" *ngIf="!selectingStarted"></app-map-guide>
+<div class="map">
+      <svg appAnimateSvg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg" 
+      xmlns:xlink="http://www.w3.org/1999/xlink" 
+      viewBox="0 0 2000 1000"
+      [ngClass]="{'d-block': displayCountries, 'd-none': !displayCountries }"> <!-- keep in mind that Box is capital letter - "viewBox"-->
+      <svg:path
+        *ngFor="let country of countries; let i = index"
+        [attr.data-index]="i"
+        (mouseover)="hoveredArea = country.name"
+        (click)="clickedCountry(i)"
+        class="blob"
+        [class.selected]="country.name == currentCountry?.name"
+        [attr.d]="country.path"
+        fill="currentColor">
+      </svg:path>
+    </svg>
+    <svg appAnimateSvg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg" 
+      xmlns:xlink="http://www.w3.org/1999/xlink" 
+      viewBox="0 0 2000 1000"
+      [ngClass]="{'d-block': !displayCountries, 'd-none': displayCountries }"
+      (click)="firstClick()">
+      <svg:g
+        *ngFor="let continent of continents; let i = index"
+        class="blob"
+        (click)="clickedContinent(i)"
+        (mouseover)="hoveredArea = continent.name"
+        fill="currentColor">
+        <svg:path  *ngFor="let country of continent.countries; let j = index"
+          [attr.d]="country.path"
+          fill="currentColor"></svg:path> 
+      </svg:g>
+    </svg>
+    <div class="areaName">{{hoveredArea}}</div>
+</div>

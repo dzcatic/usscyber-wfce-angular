@@ -1,0 +1,27 @@
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
+:host{
+    width: 100%;
+    //height: 100vh;
+    background-color: $user-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding-top: $navbar-height;
+    font-size: 25px;
+    .userProfileTitle{
+        margin-bottom: 20px;
+    }
+    .tables{
+        /* margin-top: 20px;
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap; */
+        margin: 20px 0 20px 0;
+        width: 80%;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-column-gap: 20px;
+    }
+}

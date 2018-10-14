@@ -1,0 +1,26 @@
+//Local variables
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+
+//Bootstrap variables
+@import "../../../../../../../node_modules/bootstrap/scss/functions.scss";
+@import "../../../../../../../node_modules/bootstrap/scss/variables.scss";
+@import "../../../../../../../node_modules/bootstrap/scss/mixins/breakpoints.scss";
+
+svg{
+    height: 80vh;
+    //height: auto;
+    width: 100%;
+    @include media-breakpoint-down(lg) { 
+      height: 500px;
+    }
+    @include media-breakpoint-down(md) { 
+      height: 350px;
+    }
+    @include media-breakpoint-down(sm) { 
+      height: 300px;
+    }
+    .blob {
+        color: $grey-color;
+    }
+}

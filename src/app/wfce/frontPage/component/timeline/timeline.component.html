@@ -1,0 +1,16 @@
+<div class="timelineHeading">The Power of WFCE</div>
+<div class="timelineHeadingText">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</div>
+<app-timeline-start></app-timeline-start>
+<app-timeline-line [height]="'70'"></app-timeline-line>
+<ng-container *ngFor="let paragraph of timelineData; let even = even; let i = index">
+  <app-timeline-line *ngIf="i!=0" [height]="'200'"></app-timeline-line>
+  <app-timeline-node [data]="paragraph" [leftOriented]="even"></app-timeline-node>
+</ng-container>
+<app-timeline-line [style.opacity]="0.7" [height]="'300'"></app-timeline-line>
+<div class="timelineMiddle">Get started now</div>
+<div class="timelineMiddleText">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</div>
+<app-timeline-line [style.opacity]="0.5" [height]="'70'"></app-timeline-line>
+<div class="startNowButton">Start NOW</div>
+<app-timeline-line [style.opacity]="0.3" [height]="'200'"></app-timeline-line>
+<app-timeline-testimonials></app-timeline-testimonials>
+<app-timeline-footer></app-timeline-footer>

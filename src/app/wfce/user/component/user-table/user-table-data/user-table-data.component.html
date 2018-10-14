@@ -1,0 +1,15 @@
+<table>
+    <tr class="tableHeading">
+      <th *ngFor="let columnName of columnNames">{{columnName}}</th> <!--Translations will take care of the column names-->
+    </tr>
+    <tr *ngFor="let dataRow of data; index as i" >
+      <ng-container *ngFor="let columnName of columnNames" [ngSwitch]="true">
+          <ng-container *ngSwitchCase="style[columnName]['component']=='image-rows'">
+                <td><app-user-table-row-club [class.revert]="style[columnName]['revert']" [style]="style[columnName]" [columnName]="columnName" [data]="dataRow[columnName]"></app-user-table-row-club></td>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+              <td>{{dataRow[columnName]}}</td>
+          </ng-container>
+      </ng-container>
+    </tr>
+</table>

@@ -1,0 +1,68 @@
+//Local variables
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+
+:host{
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+    .guide{
+        display: flex;
+        flex-direction: column;
+        svg{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            fill: $green-color;
+            width: 80px;
+            animation: opacity-change 3s ease-in-out 0s infinite alternate, color-change 3s ease-in-out 0s infinite alternate, oscillate-enlarge-hand 3s ease-in-out 0s infinite alternate;
+            transform-origin: bottom;
+            @keyframes oscillate-enlarge-hand {
+                from { transform: scale(1) }
+                to { transform: scale(2)}
+              }
+              /* @keyframes color-change {
+                from { fill: $green-color; }
+                to { fill: $grey-color;}
+              }
+              @keyframes opacity-change {
+                from { opacity: 1; }
+                to { opacity: 0.7;}
+              } */
+              //path isn't animated on firefox, and after is inversed
+            /* path {
+                animation: oscillate-enlarge 3s ease-in-out 0s infinite alternate;
+                transform-origin: bottom left;
+              } */
+              @keyframes color-change {
+                from { fill: $grey-color; }
+                to { fill: $green-color;}
+              }
+              @keyframes opacity-change {
+                from { opacity: 0.7; }
+                to { opacity: 1;}
+              }
+        }
+        .icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-size: auto 20px;
+            background-image: url('../../../../../../assets/svg/homepage-touch-hand.svg');
+        }
+        .selectText{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .otherText{
+            font-size: 18px;
+        }
+    }
+    
+}

@@ -1,0 +1,58 @@
+//Local variables
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
+
+:host{
+    //margin-top: $navbar-height;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    z-index: 10;
+    background-color: $base-color;
+    margin-top: $navbar-height;
+    opacity: 0.9;
+    width: 100%;
+    .countryLeaguesDiv{
+        opacity: 1;
+        width: 80%;
+        &.heading{
+            font-size: 25px;
+            font-weight: bold;
+            padding: 10px 0px;
+            border-bottom: $grey-color 1px solid;
+            display: flex;
+            justify-content: space-between;
+            .close{
+                &:hover {
+                    @include selectable;
+                }
+                i{
+                    font-size: 15px;
+                }
+            }
+            img{
+                height: 36px;
+                width: 36px;
+                border-radius: 5px;
+                margin-right: 10px;
+            }
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            //height: 300px;
+            overflow: auto;
+            li{
+                padding-right: 5px;
+                &:hover {
+                    @include selectable;
+                }
+            }
+        }
+    }
+    
+}

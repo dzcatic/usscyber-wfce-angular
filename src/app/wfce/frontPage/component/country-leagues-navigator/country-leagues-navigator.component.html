@@ -1,0 +1,14 @@
+<div class="heading countryLeaguesDiv">
+  <div>
+    <img [src]="'assets/img/flags/'+currentCountry.id.toLowerCase()+'.png'">
+    <label>{{currentCountry.name}} leagues</label>
+  </div>
+  <div class="close" (click)="close()"><i class="gi-cross"></i></div>
+</div>
+<div class="countryLeaguesDiv" >
+  <ul>
+    <li (click)="setLeague()">League 1</li>
+    <li (click)="setLeague()">League 2</li>
+    <li (click)="setLeague()">League 3</li>
+  </ul>
+</div>

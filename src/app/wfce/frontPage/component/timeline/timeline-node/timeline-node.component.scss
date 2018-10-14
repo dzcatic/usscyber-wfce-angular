@@ -1,0 +1,64 @@
+//Local variables
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+
+:host{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    img{
+        z-index: 5;
+    }
+    .icon {
+        z-index: 5;
+        width: 70px;
+        height: 70px;
+        background-size: auto 70px;
+        //background-image: url('src/assets/img/timeline/group24.png');
+        transform: scale(1);
+        -webkit-transition: all 0.1s ease-in-out;
+        -o-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+       &.hovered{
+            transform: scale(1.1);
+            -webkit-transition: all 0.1s ease-in-out;
+            -o-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+            }
+    }
+    .nodeInformation{
+        position: absolute;
+        color: white;
+        top: -20px;
+        width: 25%;
+        &.left{
+            left: 20%;
+        }
+        &.right{
+            right: 20%;
+        }
+        padding: 10px;
+        .nodeTitle{
+            font-size: 24px;
+            color: $green-color;
+        }
+        .nodeText{
+            margin-top: 25px;
+        }
+        .learnMore{
+            margin-top: 50px;
+            text-align: center;
+            border-radius: 3px;
+            padding: 10px;
+            outline: 1px solid white;
+            width: 50%;
+            z-index: 3;
+            &:hover{
+                @include selectable;
+                color: rgb(45, 49, 69);
+                background-color: white;
+            }
+        }
+    }
+}

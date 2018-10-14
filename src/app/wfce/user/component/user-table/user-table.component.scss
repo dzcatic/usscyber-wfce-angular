@@ -1,0 +1,12 @@
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
+:host{
+    background-color: $user-data-color;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid $user-data-border-color;
+    border-radius: 3px;
+    font-size: 18px;
+    color: white;
+}

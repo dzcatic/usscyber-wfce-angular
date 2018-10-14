@@ -1,0 +1,29 @@
+//Local variables
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+
+:host{
+    width: 100%;
+    position: relative;
+    height: fit-content;
+    padding-bottom: 100px;
+    .lastTimelineNode{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        .lastTimelineNodeHeading{
+            font-size: 24px;
+            font-weight: bold;
+            color: $green-color;
+        }
+        .startNowButton{
+            margin-top: 30px;
+            @include glowingGreenButton;
+        }
+    }
+}

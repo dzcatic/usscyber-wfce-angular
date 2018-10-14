@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ysayih');
+  src:  url('fonts/icomoon.eot?ysayih#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ysayih') format('truetype'),
+    url('fonts/icomoon.woff?ysayih') format('woff'),
+    url('fonts/icomoon.svg?ysayih#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="gi-"], [class*=" gi-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.gi-triangle-up:before {
+  content: "\e908";
+}
+.gi-triangle-down:before {
+  content: "\e909";
+}
+.gi-triangle-right:before {
+  content: "\e906";
+}
+.gi-triangle-left:before {
+  content: "\e907";
+}
+.gi-trash:before {
+  content: "\e904";
+}
+.gi-arrow-circle-o-down:before {
+  content: "\e902";
+}
+.gi-arrow-circle-o-up:before {
+  content: "\e903";
+}
+.gi-slider_arrow_right:before {
+  content: "\e900";
+}
+.gi-slider_arrow_left:before {
+  content: "\e901";
+}
+.gi-eye:before {
+  content: "\e905";
+}
+.gi-image:before {
+  content: "\e90d";
+}
+.gi-cart:before {
+  content: "\e93a";
+}
+.gi-undo2:before {
+  content: "\e967";
+}
+.gi-cross:before {
+  content: "\ea0f";
+}

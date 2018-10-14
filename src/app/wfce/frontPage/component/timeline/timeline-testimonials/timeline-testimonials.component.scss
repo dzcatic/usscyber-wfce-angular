@@ -1,0 +1,99 @@
+//Local variables
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+
+:host{
+    width: 100%;
+    height: 500px;
+    position: relative;
+    z-index: 5;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .navigationalBullets{
+        width: 100%;
+        background-color: #353952;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        .navigationBullet{
+            padding: 5px;
+            opacity: 0.3;
+            &.active{
+                opacity: 1;
+            }
+            &:hover{
+                opacity: 0.8;
+                @include selectable;
+            }
+        }
+    }
+    .dashboardMockups{
+        top: 0;
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        width: 80%;
+        //top: 0px;
+        transform: translateY(0px);
+        z-index: 2;
+        transition:  transform .5s ease-in-out;
+        &.colapsed{
+            //z-index: 0;
+            transform: translateY(-140px);
+            transition: transform .5s ease-in-out;
+        }
+        //transform: translateY(0px);
+    }
+    .sliderTestimonials{
+        z-index: 5;
+        height: 100%;
+        width: 100%;
+        background-color: #353952;
+        color: white;
+        //padding-top: 200px;
+        align-items: center;
+        text-align: center;
+        font-size: 25px;
+        display: flex;
+        .arrowLeftRight{
+            font-size: 50px;
+            i{
+                &:hover{
+                    @include selectable;
+                }
+            }
+        }
+        .testimonalArea{
+            display: flex;
+            width: 100%;
+            //justify-content: center;
+            overflow: hidden;
+            div{
+                //width: 1000px;
+                //width: 100%;
+                margin: auto;
+                width: 80vw;
+                .testimonialSignature{
+                    color: $green-color;
+                }
+            }
+            
+            /* .setWidth{
+                height: 100%;
+                width: 100%;
+                transition: width .5s ease-in-out;
+            }
+            
+            .resetWidth{
+                //opacity: 0;
+                height: 0px;
+                width: 0px;
+                transition: width .5s ease-in-out;
+            } */
+        }
+        
+        
+    }
+}

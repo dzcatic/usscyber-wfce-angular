@@ -1,0 +1,30 @@
+//transform: translate(0%, -50%);
+
+//Local variables
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+
+:host{
+    position: absolute;
+    //left: 20%;
+    z-index: 1;
+    pointer-events: none;
+    svg{
+        //transform: translate(-50%,-50%);
+        transform: translate(0%, -50%);
+        height: 403px;
+        width: 403px;
+        fill: $green-color;
+        stroke: $green-color;
+
+        @keyframes oscillate-enlarge {
+            from { transform: scale(0) }
+            to { transform: scale(1)}
+        }
+          
+          .alternate {
+            animation: oscillate-enlarge 3s ease-in-out 0s infinite alternate;
+            transform-origin: 50% 50%;
+          }
+    }
+}

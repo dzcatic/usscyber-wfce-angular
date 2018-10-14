@@ -1,0 +1,8 @@
+@import "../../../../../../../../sass/variables";
+@import "../../../../../../../../sass/mixins";
+:host{
+    height: 60px;
+    border-bottom: 1px solid $user-data-border-color;
+    width: 100%;
+    padding: 0 10px 0 10px;
+}

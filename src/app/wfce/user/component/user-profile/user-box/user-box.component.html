@@ -1,0 +1,18 @@
+<div>General info</div>
+<div class="grid-container">
+  <div>Name</div>
+  <div><input [(ngModel)] = "user.name"></div>
+  <div>Email</div>
+  <div><input [(ngModel)] = "user.email"></div>
+  <div>Avatar</div>
+  <div>
+    <img [src]="user.avatar">
+    <ul class="grid-image">
+      <li><i class="gi-image"></i></li>
+      <li class="lastRow"><i class="gi-trash"></i></li>
+    </ul>
+  </div>
+  <div class="last-row">Country</div>
+  <div class="last-row"><input [(ngModel)] = "user.country"></div>
+</div>
+<div class="greenGlowingButton" (click)="saveChanges()">Save changes</div>

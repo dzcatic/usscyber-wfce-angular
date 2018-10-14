@@ -1,0 +1,39 @@
+//Local variables
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+:host{
+    width: 50%;
+    .coinImage{
+        text-align: center;
+        .icon {
+            z-index: 5;
+            width: 150px;
+            height: 150px;
+           &.hovered{
+                @keyframes oscillate-rotate {
+                    from { transform: rotateY(0deg) }
+                    to { transform: rotateY(-180deg)}
+                }
+                animation: oscillate-rotate 1s ease-in-out 0s infinite alternate;
+                transform-origin: 50% 50%;
+            }
+        }
+    }
+    
+    .coinDescription{
+        color: $green-color;
+        .coinHeading{
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .coinText{
+            color: white;
+        }
+        .coinLearnMore{
+            &:hover{
+                @include selectable;
+            }
+        }
+
+    }
+}

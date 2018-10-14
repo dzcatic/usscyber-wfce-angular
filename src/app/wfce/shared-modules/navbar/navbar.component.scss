@@ -1,0 +1,46 @@
+@import "../../../../sass/variables";
+@import "../../../../sass/mixins";
+:host{
+    width: 100%;
+    height: $navbar-height;
+    background-color: $navbar-color;
+    color: white;
+    position: fixed;
+    z-index: 1001;
+    white-space: nowrap;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    .navbarContent{
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        .buttons{
+            padding: 0px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            div{
+                padding: 10px;
+                &:hover {
+                    @include selectable;
+                }
+                &.signup{
+                    background-color: $green-color;
+                    text-align: center;
+                    border-radius: 3px;
+                }
+            }
+        }
+        .logo{
+            //padding: 20px 0px;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            img{
+                width: 40%;
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,48 @@
+@import "../../../../sass/variables";
+@import "../../../../sass/mixins";
+:host{
+    width: 100%;
+    background-color: $footer-color;
+    display: flex;
+    color:white;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 12px;
+    .footer{
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        ul{
+            list-style: none;
+            padding: 0;
+            li{
+                opacity: 0.5;
+                @include selectable;
+                &.inputMail{
+                    border: solid 1px white;
+                    padding: 4px;
+                    img{
+                        width: 10%;
+                        padding-bottom: 4px;
+                    }
+                    input{
+                        word-break: break-all;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        background-color: transparent;
+                        border-width: 0px;
+                        color: white;
+                        width: 90%;
+                        &:focus {
+                            outline: 0;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}
