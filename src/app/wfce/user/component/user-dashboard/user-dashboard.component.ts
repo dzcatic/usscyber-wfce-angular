@@ -9,8 +9,8 @@ import { ScheduledMatchesService } from '../../services/scheduled-matches.servic
 })
 export class UserDashboardComponent implements OnInit {
 
-  private topTeams;
-  private scheduledMatches;
+  public topTeams;
+  public scheduledMatches;
 
   styleTopTeams={
     club: {

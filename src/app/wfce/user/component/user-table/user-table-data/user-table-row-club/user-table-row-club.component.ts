@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserTableRowClubComponent implements OnInit {
 
-  private rowNames;
+  public rowNames;
 
   @Input()
   data;

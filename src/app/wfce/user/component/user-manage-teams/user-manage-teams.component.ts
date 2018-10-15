@@ -9,8 +9,8 @@ import { ManageTeamService } from '../../services/manage-team.service';
 })
 export class UserManageTeamsComponent implements OnInit {
 
-  private topTeams;
-  private selectedTeam;
+  public topTeams;
+  public selectedTeam;
 
   styleTopTeams={
     club: {

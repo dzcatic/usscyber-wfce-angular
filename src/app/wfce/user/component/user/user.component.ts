@@ -10,9 +10,9 @@ import { UserDataToggleService } from '../../services/user-data-toggle.service';
 })
 export class UserComponent implements OnInit {
 
-  private toggleData: string;
-  private user;
-  private numberOfCartItems;
+  public toggleData: string;
+  public user;
+  public numberOfCartItems;
 
   constructor(private userService: UserService, private cartService: CartService, private toggleDataService: UserDataToggleService) {
     this.user = userService.getUser();

@@ -8,7 +8,7 @@ import { TopTeamsService } from '../../services/teams.service';
 })
 export class UserTeamsComponent implements OnInit {
 
-  private topTeams;
+  public topTeams;
 
   styleTopTeams={
     club: {

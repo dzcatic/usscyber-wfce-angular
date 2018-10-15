@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserTableRowMatchComponent implements OnInit {
 
-  private rowNames;
+  public rowNames;
 
   @Input()
   data;
