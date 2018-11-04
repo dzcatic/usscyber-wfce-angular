@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LeagueSelectedService } from '../../services/league-selected.service';
 import { TimelineService } from '../../services/timeline.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
+import { WorldMapService } from '../../services/world-map.service';
 
 
 @Component({
@@ -26,8 +28,16 @@ export class FrontPageComponent implements OnInit {
 
   public isLeagueSelected: boolean;
   public timelineSelected: boolean;
+  private backendCountries;
 
-  constructor(private leagueSelected: LeagueSelectedService, private timelineService: TimelineService) { }
+  constructor(private leagueSelected: LeagueSelectedService, 
+              private timelineService: TimelineService,
+              private _route: ActivatedRoute,
+              private worldMapService: WorldMapService) {
+    this.backendCountries =  this._route.snapshot.data["backendCountries"];
+    this.worldMapService.setBackendCountries(this.backendCountries);
+    console.log(this.backendCountries);
+   }
 
   ngOnInit() {
     this.leagueSelected.currentLeague$.subscribe((value)=>{

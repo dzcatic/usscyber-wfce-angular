@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-timeline',
@@ -35,9 +36,13 @@ export class TimelineComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
+  }
+
+  openSignUp(){
+    this._router.navigate(['signup'], { relativeTo: this._route });
   }
 
 }

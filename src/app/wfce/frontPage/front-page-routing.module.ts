@@ -3,11 +3,15 @@ import {Routes, RouterModule} from '@angular/router';
 import { FrontPageComponent } from './component/front-page/front-page.component';
 import { LoginComponent } from './component/login/login.component';
 import { SignupComponent } from './component/signup/signup.component';
+import { FrontPageResolverService } from './services/resolver-service/front-page-resolver.service';
 
 const routes: Routes = [
   {
     path: "",
-    component: FrontPageComponent
+    component: FrontPageComponent,
+    resolve: {
+      backendCountries: FrontPageResolverService
+    }
   },
   {
     path: "signup",

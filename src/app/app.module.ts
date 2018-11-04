@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { TranslateModule } from "@ngx-translate/core";
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { TranslateModule } from "@ngx-translate/core";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    TranslateModule.forRoot()
+    TranslateModule.forRoot(),
+    HttpModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
 import { trigger, transition, animate, keyframes, style, state } from '@angular/animations';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-timeline-end',
@@ -26,7 +27,7 @@ export class TimelineEndComponent implements OnInit {
 
   inViewPort: boolean;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -54,6 +55,10 @@ export class TimelineEndComponent implements OnInit {
         (rect.top + rect.height) > rect.height / 2
       );
     }
+  }
+
+  openSignUp(){
+    this._router.navigate(['signup'], { relativeTo: this._route });
   }
 
 }

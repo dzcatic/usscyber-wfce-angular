@@ -14,6 +14,10 @@
           <ng-container *ngSwitchCase="style[columnName]['component']=='image-rows'">
                 <td><app-user-table-row-club [class.revert]="style[columnName]['revert']" [style]="style[columnName]" [columnName]="columnName" [data]="dataRow[columnName]"></app-user-table-row-club></td>
           </ng-container>
+          <ng-container *ngSwitchCase="style[columnName]['component']=='image-row'">
+                <td><img class="smallCoin" [attr.src]="style[columnName]['src']">{{dataRow[columnName]}}</td>
+          </ng-container>
+          
           <ng-container *ngSwitchDefault>
               <td>{{dataRow[columnName]}}</td>
           </ng-container>

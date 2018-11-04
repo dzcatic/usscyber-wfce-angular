@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WorldMapService } from '../../services/world-map.service';
 import { AreaSelectedService } from '../../services/area-selected.service';
 import { trigger, state, style, animate, transition} from '@angular/animations';

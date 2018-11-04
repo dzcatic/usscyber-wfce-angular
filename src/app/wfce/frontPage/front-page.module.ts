@@ -36,6 +36,10 @@ import { LeftPanelComponent } from './component/login/left-panel/left-panel.comp
 import { RightPanelComponent } from './component/login/right-panel/right-panel.component';
 import { LeftPanelBoxComponent } from './component/login/left-panel/left-panel-box/left-panel-box.component';
 import { SignupComponent } from './component/signup/signup.component';
+import { FrontPageResolverService } from './services/resolver-service/front-page-resolver.service';
+import { GlobalErrorService } from './services/global.error.state.service';
+import { RequestService } from './services/request.service';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -44,7 +48,8 @@ import { SignupComponent } from './component/signup/signup.component';
     CommonModule,
     NavbarModule,
     FooterModule,
-    FrontPageRoutingModule
+    FrontPageRoutingModule,
+    HttpModule
   ],
   declarations: [FrontPageComponent, 
                  WorldMapComponent, 
@@ -68,6 +73,13 @@ import { SignupComponent } from './component/signup/signup.component';
                  WorldMapImageComponent, 
                  TimelineEndComponent, 
                  TimelineCenteredPointComponent, LoginComponent, LeftPanelComponent, RightPanelComponent, LeftPanelBoxComponent, SignupComponent],
-  providers: [WorldMapService, AreaSelectedService, LeagueSelectedService, TimelineService]
+  providers: [WorldMapService,
+             AreaSelectedService, 
+             LeagueSelectedService, 
+             TimelineService,
+             FrontPageResolverService,
+             GlobalErrorService,
+            RequestService
+          ]
 })
 export class FrontPageModule { }
