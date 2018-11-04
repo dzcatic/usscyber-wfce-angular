@@ -22,4 +22,8 @@ export class NavbarComponent implements OnInit {
     this._router.navigate(['signup'], { relativeTo: this._route });
   }
 
+  openLogin(){
+    this._router.navigate(['login'], { relativeTo: this._route });
+  }
+
 }

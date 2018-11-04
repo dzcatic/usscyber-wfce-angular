@@ -35,6 +35,7 @@ import { LoginComponent } from './component/login/login.component';
 import { LeftPanelComponent } from './component/login/left-panel/left-panel.component';
 import { RightPanelComponent } from './component/login/right-panel/right-panel.component';
 import { LeftPanelBoxComponent } from './component/login/left-panel/left-panel-box/left-panel-box.component';
+import { SignupComponent } from './component/signup/signup.component';
 
 
 
@@ -66,7 +67,7 @@ import { LeftPanelBoxComponent } from './component/login/left-panel/left-panel-b
                  TimelineCoinComponent, 
                  WorldMapImageComponent, 
                  TimelineEndComponent, 
-                 TimelineCenteredPointComponent, LoginComponent, LeftPanelComponent, RightPanelComponent, LeftPanelBoxComponent],
+                 TimelineCenteredPointComponent, LoginComponent, LeftPanelComponent, RightPanelComponent, LeftPanelBoxComponent, SignupComponent],
   providers: [WorldMapService, AreaSelectedService, LeagueSelectedService, TimelineService]
 })
 export class FrontPageModule { }
