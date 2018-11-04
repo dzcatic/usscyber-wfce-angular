@@ -1,0 +1,73 @@
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+
+:host{
+    width: 50%;
+    background-color: $user-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .leftPanelBox{
+        color: white;
+        width: 50%;
+        height: 25%;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        align-self: flex-end;
+        position: relative;
+        background-color: $user-color2;
+        .map{
+            opacity: 0.05;
+            ::ng-deep svg{
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        img{
+            height: 50px;
+            z-index: 5;
+            position: absolute;
+            top: -25px;
+            left: 20px;
+        }
+        .point{
+            /* top: 50%;
+            left: -350%; */
+            left: -157px;
+        }
+        .contentGlobal{
+            position: absolute;
+            left: 20px;
+            top: 30px;
+        }
+
+        /* .contentGlobal{
+            position: absolute;
+            top: -25px;
+            left: 5%;
+            img{
+                height: 50px;
+                z-index: 5;
+            }
+            .point{
+                top: 50%;
+                left: -350%;
+            }
+        }*/
+    } 
+    .loginFooter{
+        position: absolute;
+        color: white;
+        align-self: flex-end;
+        //width: 50%;
+        bottom: 0;
+        ul{
+            list-style-type: none;
+            display: flex;
+            li{
+                padding: 10px;
+            }
+        }
+    }
+}

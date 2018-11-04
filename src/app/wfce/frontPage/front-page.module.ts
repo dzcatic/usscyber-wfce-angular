@@ -31,6 +31,10 @@ import { TimelineEndComponent } from './component/timeline/timeline-end/timeline
 import { TimelineCenteredPointComponent } from './component/timeline/timeline-centered-point/timeline-centered-point.component';
 import { TimelineService } from './services/timeline.service';
 import { FrontPageRoutingModule } from './front-page-routing.module';
+import { LoginComponent } from './component/login/login.component';
+import { LeftPanelComponent } from './component/login/left-panel/left-panel.component';
+import { RightPanelComponent } from './component/login/right-panel/right-panel.component';
+import { LeftPanelBoxComponent } from './component/login/left-panel/left-panel-box/left-panel-box.component';
 
 
 
@@ -62,7 +66,7 @@ import { FrontPageRoutingModule } from './front-page-routing.module';
                  TimelineCoinComponent, 
                  WorldMapImageComponent, 
                  TimelineEndComponent, 
-                 TimelineCenteredPointComponent],
+                 TimelineCenteredPointComponent, LoginComponent, LeftPanelComponent, RightPanelComponent, LeftPanelBoxComponent],
   providers: [WorldMapService, AreaSelectedService, LeagueSelectedService, TimelineService]
 })
 export class FrontPageModule { }

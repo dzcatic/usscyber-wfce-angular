@@ -2,6 +2,11 @@
 @import "../../../../../../sass/variables";
 @import "../../../../../../sass/mixins";
 
+//Bootstrap variables
+@import "../../../../../../../node_modules/bootstrap/scss/functions.scss";
+@import "../../../../../../../node_modules/bootstrap/scss/variables.scss";
+@import "../../../../../../../node_modules/bootstrap/scss/mixins/breakpoints.scss";
+
 :host{
     width: 100%;
     position: relative;
@@ -25,5 +30,23 @@
             margin-top: 30px;
             @include glowingGreenButton;
         }
+    }
+    .map{
+        opacity: 0.05;
+        ::ng-deep svg{
+            height: 80vh;
+            //height: auto;
+            width: 100%;
+            @include media-breakpoint-down(lg) { 
+            height: 500px;
+            }
+            @include media-breakpoint-down(md) { 
+            height: 350px;
+            }
+            @include media-breakpoint-down(sm) { 
+            height: 300px;
+            }
+        }
+        
     }
 }
