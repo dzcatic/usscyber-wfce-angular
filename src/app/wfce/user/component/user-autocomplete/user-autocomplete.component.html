@@ -1,0 +1,24 @@
+<div class="inputGroupAutocomplete">
+  <input [attr.placeholder]="placeholder" 
+         (keydown)="keyDown($event)" 
+         (input)="showDropdownData($event)" 
+         [value]="selectedValue"
+         [style.width]="type=='search' ? '80%': '90%'"
+          />
+  <div *ngIf="type=='search'; else arrowNavigator" class="searchIconAutocomplete">
+    <i class="gi-search"></i>
+  </div>
+  <ng-template #arrowNavigator>
+      <div class="arrowNavigator">
+          <i class="gi-slider_arrow_up" (click)="goUp()"></i>
+          <i class="gi-slider_arrow_down" (click)="goDown()"></i>
+          </div>
+  </ng-template>
+  
+</div>
+<app-user-autocomplete-dropdown *ngIf="toggleDropdown" 
+                                [data]="filteredData" 
+                                [counter]="counter"
+                                (setSelected)="setSelectedValue($event)">
+
+</app-user-autocomplete-dropdown>

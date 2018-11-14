@@ -1,0 +1,27 @@
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+:host{
+    width: 100%;
+    height: $navbar-height;
+    margin-bottom: $navbar-height;
+    background-color: $user-data-border-color;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .searchButton{
+        font-size: 16px;
+        height: 40px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $green-color;
+        //text-align: center;
+        border-radius: 3px;
+        //padding: 10px;
+        &:hover {
+            @include selectableGlow;
+        }
+    }
+}

@@ -1360,8 +1360,6 @@ export class WorldMapService extends AbstractService {
     this.importContinents();
     for (const country of this.countries) {
       let obj = this.backendCountries.find(obj => obj.alpha2Code == country.id);
-      console.log(obj)
-      console.log("ekica" + country.id)
       if(obj !== undefined){
         if(obj.continentId){
             let continentIndex = this.getContinentIndex(obj.continentId); 

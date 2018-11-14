@@ -91,12 +91,13 @@ export class TopTeamsService {
               name: "Barcelona",
               league: "La Liga"
           },
+          marketPrice: {
+            value: 4670,
+            change: 0.1
+          },
           points: 76,
           availableCoins: 990,
-          marketPrice: {
-              value: 4670,
-              change: 0.1
-          }
+          
       },
       {
           club: {
@@ -104,12 +105,13 @@ export class TopTeamsService {
               name: "Barcelona",
               league: "La Liga"
           },
+          marketPrice: {
+            value: 4670,
+            change: 0.0
+          },
           points: 76,
           availableCoins: 990,
-          marketPrice: {
-              value: 4670,
-              change: 0.0
-          }
+          
       },
       {
           club: {
@@ -117,12 +119,13 @@ export class TopTeamsService {
               name: "Barcelona",
               league: "La Liga"
           },
+          marketPrice: {
+            value: 4670,
+            change: 0.0
+          },
           points: 76,
           availableCoins: 990,
-          marketPrice: {
-              value: 4670,
-              change: 0.0
-          }
+          
       },
       {
           club: {
@@ -130,13 +133,56 @@ export class TopTeamsService {
               name: "Barcelona",
               league: "La Liga"
           },
+          marketPrice: {
+            value: 4670,
+            change: -0.1
+          },
           points: 76,
           availableCoins: 990,
-          marketPrice: {
-              value: 4670,
-              change: -0.1
-          }
-      }];
+          
+      },
+      {
+        club: {
+            image: "assets/img/temp/avatar.png",
+            name: "Barcelona",
+            league: "La Liga"
+        },
+        marketPrice: {
+          value: 4670,
+          change: -0.1
+        },
+        points: 76,
+        availableCoins: 990,
+        
+    },
+    {
+        club: {
+            image: "assets/img/temp/avatar.png",
+            name: "Barcelona",
+            league: "La Liga"
+        },
+        marketPrice: {
+          value: 4670,
+          change: -0.1
+        },
+        points: 76,
+        availableCoins: 990,
+        
+    },
+    {
+        club: {
+            image: "assets/img/temp/avatar.png",
+            name: "Barcelona",
+            league: "La Liga"
+        },
+        marketPrice: {
+          value: 4670,
+          change: -0.1
+        },
+        points: 76,
+        availableCoins: 990,
+        
+    }];
 }
   
   public getTopTeams() {

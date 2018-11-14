@@ -36,7 +36,6 @@ export class FrontPageComponent implements OnInit {
               private worldMapService: WorldMapService) {
     this.backendCountries =  this._route.snapshot.data["backendCountries"];
     this.worldMapService.setBackendCountries(this.backendCountries);
-    console.log(this.backendCountries);
    }
 
   ngOnInit() {

@@ -2,7 +2,7 @@
     <img  [src]=data.image>
 </ng-container>
 <ng-container *ngIf="style.hasOwnProperty('image')">
-        <img  [src]=style.image>
+        <img [style.width]="'24px'" [src]=style.image>
 </ng-container>
 <ng-container *ngIf="style.hasOwnProperty('icon')">
         <div class="circle" [class.up]="data['change']>0" [class.down]="data['change']<0" ><i class="gi-triangle-up"></i></div>

@@ -1,0 +1,53 @@
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
+
+:host{
+    font-size: 19px;
+    position: relative;
+    .inputGroupAutocomplete{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: $user-color;
+        border-radius: 4px;
+        height: 35px;
+        width: 245px;
+        input{
+            background-color: transparent;
+            word-break: break-all;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            border-width: 0px;
+            color: white;
+            width: 90%;
+            &:hover{
+                &::placeholder {
+                    color: white; 
+                }
+            }
+            &:focus {
+                outline: 0;
+            }
+        }
+        .searchIconAutocomplete{
+            height: 100%;
+            width: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .arrowNavigator{
+            display: flex;
+            flex-direction: column;
+            list-style-type: none;
+            i{
+                &:hover{
+                    @include selectableGlow;
+                }
+                outline: solid 1px $user-data-border-color;
+            }
+        }
+    }
+}
+

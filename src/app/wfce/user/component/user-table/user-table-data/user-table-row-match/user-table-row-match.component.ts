@@ -22,7 +22,6 @@ export class UserTableRowMatchComponent implements OnInit {
 
   ngOnInit() {
     this.rowNames = Object.keys(this.data);
-    console.log(this.rowNames)
   }
 
 }

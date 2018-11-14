@@ -32,6 +32,15 @@ import { UserTableRowMatchComponent } from './component/user-table/user-table-da
 import { UserManageTeamsBoxesComponent } from './component/user-manage-teams/user-manage-teams-boxes/user-manage-teams-boxes.component';
 import { UserChartAreaComponent } from './component/user-manage-teams/user-chart-area/user-chart-area.component';
 import { ManageTeamService } from './services/manage-team.service';
+import { UserTeamsFilterComponent } from './component/user-teams/user-teams-filter/user-teams-filter.component';
+import { UserAutocompleteComponent } from './component/user-autocomplete/user-autocomplete.component';
+import { UserAutocompleteDropdownComponent } from './component/user-autocomplete/user-autocomplete-dropdown/user-autocomplete-dropdown.component';
+import { UserTableOptionsComponent } from './component/user-table/user-table-data/user-table-options/user-table-options.component';
+import { UserModalComponent } from './component/user-modal/user-modal.component';
+import { UserModalBoxComponent } from './component/user-modal/user-modal-box/user-modal-box.component';
+import { UserModalBoxTitleComponent } from './component/user-modal/user-modal-box/user-modal-box-title/user-modal-box-title.component';
+import { UserModalBoxDataComponent } from './component/user-modal/user-modal-box/user-modal-box-data/user-modal-box-data.component';
+import { UserModalBoxFooterComponent } from './component/user-modal/user-modal-box/user-modal-box-footer/user-modal-box-footer.component';
 
 
 
@@ -45,7 +54,29 @@ import { ManageTeamService } from './services/manage-team.service';
     FormsModule,
     NgxChartsModule
   ],
-  declarations: [UserComponent, UserNavbarComponent, UserDataNavbarComponent, UserProfileComponent, UserBoxComponent, UserDashboardComponent, UserDashboardBoxesComponent, UserDashboardBoxComponent, UserDashboardBoxDataComponent, UserDashboardBoxTitleComponent, UserDashboardBoxFooterComponent, UserTableComponent, UserTableTitleComponent, UserTableDataComponent, UserTableRowClubComponent, UserTeamsComponent, UserManageTeamsComponent, UserTableRowMatchComponent, UserManageTeamsBoxesComponent, UserChartAreaComponent],
+  declarations: [UserComponent,
+                 UserNavbarComponent,
+                 UserDataNavbarComponent, 
+                 UserProfileComponent, 
+                 UserBoxComponent, 
+                 UserDashboardComponent, 
+                 UserDashboardBoxesComponent, 
+                 UserDashboardBoxComponent, 
+                 UserDashboardBoxDataComponent, 
+                 UserDashboardBoxTitleComponent, 
+                 UserDashboardBoxFooterComponent, 
+                 UserTableComponent, 
+                 UserTableTitleComponent,
+                 UserTableDataComponent, 
+                 UserTableRowClubComponent, 
+                 UserTeamsComponent, 
+                 UserManageTeamsComponent,
+                 UserTableRowMatchComponent, 
+                 UserManageTeamsBoxesComponent, 
+                 UserChartAreaComponent, 
+                 UserTeamsFilterComponent, 
+                 UserAutocompleteComponent, UserAutocompleteDropdownComponent, UserTableOptionsComponent, UserModalComponent, UserModalBoxComponent, UserModalBoxTitleComponent, UserModalBoxDataComponent, UserModalBoxFooterComponent
+                ],
   providers: [UserService,
               CartService, 
               UserDataToggleService,

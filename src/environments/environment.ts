@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://192.168.0.14:8080/laravel/wfceAppDB/public/api/"
+  //apiUrl: "http://192.168.0.14:8080/laravel/wfceAppDB/public/api/"
+  apiUrl: "http://13.66.167.226/wfceApp/public/api/"
 };
 
 /*

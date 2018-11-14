@@ -15,13 +15,29 @@ export class UserTeamsComponent implements OnInit {
         component: "image-rows",
         league: "small fade"
     },
+    marketPrice: {
+      image: "/assets/img/dashboard/Bitmap.png",
+      component: "image-rows",
+      change: "small fade"
+    },
     points: {},
     availableCoins: {},
-    marketPrice: {
-        image: "assets/img/timeline/Group_29.png",
-        component: "image-rows",
-        change: "small fade"
-    }
+    options: [
+      {
+        name: "watchTeam",
+        reverseName: "watching",
+        icon: "gi-eye",
+        style: "colorGrey hoverGlow fade",
+        revertStyle: "colorGrey hoverGlow bright",
+      },
+      {
+        name: "buy",
+        icon: "gi-cart",
+        style: "colorGreen hoverGlow",
+        functionName: "buyToken"
+      }
+    ]
+    
   };
 
   constructor(private topTeamsService: TopTeamsService) {

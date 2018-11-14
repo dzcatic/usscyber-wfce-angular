@@ -31,6 +31,10 @@
             'purchase': '&#xe93a;',
             'undo2': '&#xe967;',
             'left': '&#xe967;',
+            'redo2': '&#xe968;',
+            'right': '&#xe968;',
+            'search': '&#xe986;',
+            'magnifier': '&#xe986;',
             'cross': '&#xea0f;',
             'cancel': '&#xea0f;',
           '0': 0
