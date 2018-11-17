@@ -41,6 +41,11 @@ import { UserModalBoxComponent } from './component/user-modal/user-modal-box/use
 import { UserModalBoxTitleComponent } from './component/user-modal/user-modal-box/user-modal-box-title/user-modal-box-title.component';
 import { UserModalBoxDataComponent } from './component/user-modal/user-modal-box/user-modal-box-data/user-modal-box-data.component';
 import { UserModalBoxFooterComponent } from './component/user-modal/user-modal-box/user-modal-box-footer/user-modal-box-footer.component';
+import { CheckoutComponent } from './component/checkout/checkout.component';
+import { CartComponent } from './component/checkout/cart/cart.component';
+import { PaymentComponent } from './component/checkout/payment/payment.component';
+import { BillComponent } from './component/checkout/bill/bill.component';
+import { CheckoutService } from './services/checkout.service';
 
 
 
@@ -56,32 +61,33 @@ import { UserModalBoxFooterComponent } from './component/user-modal/user-modal-b
   ],
   declarations: [UserComponent,
                  UserNavbarComponent,
-                 UserDataNavbarComponent, 
-                 UserProfileComponent, 
-                 UserBoxComponent, 
-                 UserDashboardComponent, 
-                 UserDashboardBoxesComponent, 
-                 UserDashboardBoxComponent, 
-                 UserDashboardBoxDataComponent, 
-                 UserDashboardBoxTitleComponent, 
-                 UserDashboardBoxFooterComponent, 
-                 UserTableComponent, 
+                 UserDataNavbarComponent,
+                 UserProfileComponent,
+                 UserBoxComponent,
+                 UserDashboardComponent,
+                 UserDashboardBoxesComponent,
+                 UserDashboardBoxComponent,
+                 UserDashboardBoxDataComponent,
+                 UserDashboardBoxTitleComponent,
+                 UserDashboardBoxFooterComponent,
+                 UserTableComponent,
                  UserTableTitleComponent,
-                 UserTableDataComponent, 
-                 UserTableRowClubComponent, 
-                 UserTeamsComponent, 
+                 UserTableDataComponent,
+                 UserTableRowClubComponent,
+                 UserTeamsComponent,
                  UserManageTeamsComponent,
-                 UserTableRowMatchComponent, 
-                 UserManageTeamsBoxesComponent, 
-                 UserChartAreaComponent, 
-                 UserTeamsFilterComponent, 
-                 UserAutocompleteComponent, UserAutocompleteDropdownComponent, UserTableOptionsComponent, UserModalComponent, UserModalBoxComponent, UserModalBoxTitleComponent, UserModalBoxDataComponent, UserModalBoxFooterComponent
+                 UserTableRowMatchComponent,
+                 UserManageTeamsBoxesComponent,
+                 UserChartAreaComponent,
+                 UserTeamsFilterComponent,
+                 UserAutocompleteComponent, UserAutocompleteDropdownComponent, UserTableOptionsComponent, UserModalComponent, UserModalBoxComponent, UserModalBoxTitleComponent, UserModalBoxDataComponent, UserModalBoxFooterComponent, CheckoutComponent, CartComponent, PaymentComponent, BillComponent
                 ],
   providers: [UserService,
-              CartService, 
+              CartService,
               UserDataToggleService,
               TopTeamsService,
               ScheduledMatchesService,
-              ManageTeamService]
+              ManageTeamService,
+              CheckoutService]
 })
 export class UserModule { }

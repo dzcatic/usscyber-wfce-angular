@@ -1,0 +1,137 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .table-wrapper{
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .table {
+      width: 100%;
+      table {
+        width: 100%;
+        thead {
+          border-top: 12px solid rgb(127,143,164);
+          background-color: rgb(227,231,236);
+          color: rgb(127,143,164);
+          font-size: 14pt;
+
+        }
+        tbody {
+          background-color: rgb(227,231,236);
+          color: rgb(53, 64, 82);
+          font-size: 14pt;
+          font-family: "Lato-Semibold";
+          .team{
+            display: flex;
+            &-image {
+              display: flex;
+              align-items: center;
+              margin-left: 5px;
+              margin-right: 5px;
+            }
+            &-info {
+              display: flex;
+              flex-direction: column;
+              margin-left: 5px;
+              margin-right: 5px;
+              &--league{
+                font-size: 12pt;
+              }
+
+            }
+
+          }
+          .custom-select-list {
+            display: flex;
+            width: 82pt;
+            height: 36pt;
+            justify-content: space-between;
+            &-value {
+              background-color: #fff;
+              width: 100%;
+              border-top-left-radius: 5px;
+              border-bottom-left-radius: 5px;
+              border: 1pt solid rgb(127, 143, 164);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: rgb(127, 143, 164);
+              font-size: 14pt;
+              text-align: center;
+              line-height: 48px;
+              outline: none;
+            }
+            &-arrows {
+              display: flex;
+              flex-direction: column;
+              background-color: #fff;
+              border-top-right-radius: 5px;
+              border-bottom-right-radius: 5px;
+              border-top: 1pt solid #7f8fa4;
+              border-right: 1pt solid #7f8fa4;
+              border-bottom: 1pt solid #7f8fa4;
+              .arrow-up{
+                padding-top: 0px;
+                padding-left: 5px;
+                padding-right: 5px;
+                border-bottom: 1pt solid #7f8fa4;
+                margin-top: -4px;
+                img {
+                  transform: rotate(180deg);
+                }
+
+              }
+              .arrow-down {
+                padding-top: 0px;
+                padding-left: 5px;
+                padding-right: 5px;
+                margin-top: -4px;
+              }
+            }
+          }
+          .total-quantity {
+            width: 256px;
+          }
+        }
+        tfoot {
+          background-color: rgb(127,143,164);
+          color: #fff;
+          font-size: 14pt;
+        }
+      }
+    }
+  }
+    .buttons{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 65%;
+      margin-left: auto;
+      margin-right: auto;
+      &-prev {
+        color: rgb(127, 143, 164);
+      }
+      &-next {
+        height: 40px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #69e881;
+        color: #fff;
+        border-radius: 3px;
+        margin-left: 15px;
+        &:hover{
+          cursor: pointer;
+          box-shadow: 0px 0px 5px 0px #fff;
+
+        }
+      }
+    }
+
+}
+
+

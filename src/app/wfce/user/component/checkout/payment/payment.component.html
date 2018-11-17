@@ -1,0 +1,47 @@
+<div class="payment-wrapper">
+      <div class="payment-wrapper--header">
+          <img src="assets/img/logo/bitmap.png">
+          <p>WFCE</p>
+      </div>
+      <div class="payment-wrapper-option">
+        <div class="payment-wrapper-option-title">
+            <p>Please select option for payment: </p>
+        </div>
+        <div class="payment-wrapper-option-paymentoptions">
+          <div class="payment-wrapper-option-paymentoptions--option">
+              <img src="/assets/img/checkout/bitcoin@2x.png" alt="">
+              <p>Bitcoin</p>
+          </div>
+          <div class="payment-wrapper-option-paymentoptions--option">
+            <img src="/assets/img/checkout/Eth.png" alt="">
+            <p>Etherium</p>
+          </div>
+          <div class="payment-wrapper-option-paymentoptions--option">
+            <img src="/assets/img/checkout/litecoin@2x.png" alt="">
+            <p>Bitcoin</p>
+          </div>
+        </div>
+      </div>
+      <div class="payment-wrapper--footer">
+          <div class="total-cost">
+            <p>Total cost</p>
+            <p><span>- 324 WFCE</span> (234 USD) </p>
+          </div>
+          <div class="wallet-status">
+            <p>New wallet status</p>
+            <p><span>- 4,185,403 WFCE</span> (3.244M USD) </p>
+          </div>
+      </div>
+</div>
+
+<div class="buttons">
+  <div class="buttons-prev" (click)="goToStep('cart')">
+      Previous step
+    </div>
+
+   <div class="buttons-next" (click)="goToStep('bill')">
+     Next Step
+   </div>
+
+</div>
+
