@@ -1,2 +1,24 @@
-<app-left-panel><p>Coa-signup</p></app-left-panel>
-<app-right-panel><p>Ekica-signup</p></app-right-panel>
+<app-left-panel>
+  <p>Welcome To WFCE</p>
+</app-left-panel>
+<app-right-panel>
+  <p class="title">Signup in to WFCE</p>
+  <div content class="google" id='googleBtn'>
+
+    <div class="google-img">
+        <img src="/assets/img/login-signup/search@2x.png">
+    </div>
+    <div class="google-p">
+        <p>Signup with Google</p>
+    </div>
+
+  </div>
+<div content class="microsoft" (click)="microsoftLogin()">
+    <div class="microsoft-img">
+        <img src="/assets/img/login-signup/microsoft@2x.png">
+    </div>
+    <div class="microsoft-p">
+        <p>Signup with Microsoft</p>
+    </div>
+</div>
+</app-right-panel>

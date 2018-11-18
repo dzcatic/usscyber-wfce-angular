@@ -1,15 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+import { CheckoutService } from '../../../services/checkout.service';
 
 @Component({
   selector: 'app-bill',
   templateUrl: './bill.component.html',
-  styleUrls: ['./bill.component.scss']
+  styleUrls: ['./bill.component.scss'],
+  animations: [
+    trigger('flyInFromTop', [
+      state('in', style({ transform: 'translateY(0)' })),
+      transition(':enter', [
+        style({ transform: 'translateY(-230%)' }),
+        animate(500)
+      ])
+    ])
+  ]
 })
 export class BillComponent implements OnInit {
 
-  constructor() { }
+  showModal = false;
+
+  constructor(private checkoutService: CheckoutService) { }
 
   ngOnInit() {
+      this.checkoutService.showSuccesModal$.subscribe((show) => {
+          this.showModal = show;
+      });
+  }
+
+  finishOrder() {
+    this.showModal = true;
   }
 
 }

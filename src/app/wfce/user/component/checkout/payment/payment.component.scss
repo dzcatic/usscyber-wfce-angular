@@ -54,6 +54,12 @@
             size: 16pt;
             img {
               height: 96pt;
+              @media (max-width: 795px) {
+                height: 65pt;
+              }
+            }
+            img:hover {
+              transform: scale(1.1);
             }
             p {
               font-size: 16pt;

@@ -46,8 +46,9 @@ import { CartComponent } from './component/checkout/cart/cart.component';
 import { PaymentComponent } from './component/checkout/payment/payment.component';
 import { BillComponent } from './component/checkout/bill/bill.component';
 import { CheckoutService } from './services/checkout.service';
+import { SuccessComponent } from './component/checkout/success/success.component';
 
-
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { CheckoutService } from './services/checkout.service';
     FooterModule,
     UserRoutingModule,
     FormsModule,
+    NgbModalModule,
     NgxChartsModule
   ],
   declarations: [UserComponent,
@@ -80,7 +82,7 @@ import { CheckoutService } from './services/checkout.service';
                  UserManageTeamsBoxesComponent,
                  UserChartAreaComponent,
                  UserTeamsFilterComponent,
-                 UserAutocompleteComponent, UserAutocompleteDropdownComponent, UserTableOptionsComponent, UserModalComponent, UserModalBoxComponent, UserModalBoxTitleComponent, UserModalBoxDataComponent, UserModalBoxFooterComponent, CheckoutComponent, CartComponent, PaymentComponent, BillComponent
+                 UserAutocompleteComponent, UserAutocompleteDropdownComponent, UserTableOptionsComponent, UserModalComponent, UserModalBoxComponent, UserModalBoxTitleComponent, UserModalBoxDataComponent, UserModalBoxFooterComponent, CheckoutComponent, CartComponent, PaymentComponent, BillComponent, SuccessComponent
                 ],
   providers: [UserService,
               CartService,
@@ -88,6 +90,7 @@ import { CheckoutService } from './services/checkout.service';
               TopTeamsService,
               ScheduledMatchesService,
               ManageTeamService,
-              CheckoutService]
+              CheckoutService],
+  entryComponents: [SuccessComponent]
 })
 export class UserModule { }

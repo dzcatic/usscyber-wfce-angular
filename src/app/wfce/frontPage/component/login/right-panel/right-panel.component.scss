@@ -15,10 +15,20 @@
         align-self: flex-start;
         position: relative;
         background-color: white;
+        /* p {
+          margin-bottom: 0;
+          position: absolute;
+          color: #fff;
+          font-size: 2em;
+          font-family: Lato-Regular;
+          font-weight: 400;
+          top: -25%;
+          left: 15%;
+        } */
         .contentGlobal{
             position: absolute;
-            left: 20px;
-            top: 30px;
+            top: 25%;
+            left: 20%;
         }
     }
     .loginFooter{

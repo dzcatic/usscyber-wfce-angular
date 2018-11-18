@@ -74,9 +74,15 @@
 
 <div class="buttons">
 
-<div class="buttons-next" (click)="goToStep('bill')">
- Next Step
+<div class="buttons-next" (click)="finishOrder()">
+ Finish
 </div>
 
 </div>
+
+<div  *ngIf="showModal" class="backlayer">
+    <app-success  *ngIf="showModal" [@flyInFromTop]="'in'" ></app-success>
+</div>
+
+
 

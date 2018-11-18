@@ -1,7 +1,11 @@
+@import "../../../../../../sass/mixins";
+
 :host {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  @include scrollBar;
+  overflow: auto;
 
   .bill-wrapper {
       width: 65%;
@@ -9,6 +13,7 @@
       margin-right: auto;
       color: white;
       background-color: rgb(227,231,236);
+      margin-bottom: 30px;
       &--header {
         display: flex;
         flex-direction: column;
@@ -144,5 +149,45 @@
           }
         }
       }
+    }
+    .buttons{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 65%;
+      margin-left: auto;
+      margin-right: auto;
+      &-prev {
+        color: rgb(127, 143, 164);
+      }
+      &-prev:hover {
+        color: rgba(127, 143, 164, 0.8);
+        cursor: pointer;
+      }
+      &-next {
+        height: 40px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #69e881;
+        color: #fff;
+        border-radius: 3px;
+        margin-left: 15px;
+        &:hover{
+          cursor: pointer;
+          box-shadow: 0px 0px 5px 0px #fff;
+
+        }
+      }
+    }
+    .backlayer {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+        background-color: rgba(20, 26, 34, 0.7);
     }
 }
