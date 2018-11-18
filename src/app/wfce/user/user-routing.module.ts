@@ -5,6 +5,7 @@ import { UserTeamsComponent } from './component/user-teams/user-teams.component'
 import { UserManageTeamsComponent } from './component/user-manage-teams/user-manage-teams.component';
 import { UserDashboardComponent } from './component/user-dashboard/user-dashboard.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { CheckoutComponent } from './component/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: "profile",
         component: UserProfileComponent
+      },
+      {
+        path: "checkout",
+        component: CheckoutComponent
       },
     ]
   }

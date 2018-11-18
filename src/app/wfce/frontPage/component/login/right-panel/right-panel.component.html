@@ -1,5 +1,8 @@
 <div class="rightPanelBox">
-  <div class="contentGlobal"><ng-content></ng-content></div>
+    <ng-content select=".title"></ng-content>
+  <div class="contentGlobal">
+    <ng-content select="[content]"></ng-content>
+  </div>
 </div>
 <div class="loginFooter">
   <ul>

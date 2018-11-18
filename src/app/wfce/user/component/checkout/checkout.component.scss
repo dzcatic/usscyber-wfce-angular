@@ -1,0 +1,59 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  app-navbar {
+    background-color: rgb(27,36,49);
+  }
+  app-user-data-navbar {
+    height: 70pt;
+  }
+  .checkout {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(27,36,49);
+    height: 100%;
+    justify-content: space-around;
+    .stepper-wrapper {
+      width: 100%;
+      background-color: rgb(27,36,49);
+      padding-top: 20px;
+      padding-bottom: 20px;
+      .stepper {
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+        &-content {
+          color: #fff;
+          display: flex;
+          justify-content: space-between;
+          font-size: 14pt;
+          color: rgb(127,143,164);
+
+          p {
+            margin-top: 5px;
+            &:last-child {
+              @media (min-width: 1200px) {
+                margin-right: 7px;
+              }
+
+            }
+          }
+        }
+        &-svg {
+          fill: #273142;
+          stroke: #273142;
+        }
+        .active{
+          fill: rgb(105,232,129);
+          stroke: rgb(105,232,129);
+        }
+      }
+    }
+  }
+
+
+
+}
+
+

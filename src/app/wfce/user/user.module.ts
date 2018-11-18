@@ -36,8 +36,14 @@ import { UserTeamsFilterComponent } from './component/user-teams/user-teams-filt
 import { UserAutocompleteComponent } from './component/user-autocomplete/user-autocomplete.component';
 import { UserAutocompleteDropdownComponent } from './component/user-autocomplete/user-autocomplete-dropdown/user-autocomplete-dropdown.component';
 import { UserTableOptionsComponent } from './component/user-table/user-table-data/user-table-options/user-table-options.component';
+import { CheckoutComponent } from './component/checkout/checkout.component';
+import { CartComponent } from './component/checkout/cart/cart.component';
+import { PaymentComponent } from './component/checkout/payment/payment.component';
+import { BillComponent } from './component/checkout/bill/bill.component';
+import { CheckoutService } from './services/checkout.service';
+import { SuccessComponent } from './component/checkout/success/success.component';
 
-
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -48,24 +54,25 @@ import { UserTableOptionsComponent } from './component/user-table/user-table-dat
     ModalModule,
     UserRoutingModule,
     FormsModule,
+    NgbModalModule,
     NgxChartsModule
   ],
   declarations: [UserComponent,
                  UserNavbarComponent,
-                 UserDataNavbarComponent, 
-                 UserProfileComponent, 
-                 UserBoxComponent, 
-                 UserDashboardComponent, 
-                 UserDashboardBoxesComponent, 
-                 UserDashboardBoxComponent, 
-                 UserDashboardBoxDataComponent, 
-                 UserDashboardBoxTitleComponent, 
-                 UserDashboardBoxFooterComponent, 
-                 UserTableComponent, 
+                 UserDataNavbarComponent,
+                 UserProfileComponent,
+                 UserBoxComponent,
+                 UserDashboardComponent,
+                 UserDashboardBoxesComponent,
+                 UserDashboardBoxComponent,
+                 UserDashboardBoxDataComponent,
+                 UserDashboardBoxTitleComponent,
+                 UserDashboardBoxFooterComponent,
+                 UserTableComponent,
                  UserTableTitleComponent,
-                 UserTableDataComponent, 
-                 UserTableRowClubComponent, 
-                 UserTeamsComponent, 
+                 UserTableDataComponent,
+                 UserTableRowClubComponent,
+                 UserTeamsComponent,
                  UserManageTeamsComponent,
                  UserTableRowMatchComponent, 
                  UserManageTeamsBoxesComponent, 
@@ -73,12 +80,19 @@ import { UserTableOptionsComponent } from './component/user-table/user-table-dat
                  UserTeamsFilterComponent, 
                  UserAutocompleteComponent, 
                  UserAutocompleteDropdownComponent, 
-                 UserTableOptionsComponent
+                 UserTableOptionsComponent,
+                 CheckoutComponent, 
+                 CartComponent, 
+                 PaymentComponent, 
+                 BillComponent, 
+                 SuccessComponent
                 ],
   providers: [UserService,
               CartService, 
               TopTeamsService,
               ScheduledMatchesService,
-              ManageTeamService]
+              ManageTeamService,
+              CheckoutService],
+  entryComponents: [SuccessComponent]
 })
 export class UserModule { }

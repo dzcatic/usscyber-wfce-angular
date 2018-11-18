@@ -10,6 +10,8 @@ import { TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
+
+
 @NgModule({
   declarations: [
     AppComponent

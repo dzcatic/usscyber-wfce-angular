@@ -6,7 +6,7 @@
     <div class="logo-links">Hello {{user.name}}!</div>
   </div>
   <div class="userProfile col-6">
-    <div><i class="gi-cart"></i>{{numberOfCartItems}}</div>
+    <div (click)="openCheckout()"><i class="gi-cart"></i>{{numberOfCartItems}}</div>
     <div (click)="openProfile()"><img [src]="user.avatar"></div>
   </div>
 </div>

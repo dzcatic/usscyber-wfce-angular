@@ -1,0 +1,75 @@
+
+
+  <div class="table-wrapper">
+      <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Team</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="team">
+                    <div class="team-image">
+                        <img _ngcontent-c18="" src="assets/img/temp/avatar.png">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-info--name">
+                            Barcelona
+                        </div>
+                        <div class="team-info--league">
+                            La Liga
+                        </div>
+                    </div>
+                  </div>
+
+                </td>
+                <td>
+                    <div class="custom-select-list">
+                      <div #quantityRef contenteditable  (keydown)="keyPress($event)" (blur)="quantityValueBlur()" class="custom-select-list-value">
+                          {{ quantity }}
+                      </div>
+                      <div class="custom-select-list-arrows">
+                        <div class="arrow-up" (click)="quantity = quantity + 1">
+                          <img src="/assets/img/checkout/arrow@2x.png">
+                        </div>
+                        <div class="arrow-down" (click)="quantity == 1 ? quantity = 1  : quantity = quantity - 1 " >
+                          <img src="/assets/img/checkout/arrow@2x.png">
+                        </div>
+                      </div>
+                    </div>
+                </td>
+                <td>$100 USD</td>
+                <td class="total-quantity">${{ +quantityRef.innerText * 100}} USD</td>
+              </tr>
+
+            </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>$180 USD</td>
+              </tr>
+            </tfoot>
+          </table>
+
+        </div>
+  </div>
+
+  <div class="buttons">
+      <div class="buttons-prev">
+          Back to shopping
+        </div>
+
+       <div class="buttons-next" (click)="goToStep('payment')">
+         Next Step
+       </div>
+
+  </div>
+

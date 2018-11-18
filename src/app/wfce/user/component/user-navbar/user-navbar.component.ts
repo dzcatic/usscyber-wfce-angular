@@ -23,4 +23,8 @@ export class UserNavbarComponent implements OnInit {
     this._router.navigate(['profile'], { relativeTo: this._route });
   }
 
+  openCheckout(){
+    this._router.navigate(['checkout'], { relativeTo: this._route });
+  }
+
 }

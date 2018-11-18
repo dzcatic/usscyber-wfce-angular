@@ -1,0 +1,193 @@
+@import "../../../../../../sass/mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  @include scrollBar;
+  overflow: auto;
+
+  .bill-wrapper {
+      width: 65%;
+      margin-left: auto;
+      margin-right: auto;
+      color: white;
+      background-color: rgb(227,231,236);
+      margin-bottom: 30px;
+      &--header {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        border-bottom: 9pt solid rgb(127, 143, 164);
+        p {
+          margin-bottom: 0;
+        }
+        p:first-child {
+          font-size: 24pt;
+          color: rgb(53, 64, 82);
+          font-family: Lato-Bold;
+          font-weight: 700;
+          letter-spacing: 0.4pt;
+        }
+        p:last-child {
+          font-size: 16pt;
+          color: rgb(53, 64, 82);
+          font-family: Lato-Regular;
+          font-weight: 400;
+          letter-spacing: 0.3pt;
+        }
+      }
+      &-content {
+        display: flex;
+        flex-direction: column;
+
+        &-user-info {
+          display: flex;
+          justify-content: space-between;
+          padding: 15px;
+          border-bottom: 9pt solid rgb(127, 143, 164);
+          &-customer {
+            font-family: Lato-Semibold;
+            font-weight: 600;
+            font-size: 14pt;
+            &--title {
+              color: rgb(127, 143, 164);
+            }
+            &--customer {
+              color: rgb(53, 64, 82);
+            }
+            &--footer {
+              font-size: 11pt;
+              color: rgb(49, 61, 79);
+            }
+            p{
+              margin-bottom: 0;
+            }
+          }
+          &-invoice {
+            font-family: Lato-Semibold;
+            font-weight: 600;
+            font-size: 14pt;
+            &--title {
+              color: rgb(127, 143, 164);
+            }
+            &--customer {
+              color: rgb(53, 64, 82);
+            }
+            &--footer {
+              font-size: 11pt;
+              color: rgb(49, 61, 79);
+            }
+            p{
+              margin-bottom: 0;
+            }
+          }
+        }
+        &-table {
+          padding: 15px;
+          table {
+            width: 100%;
+            thead {
+              font-size: 14pt;
+              color: rgb(127, 143, 164);
+              font-family: Lato-Semibold;
+              font-weight: 600;
+            }
+            tbody {
+              font-size: 14pt;
+              font-family: Lato-Regular;
+              font-weight: 400;
+              letter-spacing: 0.3pt;
+              color: rgb(53, 64, 82);
+              span {
+                font-size: 14pt;
+                color: rgb(127, 143, 164);
+                font-family: Lato-Regular;
+                font-weight: 400;
+                letter-spacing: 0.3pt;
+              }
+            }
+          }
+        }
+
+      }
+      &--footer {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(49,61,79);
+        padding: 10px;
+        font-size: 14pt;
+        color: rgb(207,213,221);
+
+        .total-cost {
+          display: flex;
+          justify-content: space-between;
+          font-family: Lato-Semibold;
+          font-weight: 600;
+          p:last-child {
+            color: #fff;
+            font-family: Lato-Black;
+            font-weight: 900;
+            span {
+              color: rgb(99,234,124);
+            }
+          }
+
+        }
+        .wallet-status {
+          display: flex;
+          justify-content: space-between;
+          font-family: Lato-Semibold;
+          font-weight: 600;
+          p:last-child {
+            color: #fff;
+            font-family: Lato-Black;
+            font-weight: 900;
+            span {
+              color: rgb(99,234,124);
+            }
+          }
+        }
+      }
+    }
+    .buttons{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 65%;
+      margin-left: auto;
+      margin-right: auto;
+      &-prev {
+        color: rgb(127, 143, 164);
+      }
+      &-prev:hover {
+        color: rgba(127, 143, 164, 0.8);
+        cursor: pointer;
+      }
+      &-next {
+        height: 40px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #69e881;
+        color: #fff;
+        border-radius: 3px;
+        margin-left: 15px;
+        &:hover{
+          cursor: pointer;
+          box-shadow: 0px 0px 5px 0px #fff;
+
+        }
+      }
+    }
+    .backlayer {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+        background-color: rgba(20, 26, 34, 0.7);
+    }
+}
