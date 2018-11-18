@@ -1,7 +1,8 @@
 <app-user-navbar [user]="user" [numberOfCartItems]="numberOfCartItems"></app-user-navbar>
 <app-user-data-navbar></app-user-data-navbar>
-<app-user-dashboard *ngIf="toggleData=='dashboard'"></app-user-dashboard>
+    <router-outlet></router-outlet>
+<!-- <app-user-dashboard *ngIf="toggleData=='dashboard'"></app-user-dashboard>
 <app-user-profile *ngIf="toggleData=='profile'" [user]="user"></app-user-profile>
 <app-user-teams *ngIf="toggleData=='teams'"></app-user-teams>
-<app-user-manage-teams *ngIf="toggleData=='manageTeams'"></app-user-manage-teams>
+<app-user-manage-teams *ngIf="toggleData=='manageTeams'"></app-user-manage-teams> -->
 <app-footer></app-footer>

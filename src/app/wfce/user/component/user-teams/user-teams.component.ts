@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TopTeamsService } from '../../services/teams.service';
+import { ModalService } from '../../../shared-modules/modal/modal.service';
 
 @Component({
   selector: 'app-user-teams',
@@ -9,6 +10,7 @@ import { TopTeamsService } from '../../services/teams.service';
 export class UserTeamsComponent implements OnInit {
 
   public topTeams;
+  public openedModal = false;
 
   styleTopTeams={
     club: {
@@ -40,11 +42,32 @@ export class UserTeamsComponent implements OnInit {
     
   };
 
-  constructor(private topTeamsService: TopTeamsService) {
+  modalStyle =  {
+    component: "image-rows",
+    label: "small fade"
+  };
+
+  modalData = {
+    name: "230",
+    label: "Tokens"
+  }
+
+  modalData1 = {
+    name: "$80,500",
+    label: "Value"
+  }
+
+  constructor(private topTeamsService: TopTeamsService, private modalService: ModalService) {
     this.topTeams = topTeamsService.getLongTeams();
   }
 
   ngOnInit() { 
+    this.modalService.toggleModal$.subscribe((value)=>{
+      this.openedModal = value;
+    })
+    /* this.modalService.data$.subscribe((value)=>{
+      this.modalData = value;
+    }) */
   }
 
 }

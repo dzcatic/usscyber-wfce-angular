@@ -5,6 +5,7 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import { NavbarModule } from '../shared-modules/navbar/navbar.module';
 import { FooterModule } from '../shared-modules/footer/footer.module';
+import { ModalModule } from '../shared-modules/modal/modal.module';
 import { UserComponent } from './component/user/user.component';
 import { UserRoutingModule } from './user-routing.module';
 import { UserNavbarComponent } from './component/user-navbar/user-navbar.component';
@@ -13,7 +14,6 @@ import { UserService } from './services/user.service';
 import { CartService } from './services/cart.service';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { UserBoxComponent } from './component/user-profile/user-box/user-box.component';
-import { UserDataToggleService } from './services/user-data-toggle.service';
 import { UserDashboardComponent } from './component/user-dashboard/user-dashboard.component';
 import { UserDashboardBoxesComponent } from './component/user-dashboard/user-dashboard-boxes/user-dashboard-boxes.component';
 import { UserDashboardBoxComponent } from './component/user-dashboard/user-dashboard-boxes/user-dashboard-box/user-dashboard-box.component';
@@ -36,11 +36,6 @@ import { UserTeamsFilterComponent } from './component/user-teams/user-teams-filt
 import { UserAutocompleteComponent } from './component/user-autocomplete/user-autocomplete.component';
 import { UserAutocompleteDropdownComponent } from './component/user-autocomplete/user-autocomplete-dropdown/user-autocomplete-dropdown.component';
 import { UserTableOptionsComponent } from './component/user-table/user-table-data/user-table-options/user-table-options.component';
-import { UserModalComponent } from './component/user-modal/user-modal.component';
-import { UserModalBoxComponent } from './component/user-modal/user-modal-box/user-modal-box.component';
-import { UserModalBoxTitleComponent } from './component/user-modal/user-modal-box/user-modal-box-title/user-modal-box-title.component';
-import { UserModalBoxDataComponent } from './component/user-modal/user-modal-box/user-modal-box-data/user-modal-box-data.component';
-import { UserModalBoxFooterComponent } from './component/user-modal/user-modal-box/user-modal-box-footer/user-modal-box-footer.component';
 
 
 
@@ -50,6 +45,7 @@ import { UserModalBoxFooterComponent } from './component/user-modal/user-modal-b
     CommonModule,
     NavbarModule,
     FooterModule,
+    ModalModule,
     UserRoutingModule,
     FormsModule,
     NgxChartsModule
@@ -75,11 +71,12 @@ import { UserModalBoxFooterComponent } from './component/user-modal/user-modal-b
                  UserManageTeamsBoxesComponent, 
                  UserChartAreaComponent, 
                  UserTeamsFilterComponent, 
-                 UserAutocompleteComponent, UserAutocompleteDropdownComponent, UserTableOptionsComponent, UserModalComponent, UserModalBoxComponent, UserModalBoxTitleComponent, UserModalBoxDataComponent, UserModalBoxFooterComponent
+                 UserAutocompleteComponent, 
+                 UserAutocompleteDropdownComponent, 
+                 UserTableOptionsComponent
                 ],
   providers: [UserService,
               CartService, 
-              UserDataToggleService,
               TopTeamsService,
               ScheduledMatchesService,
               ManageTeamService]

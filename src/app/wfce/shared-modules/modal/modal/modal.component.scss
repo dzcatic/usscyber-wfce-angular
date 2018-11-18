@@ -1,8 +1,8 @@
 @import "../../../../../sass/variables";
 @import "../../../../../sass/mixins";
 :host{
-    background-color: rgb(20, 26, 34);
-    opacity: 0.8;
+    background-color: rgba(20, 26, 34, .8);
+    //opacity: 0.8;
     position: fixed;
     top: 0;
     width: 100%;
@@ -10,4 +10,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5000;
 }

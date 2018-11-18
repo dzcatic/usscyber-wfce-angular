@@ -34,4 +34,41 @@
         }
         width: 60%;
     }
+    .modalBoxClass{
+        flex-direction: row;
+        justify-content: space-between;
+        .modalDataGroup{
+            display: flex;
+            flex-direction: column;
+            .modalDataLabel{
+                display: flex;
+                font-size: 18px;
+                div{
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+
+    .modalFooterGroup{
+        font-size: 18px;
+        div{
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            .buyTokenModalButton{
+                height: 40px;
+                width: 150px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                border-radius: 3px;
+                background-color: #69e881;
+                &:hover{
+                    @include selectableGlow;
+                }
+            }
+        }
+    }
 }

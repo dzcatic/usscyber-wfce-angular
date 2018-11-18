@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserDataToggleService } from '../../services/user-data-toggle.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-navbar',
@@ -14,13 +14,13 @@ export class UserNavbarComponent implements OnInit {
   @Input()
   numberOfCartItems;
 
-  constructor(private toggleDataService: UserDataToggleService) { }
+  constructor(private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   openProfile(){
-    this.toggleDataService.setToggleUserData('profile');
+    this._router.navigate(['profile'], { relativeTo: this._route });
   }
 
 }

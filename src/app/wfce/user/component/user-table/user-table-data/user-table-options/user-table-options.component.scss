@@ -13,6 +13,13 @@
         align-items: center;
         
         border-radius: 3px;
+
+        //No text select
+        -moz-user-select: none;
+         -webkit-user-select: none; 
+         -ms-user-select:none; 
+         user-select:none;
+         -o-user-select:none;
         &.colorGrey{
             background-color: $user-data-border-color;
         }

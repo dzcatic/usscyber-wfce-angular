@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDataToggleService } from '../../services/user-data-toggle.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-data-navbar',
@@ -8,17 +8,16 @@ import { UserDataToggleService } from '../../services/user-data-toggle.service';
 })
 export class UserDataNavbarComponent implements OnInit {
 
-  constructor(private toggleDataService: UserDataToggleService) { }
+  constructor(private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   openTeams(){
-    this.toggleDataService.setToggleUserData('teams');
+    this._router.navigate(['view-teams'], { relativeTo: this._route });
   }
   openManageTeams(){
-    this.toggleDataService.setToggleUserData('manageTeams');
-    
+    this._router.navigate(['manage-teams'], { relativeTo: this._route });
   }
 
 }
