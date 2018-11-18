@@ -1,7 +1,12 @@
 :host {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  @media (max-width: 1024px) {
+    display: block;
+    height: 340px;
+    // overflow: auto;
+  }
+  // height: 100vh;
   .payment-wrapper {
       width: 65%;
       margin-left: auto;
@@ -19,9 +24,15 @@
         display: flex;
         padding: 10px;
         align-items: center;
+        @media (max-width: 1024px) {
+          padding: 3px;
+        }
         img {
           height: 28pt;
           margin-left: 15px;
+          @media (max-width: 1024px) {
+            height: 20pt;
+          }
         }
         p {
           font-size: 24pt;
@@ -30,17 +41,26 @@
           font-family: Lato-Bold;
           font-weight: 700;
           color: rgb(53,64,82);
+          @media (max-width: 1024px) {
+            font-size: 20pt;
+          }
         }
       }
       &-option {
         padding: 10px;
         font-family: Lato-Regular;
         font-weight: 400;
+        @media (max-width: 1024px) {
+          padding: 3px;
+        }
         &-title {
 
           font-size: 16pt;
           margin-left: 15px;
           color: rgb(53,64,82);
+          @media (max-width: 1024px) {
+            font-size: 15pt;
+          }
         }
         &-paymentoptions {
           display: flex;
@@ -51,23 +71,34 @@
             align-items: center;
             margin: 15px;
             color: rgb(53,64,82);
-            size: 16pt;
+            font-size: 16pt;
+            @media (max-width: 1024px) {
+              margin: 10px;
+            }
             img {
               height: 96pt;
               @media (max-width: 795px) {
                 height: 65pt;
               }
+              @media (max-width: 1024px) {
+                height: 75pt;
+              }
+            }
+
             }
             img:hover {
               transform: scale(1.1);
             }
             p {
+              @media (max-width: 1024px) {
+                font-size: 15pt;
+              }
               font-size: 16pt;
               margin: 0.6rem 0;
             }
           }
         }
-      }
+
 
       &--footer {
         display: flex;
@@ -76,6 +107,11 @@
         padding: 10px;
         font-size: 14pt;
         color: rgb(207,213,221);
+
+        @media (max-width: 1024px) {
+          font-size: 13pt;
+          padding: 8px;
+        }
 
         .total-cost {
           display: flex;
@@ -104,6 +140,12 @@
             span {
               color: rgb(99,234,124);
             }
+          }
+        }
+
+        p {
+          @media (max-width: 1024px) {
+            margin-bottom: 7px;
           }
         }
       }
