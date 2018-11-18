@@ -28,7 +28,7 @@
         .contentGlobal{
             position: absolute;
             top: 25%;
-            left: 15%;
+            //left: 15%;
             @media (max-width: 768px) {
               top: 18%;
               left: 8%;
@@ -39,7 +39,7 @@
             }
             @media (min-width: 1025px) {
               top: 16%;
-              left: 18%;
+              left: 15%;
             }
         }
     }
