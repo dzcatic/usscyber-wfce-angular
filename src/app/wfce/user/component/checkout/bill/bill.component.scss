@@ -5,7 +5,7 @@
   flex-direction: column;
   height: 100vh;
   @include scrollBar;
-  overflow: auto;
+  //  overflow: auto;
 
   .bill-wrapper {
       width: 65%;
