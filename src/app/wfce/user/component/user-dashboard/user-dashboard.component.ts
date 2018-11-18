@@ -19,7 +19,7 @@ export class UserDashboardComponent implements OnInit {
     },
     points: {
       component: "image-row",
-      src: "/assets/img/dashboard/Bitmap.png"
+      src: "assets/img/dashboard/Bitmap.png"
     },
     marketPrice: {
         component: "image-rows",

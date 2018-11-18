@@ -1,11 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { TopTeamsService } from '../../services/teams.service';
 import { ModalService } from '../../../shared-modules/modal/modal.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-user-teams',
   templateUrl: './user-teams.component.html',
-  styleUrls: ['./user-teams.component.scss']
+  styleUrls: ['./user-teams.component.scss'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({height: '100%', opacity: 1})),
+      transition(':enter', [
+        style({ height: '0%', opacity: 0 }),
+        animate('.5s ease-in-out')
+      ]),
+      transition(':leave', [
+        animate('.5s ease-in-out', style({height: '0%', opacity: 0}))
+      ])
+    ])
+  ]
 })
 export class UserTeamsComponent implements OnInit {
 
@@ -19,7 +32,7 @@ export class UserTeamsComponent implements OnInit {
         league: "small fade"
     },
     marketPrice: {
-      image: "/assets/img/dashboard/Bitmap.png",
+      image: "assets/img/dashboard/Bitmap.png",
       component: "image-rows",
       change: "small fade"
     },

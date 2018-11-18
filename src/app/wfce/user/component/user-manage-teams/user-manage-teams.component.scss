@@ -2,7 +2,6 @@
 @import "../../../../../sass/mixins";
 :host{
     width: 100%;
-    height: 100vh;
     background-color: $user-color;
     display: flex;
     flex-direction: column;
@@ -11,6 +10,7 @@
     padding-top: $navbar-height;
     font-size: 25px;
     .content{
+        margin-bottom: $navbar-height;
         width: 80%;
         display: grid;
         grid-template-columns: 30% auto;
@@ -19,6 +19,45 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            .arrowUp{
+                font-size: 32px;
+            }
+            .boxBigGreen{
+                font-size: 34px;
+                color: $green-color;
+            }
+            .boxBigGreen1{
+                font-size: 28px;
+                color: $green-color;
+            }
+            .buttons{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                div{
+                    font-size: 15px;
+                    height: 50px;
+                    width: 176px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 3px;
+                    //padding: 10px;
+                    //margin-right: 10px;
+                    &:hover {
+                        @include selectableGlow;
+                    }
+                    &.green{
+                       background-color: $green-color;
+                    }
+                    &.white{
+                        background-color: white;
+                        color: black;
+                    }
+                    
+                        
+                }
+            }
         }
     }
 }

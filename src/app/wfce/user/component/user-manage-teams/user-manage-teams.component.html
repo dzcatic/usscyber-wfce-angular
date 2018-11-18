@@ -4,7 +4,55 @@
     <app-user-table-data [style]="styleTopTeams" [data]="topTeams"></app-user-table-data>
   </app-user-table>
   <div class="teamArea">
-      <app-user-manage-teams-boxes></app-user-manage-teams-boxes>
+      <app-user-manage-teams-boxes>
+        <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
+          <app-user-dashboard-box-data class="boxBigGreen">$1873.46</app-user-dashboard-box-data>
+          <app-user-dashboard-box-footer>TOTAL TOKEN NUMBER</app-user-dashboard-box-footer>
+        </app-user-dashboard-box>
+        <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
+          <app-user-dashboard-box-data class="boxBigGreen">$1873.46</app-user-dashboard-box-data>
+          <app-user-dashboard-box-footer>TOKEN PRICE</app-user-dashboard-box-footer>
+        </app-user-dashboard-box>
+        <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
+            <app-user-dashboard-box-data class="boxBigGreen">$1873.46</app-user-dashboard-box-data>
+            <app-user-dashboard-box-footer>TOKEN PRICE</app-user-dashboard-box-footer>
+        </app-user-dashboard-box>
+        <div class="buttons">
+          <div class="green">BUY TOKENS</div>
+          <div class="white">SELL TOKENS</div>
+        </div>
+      </app-user-manage-teams-boxes>
+      <app-user-chart-area [selectedTeam]="selectedTeam"></app-user-chart-area>
+  </div>
+</div>
+<div class="content">
+  <app-user-table>
+    <app-user-table-title>Watched teams</app-user-table-title>
+    <app-user-table-data [style]="styleTopTeams" [data]="topTeams"></app-user-table-data>
+  </app-user-table>
+  <div class="teamArea">
+        <app-user-manage-teams-boxes>
+          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
+            <app-user-dashboard-box-data class="boxBigGreen1">$1873.46</app-user-dashboard-box-data>
+            <app-user-dashboard-box-footer>TOTAL TOKEN NUMBER</app-user-dashboard-box-footer>
+          </app-user-dashboard-box>
+          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
+            <app-user-dashboard-box-data class="boxBigGreen1">$1873.46</app-user-dashboard-box-data>
+            <app-user-dashboard-box-footer>TOKEN PRICE</app-user-dashboard-box-footer>
+          </app-user-dashboard-box>
+          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
+              <app-user-dashboard-box-data class="boxBigGreen1">$1873.46</app-user-dashboard-box-data>
+              <app-user-dashboard-box-footer>TOKEN PRICE</app-user-dashboard-box-footer>
+          </app-user-dashboard-box>
+          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
+            <app-user-dashboard-box-data class="boxBigGreen1">$1873.46</app-user-dashboard-box-data>
+            <app-user-dashboard-box-footer>TOKEN PRICE</app-user-dashboard-box-footer>
+        </app-user-dashboard-box>
+          <div class="buttons">
+            <div class="green">BUY TOKENS</div>
+            <div class="white">SELL TOKENS</div>
+          </div>
+        </app-user-manage-teams-boxes>
       <app-user-chart-area [selectedTeam]="selectedTeam"></app-user-chart-area>
   </div>
 </div>

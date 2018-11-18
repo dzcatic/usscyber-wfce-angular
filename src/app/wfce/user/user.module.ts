@@ -44,6 +44,7 @@ import { CheckoutService } from './services/checkout.service';
 import { SuccessComponent } from './component/checkout/success/success.component';
 
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import { UserNavbarDropdownComponent } from './component/user-navbar/user-navbar-dropdown/user-navbar-dropdown.component';
 
 
 @NgModule({
@@ -85,7 +86,7 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
                  CartComponent, 
                  PaymentComponent, 
                  BillComponent, 
-                 SuccessComponent
+                 SuccessComponent, UserNavbarDropdownComponent
                 ],
   providers: [UserService,
               CartService, 

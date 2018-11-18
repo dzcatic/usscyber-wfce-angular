@@ -19,9 +19,12 @@
             padding: 0px;
             display: flex;
             justify-content: flex-end;
-            align-items: center;
+            //align-items: center;
             font-size: 15px;
             div{
+                &.dropdownSelected{
+                    background-color: $user-data-border-color;
+                }
                 padding: 10px;
                 display: flex;
                 align-items: center;
