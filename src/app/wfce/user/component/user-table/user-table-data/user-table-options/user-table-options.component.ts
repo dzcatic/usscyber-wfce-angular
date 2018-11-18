@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ModalService } from '../../../../../shared-modules/modal/modal.service';
 
 @Component({
   selector: 'app-user-table-options',
@@ -13,7 +14,7 @@ export class UserTableOptionsComponent implements OnInit {
   @Input()
   row;
   
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit() {
     this.row['isSelected'] = false;
@@ -29,7 +30,22 @@ export class UserTableOptionsComponent implements OnInit {
   }
 
   buyToken(option){
-    console.log("open modal");
+    let data = {
+      modalStyle: {
+        component: "image-rows",
+        label: "small fade"
+      },
+      tokens: {
+        name: "230",
+        label: "Tokens"
+      },
+      value: {
+        name: "$80,500",
+        label: "Value"
+      }
+    };
+
+    this.modalService.setModalData(data);
   }
 
 }

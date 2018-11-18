@@ -11,6 +11,7 @@ export class UserTeamsComponent implements OnInit {
 
   public topTeams;
   public openedModal = false;
+  modalData;
 
   styleTopTeams={
     club: {
@@ -42,21 +43,6 @@ export class UserTeamsComponent implements OnInit {
     
   };
 
-  modalStyle =  {
-    component: "image-rows",
-    label: "small fade"
-  };
-
-  modalData = {
-    name: "230",
-    label: "Tokens"
-  }
-
-  modalData1 = {
-    name: "$80,500",
-    label: "Value"
-  }
-
   constructor(private topTeamsService: TopTeamsService, private modalService: ModalService) {
     this.topTeams = topTeamsService.getLongTeams();
   }
@@ -65,9 +51,12 @@ export class UserTeamsComponent implements OnInit {
     this.modalService.toggleModal$.subscribe((value)=>{
       this.openedModal = value;
     })
-    /* this.modalService.data$.subscribe((value)=>{
+    this.modalService.data$.subscribe((value)=>{
       this.modalData = value;
-    }) */
+      if(this.modalData !== undefined){
+        this.modalService.openModal();
+      }
+    })
   }
 
 }
