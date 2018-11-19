@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './wfce/shared-modules/services/auth.service';
 
 
 
@@ -24,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

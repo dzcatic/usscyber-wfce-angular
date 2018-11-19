@@ -24,6 +24,7 @@
     "@ng-select/ng-select": "^1.5.2",
     "@ngx-translate/core": "^9.1.1",
     "@swimlane/ngx-charts": "^9.0.0",
+    "auth0-js": "^9.8.2",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../../shared-modules/services/auth.service';
 
 
 declare const FB: any;
@@ -17,17 +18,26 @@ export class LoginComponent implements OnInit {
   public googleUser = {};
   public auth2: any;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
-  ngOnInit() {
+
+  googleAuth() {
+    this.authService.loginGoogle();
   }
+  microsoftAuth() {
+    this.authService.loginMicrosoft();
+  }
+  ngOnInit() {
+   // this.authService.login();
+  }
+
 
 
   /**
    * Google login initialization
    */
 
-  public googleInit() {
+  /* public googleInit() {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.init({
         client_id: '710270792144-h8ltih91m5s016cv3ul2u8jmaa7ciosg.apps.googleusercontent.com',
@@ -56,7 +66,7 @@ export class LoginComponent implements OnInit {
       }, (error) => {
         alert(JSON.stringify(error, undefined, 2));
       });
-  }
+  } */
 
   /*************************************************************** */
 
@@ -64,7 +74,7 @@ export class LoginComponent implements OnInit {
   /**
    * MICROSOFT LOGIN INITIALIZATION
    */
-  public applicationConfig = {
+ /*  public applicationConfig = {
     clientID: 'dd14710c-32b2-4f0d-9051-e405e2d8c2a4',
     graphScopes: ['user.read'],
     graphEndpoint: 'https://graph.microsoft.com/v1.0/me'
@@ -104,9 +114,9 @@ export class LoginComponent implements OnInit {
             });
         }
     });
-  }
+  } */
 
-  public acquireTokenRedirectCallBack(errorDesc, token, error, tokenType) {
+  /* public acquireTokenRedirectCallBack(errorDesc, token, error, tokenType) {
    if (tokenType === 'access_token') {
        this.callMSGraph(this.applicationConfig.graphEndpoint, token, this.graphAPICallback);
    } else {
@@ -116,13 +126,13 @@ export class LoginComponent implements OnInit {
 
   public callMSGraph(theUrl, accessToken, callback) {
    this.httpClient.get(theUrl, { headers: {'Authorization': 'Bearer ' + accessToken}}).subscribe(data => {
-    this.microsoftUser["id"] = data["id"];
+    this.microsoftUser["id"] = data["id"]; */
 
     /* this.httpClient.get('https://graph.microsoft.com/v1.0/users/'+data["userPrincipalName"]+'/photo/$value', { headers: {'Authorization': 'Bearer ' + accessToken}}).subscribe(
         data => console.log(data),
         error => console.log("error", error) // error path
       ); */
-    this.httpClient.post('http://13.66.167.226/wfceApp/public/api/userinfo', { data }, { withCredentials: true }).subscribe(data => {
+    /* this.httpClient.post('http://13.66.167.226/wfceApp/public/api/userinfo', { data }, { withCredentials: true }).subscribe(data => {
       console.log(data);
       });
     callback(this.microsoftUser)
@@ -144,6 +154,6 @@ export class LoginComponent implements OnInit {
 
   ngAfterViewInit(){
     this.googleInit();
-  }
+  } */
 
 }
