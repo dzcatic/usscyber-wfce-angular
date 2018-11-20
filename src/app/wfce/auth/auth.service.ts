@@ -2,13 +2,22 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
+import { HttpClient } from '@angular/common/http';
+import { UserLogin } from '../model/user.login.interface';
 
 (window as any).global = window;
 
 @Injectable()
 export class AuthService {
 
-   auth0 = new auth0.WebAuth({
+
+  private user: UserLogin = {
+      id: null,
+      access_token: null,
+      access_token_expire: null
+  };
+
+  auth0 = new auth0.WebAuth({
     clientID: 'aq5W8YIBfbbEaWkdXba9VBvFUF04AB6S',
     domain: 'codegeass.auth0.com',
     responseType: 'token id_token',
@@ -18,7 +27,7 @@ export class AuthService {
 
 
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, public http: HttpClient ) {}
 
   public login(): void {
     //this.auth0.authorize();
@@ -41,6 +50,7 @@ export class AuthService {
         window.location.hash = '';
         console.log(authResult);
         this.setSession(authResult);
+        this.setUser(authResult);
         this.router.navigate(['/home']);
       } else if (err) {
         this.router.navigate(['/home']);
@@ -56,6 +66,24 @@ export class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    /* this.http.get('http://13.66.167.226/wfceApp/public/api/countries/get')
+      .subscribe(
+        data => console.log(data),
+        err => console.log(err)
+      ); */
+  }
+
+  private setUser(authResult): void {
+      let userSub = <String>authResult['idTokenPayload']['sub']
+      let userId = userSub.split('|').pop();
+      this.user.id = userId;
+      this.user.access_token = authResult['accessToken'];
+      this.user.access_token_expire = authResult['expiresIn'];
+      this.http.post('http://13.66.167.226/wfceApp/public/api/logindummy', this.user)
+      .subscribe(
+        data => console.log(data),
+        err => console.log(err)
+      );
   }
 
   public logout(): void {
@@ -72,6 +100,10 @@ export class AuthService {
     // Access Token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
     return new Date().getTime() < expiresAt;
+  }
+
+  public getAccessToken(): string {
+    return localStorage.getItem('access_token');
   }
 
 }

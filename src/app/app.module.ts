@@ -8,8 +8,9 @@ import { AppComponent } from './app.component';
 
 import { TranslateModule } from "@ngx-translate/core";
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from './wfce/shared-modules/services/auth.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './wfce/auth/auth.service';
+import { AccessTokenInterceptor } from './wfce/auth/access.token.interceptor';
 
 
 
@@ -25,7 +26,11 @@ import { AuthService } from './wfce/shared-modules/services/auth.service';
     HttpModule,
     HttpClientModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AccessTokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

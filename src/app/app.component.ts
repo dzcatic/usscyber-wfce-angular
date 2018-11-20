@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './wfce/shared-modules/services/auth.service';
+import { AuthService } from './wfce/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +11,5 @@ export class AppComponent {
 
   constructor(public auth: AuthService) {
     auth.handleAuthentication();
-    //auth.logout();
   }
 }
