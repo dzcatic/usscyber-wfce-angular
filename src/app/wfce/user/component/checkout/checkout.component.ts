@@ -7,6 +7,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-checkout',
@@ -28,7 +29,7 @@ export class CheckoutComponent implements OnInit {
 
   checkoutStep: string;
 
-  constructor(private checkoutService: CheckoutService) {
+  constructor(private checkoutService: CheckoutService, private httpClient: HttpClient) {
 
   }
 
@@ -40,6 +41,13 @@ export class CheckoutComponent implements OnInit {
 
   goToStep(step: string) {
     this.checkoutService.loadCheckoutStep$.next(step)
+  }
+
+  senreq() {
+    this.httpClient.get('http://13.66.167.226/wfceApp/public/api/test401').subscribe(
+      (data) => console.log(data),
+      (error) => console.log(error)
+    );
   }
 
 

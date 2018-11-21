@@ -16,11 +16,14 @@ export class AccessTokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    request = request.clone({
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.auth.getAccessToken()}`
-      })
-    });
+    if(this.auth.getAccessToken()) {
+      request = request.clone({
+        headers: new HttpHeaders({
+          'Authorization': `Bearer ${this.auth.getAccessToken()}`
+        })
+      });
+    }
+
     return next.handle(request);
   }
 }

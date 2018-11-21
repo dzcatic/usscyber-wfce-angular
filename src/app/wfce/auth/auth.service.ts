@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { UserLogin } from '../model/user.login.interface';
 
 (window as any).global = window;
@@ -10,6 +9,7 @@ import { UserLogin } from '../model/user.login.interface';
 @Injectable()
 export class AuthService {
 
+  cachedRequests: Array<HttpRequest<any>> = [];
 
   private user: UserLogin = {
       id: null,
@@ -104,6 +104,15 @@ export class AuthService {
 
   public getAccessToken(): string {
     return localStorage.getItem('access_token');
+  }
+
+  public collectFailedRequest(request): void {
+    this.cachedRequests.push(request);
+  }
+
+  public retryFailedRequests(): void {
+    // retry the requests. this method can
+    // be called after the token is refreshed
   }
 
 }

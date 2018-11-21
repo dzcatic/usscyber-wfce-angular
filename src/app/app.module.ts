@@ -11,6 +11,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './wfce/auth/auth.service';
 import { AccessTokenInterceptor } from './wfce/auth/access.token.interceptor';
+import { ResponseInterceptor } from './wfce/auth/response.interceptor';
 
 
 
@@ -26,11 +27,17 @@ import { AccessTokenInterceptor } from './wfce/auth/access.token.interceptor';
     HttpModule,
     HttpClientModule,
   ],
-  providers: [AuthService,{
+  providers: [AuthService,
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: AccessTokenInterceptor,
     multi: true
-  }],
+    },
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ResponseInterceptor,
+    multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
