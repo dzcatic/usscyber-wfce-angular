@@ -38,8 +38,4 @@ export class BillComponent implements OnInit {
     this.showModal = true;
   }
 
-  goToStep(step: string) {
-    this.checkoutService.loadCheckoutStep$.next(step);
-  }
-
 }

@@ -13,9 +13,9 @@ export class ResponseInterceptor implements HttpInterceptor {
 
     return next.handle(request).do((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
-        // do stuff with response if you want
+
       }
-    }, (err: any) => {
+      }, (err: any) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
           this.auth.collectFailedRequest(request);

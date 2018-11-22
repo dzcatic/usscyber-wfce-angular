@@ -25,9 +25,11 @@ export class LoginComponent implements OnInit {
   }
 
   googleAuth() {
+    this.authService.userSigninType = 'login';
     this.authService.loginGoogle();
   }
   microsoftAuth() {
+    this.authService.userSigninType = 'login';
     this.authService.loginMicrosoft();
   }
 

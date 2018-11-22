@@ -1,0 +1,88 @@
+<div class="bill-wrapper">
+  <div class="bill-wrapper--header">
+      <p>Bill</p>
+      <p>Here is the bill summary</p>
+  </div>
+  <div class="bill-wrapper-content">
+      <div class="bill-wrapper-content-user-info">
+          <div class="bill-wrapper-content-user-info-customer">
+              <p class="bill-wrapper-content-user-info-customer--title">Bill to</p>
+              <p class="bill-wrapper-content-user-info-customer--customer">Francisco George</p>
+              <p class="bill-wrapper-content-user-info-customer--footer">London, United Kingdom</p>
+              <p class="bill-wrapper-content-user-info-customer--footer">francisco@gmail.com</p>
+          </div>
+          <div class="bill-wrapper-content-user-info-invoice">
+              <p class="bill-wrapper-content-user-info-customer--title">Invoice</p>
+              <p class="bill-wrapper-content-user-info-customer--customer">Invoice No: 0001</p>
+              <p class="bill-wrapper-content-user-info-customer--footer">October 1, 2018</p>
+          </div>
+      </div>
+
+      <div class="bill-wrapper-content-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+                <th>Unit price</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>140</td>
+                <td>Barcelona <span>- Token</span></td>
+                <td></td>
+                <td></td>
+                <td>$40.00</td>
+                <td>$5600.00</td>
+              </tr>
+              <tr>
+                <td>140</td>
+                <td>Real Madrid <span>- Token</span></td>
+                <td></td>
+                <td></td>
+                <td>$330.00</td>
+                <td>$9900.00</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Liverpool <span>- Token</span></td>
+                <td></td>
+                <td></td>
+                <td>$140.00</td>
+                <td>$700.00</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+  </div>
+  <div class="bill-wrapper--footer">
+      <div class="total-cost">
+        <p>Total cost</p>
+        <p><span>- 324 WFCE</span> (234 USD) </p>
+      </div>
+      <div class="wallet-status">
+        <p>New wallet status</p>
+        <p><span>- 4,185,403 WFCE</span> (3.244M USD) </p>
+      </div>
+  </div>
+</div>
+
+<div class="buttons">
+
+<div class="buttons-next" (click)="finishOrder()">
+ Finish
+</div>
+
+</div>
+
+<div  *ngIf="showModal" class="backlayer">
+    <app-success  *ngIf="showModal" [@flyInFromTop]="'in'" ></app-success>
+</div>
+
+
+

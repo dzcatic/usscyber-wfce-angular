@@ -1,133 +1,161 @@
-@import "../../../../../../sass/mixins";
-
 :host {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  @include scrollBar;
-  //  overflow: auto;
-
+  margin: 0px;
+  padding: 0px;
+  font-size: 62.5%;
+  @media (max-width: 1024px) {
+    display: block;
+    height: 340px;
+    // overflow: auto;
+  }
+  // height: 100vh;
   .bill-wrapper {
       width: 65%;
       margin-left: auto;
       margin-right: auto;
       color: white;
-      background-color: rgb(227,231,236);
-      margin-bottom: 30px;
+      border-top: 9pt solid rgb(49,61,79);
+      background-color: #e3e7ec;
+      color: #7f8fa4;
+      font-size: 14pt;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+
       &--header {
         display: flex;
-        flex-direction: column;
-        padding: 15px;
-        border-bottom: 9pt solid rgb(127, 143, 164);
-        p {
-          margin-bottom: 0;
+        padding: 20px;
+        align-items: center;
+        @media (max-width: 1024px) {
+          padding: 15px;
         }
-        p:first-child {
-          font-size: 24pt;
-          color: rgb(53, 64, 82);
+        img {
+          height: 28pt;
+          margin-left: 15px;
+          @media (max-width: 1024px) {
+            height: 20pt;
+          }
+        }
+        p {
+          font-size: 2.5vw;
+          margin-bottom: 0;
+          margin-left: 5px;
           font-family: Lato-Bold;
           font-weight: 700;
-          letter-spacing: 0.4pt;
-        }
-        p:last-child {
-          font-size: 16pt;
-          color: rgb(53, 64, 82);
-          font-family: Lato-Regular;
-          font-weight: 400;
-          letter-spacing: 0.3pt;
+          color: rgb(53,64,82);
+          @media (max-width: 1024px) {
+            font-size: 20pt;
+          }
         }
       }
       &-content {
         display: flex;
-        flex-direction: column;
-
-        &-user-info {
-          display: flex;
-          justify-content: space-between;
-          padding: 15px;
-          border-bottom: 9pt solid rgb(127, 143, 164);
-          &-customer {
-            font-family: Lato-Semibold;
-            font-weight: 600;
-            font-size: 14pt;
-            &--title {
-              color: rgb(127, 143, 164);
-            }
-            &--customer {
-              color: rgb(53, 64, 82);
-            }
-            &--footer {
-              font-size: 11pt;
-              color: rgb(49, 61, 79);
-            }
-            p{
-              margin-bottom: 0;
-            }
-          }
-          &-invoice {
-            font-family: Lato-Semibold;
-            font-weight: 600;
-            font-size: 14pt;
-            &--title {
-              color: rgb(127, 143, 164);
-            }
-            &--customer {
-              color: rgb(53, 64, 82);
-            }
-            &--footer {
-              font-size: 11pt;
-              color: rgb(49, 61, 79);
-            }
-            p{
-              margin-bottom: 0;
-            }
-          }
+        padding: 20px;
+        @media (max-width: 1024px) {
+          padding: 20px;
         }
-        &-table {
-          padding: 15px;
-          table {
-            width: 100%;
-            thead {
-              font-size: 14pt;
-              color: rgb(127, 143, 164);
-              font-family: Lato-Semibold;
-              font-weight: 600;
+
+        &--info {
+          p {
+            font-size: 1.8vw;
+            margin-bottom: 0;
+            margin-left: 5px;
+            font-family: Lato-Regular;
+            font-weight: 400;
+            color: rgb(53,64,82);
+            white-space: pre-line;
+            @media (min-width: 1500px) {
+              font-size: 1.6vw;
             }
-            tbody {
-              font-size: 14pt;
-              font-family: Lato-Regular;
-              font-weight: 400;
-              letter-spacing: 0.3pt;
-              color: rgb(53, 64, 82);
-              span {
-                font-size: 14pt;
-                color: rgb(127, 143, 164);
-                font-family: Lato-Regular;
-                font-weight: 400;
-                letter-spacing: 0.3pt;
+            @media (max-width: 1024px) {
+              font-size: 2vw;
+            }
+            @media (max-width: 768px) {
+              font-size: 2.2vw;
+            }
+            &.mb-20 {
+              margin-bottom: 20px;
+            }
+            &.mb-40 {
+              margin-bottom: 40px;
+              a {
+                color: inherit;
+                text-decoration: underline;
               }
             }
           }
         }
 
+        &-qr {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: -8vw;
+          margin-right: 3vw;
+          margin-left: 6vw;
+          @media (min-width: 1205px) {
+            margin-top: -6vw;
+          }
+
+          @media (max-width: 1024px) {
+            margin-top: -10vw;
+          }
+          @media (max-width: 768px) {
+            margin-top: -15vw;
+          }
+
+          &--background {
+            background: url('/assets/img/checkout/group12@2x.png');
+            width: 14vw;
+            height: 14vw;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+            @media (min-width: 1500px) {
+              width: 12vw;
+              height: 12vw;
+            }
+            img {
+              width: 9vw;
+              @media (min-width: 1500px) {
+                width: 8vw;
+              }
+            }
+          }
+        }
       }
+
+
       &--footer {
         display: flex;
         flex-direction: column;
         background-color: rgb(49,61,79);
         padding: 10px;
-        font-size: 14pt;
+        font-size: 1.6vw;
         color: rgb(207,213,221);
+        font-family: Lato-Regular;
+        font-weight: 400;
+
+        @media (max-width: 1024px) {
+          font-size: 13pt;
+          padding: 8px;
+        }
 
         .total-cost {
           display: flex;
           justify-content: space-between;
-          font-family: Lato-Semibold;
-          font-weight: 600;
+          /* font-family: Lato-Semibold;
+          font-weight: 600; */
           p:last-child {
             color: #fff;
-            font-family: Lato-Black;
-            font-weight: 900;
+            /* font-family: Lato-Black;
+            font-weight: 900; */
+            font-family: Lato-Semibold;
+            font-weight: 600;
             span {
               color: rgb(99,234,124);
             }
@@ -137,8 +165,8 @@
         .wallet-status {
           display: flex;
           justify-content: space-between;
-          font-family: Lato-Semibold;
-          font-weight: 600;
+          /* font-family: Lato-Semibold;
+          font-weight: 600; */
           p:last-child {
             color: #fff;
             font-family: Lato-Black;
@@ -146,6 +174,12 @@
             span {
               color: rgb(99,234,124);
             }
+          }
+        }
+
+        p {
+          @media (max-width: 1024px) {
+            margin-bottom: 7px;
           }
         }
       }
@@ -157,6 +191,7 @@
       width: 65%;
       margin-left: auto;
       margin-right: auto;
+      font-size: 16px;
       &-prev {
         color: rgb(127, 143, 164);
       }
@@ -181,13 +216,14 @@
         }
       }
     }
+
     .backlayer {
-        position: fixed;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 1001;
-        background-color: rgba(20, 26, 34, 0.7);
-    }
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1001;
+      background-color: rgba(20, 26, 34, 0.7);
+  }
 }

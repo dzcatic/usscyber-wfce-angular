@@ -1,20 +1,32 @@
+import * as auth0 from 'auth0-js';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import * as auth0 from 'auth0-js';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { UserLogin } from '../model/user.login.interface';
+import { UserSignup } from '../model/user.signup.interface';
+
 
 (window as any).global = window;
 
 @Injectable()
 export class AuthService {
 
+  userSigninType: 'login' | 'signup';
   cachedRequests: Array<HttpRequest<any>> = [];
 
-  private user: UserLogin = {
+  private userLogin: UserLogin = {
       id: null,
       access_token: null,
       access_token_expire: null
+  };
+
+  private userSignup: UserSignup = {
+    id: null,
+    name: null,
+    image_url: null,
+    email: null,
+    access_token: null,
+    access_token_expire: null
   };
 
   auth0 = new auth0.WebAuth({
@@ -29,9 +41,6 @@ export class AuthService {
 
   constructor(public router: Router, public http: HttpClient ) {}
 
-  public login(): void {
-    //this.auth0.authorize();
-  }
   public loginGoogle() {
     this.auth0.authorize({
       connection: 'google-oauth2'
@@ -50,7 +59,12 @@ export class AuthService {
         window.location.hash = '';
         console.log(authResult);
         this.setSession(authResult);
-        this.setUser(authResult);
+        if(this.userSigninType === 'login') {
+          this.setUserLogin(authResult);
+        } else {
+          this.setUserSignup(authResult);
+        }
+
         this.router.navigate(['/home']);
       } else if (err) {
         this.router.navigate(['/home']);
@@ -73,18 +87,34 @@ export class AuthService {
       ); */
   }
 
-  private setUser(authResult): void {
+  private setUserLogin(authResult): void {
       let userSub = <String>authResult['idTokenPayload']['sub']
       let userId = userSub.split('|').pop();
-      this.user.id = userId;
-      this.user.access_token = authResult['accessToken'];
-      this.user.access_token_expire = authResult['expiresIn'];
-      this.http.post('http://13.66.167.226/wfceApp/public/api/logindummy', this.user)
+      this.userLogin.id = userId;
+      this.userLogin.access_token = authResult['accessToken'];
+      this.userLogin.access_token_expire = authResult['expiresIn'];
+      this.http.post('http://13.66.167.226/wfceApp/public/api/logindummy', this.userLogin)
       .subscribe(
         data => console.log(data),
         err => console.log(err)
       );
   }
+
+  private setUserSignup(authResult): void {
+    let userSub = <String>authResult['idTokenPayload']['sub']
+    let userId = userSub.split('|').pop();
+    this.userSignup.id = userId;
+    this.userSignup.name = authResult['idTokenPayload']['name'];
+    this.userSignup.image_url = authResult['idTokenPayload']['picture'];
+    this.userSignup.email = authResult['idTokenPayload']['email'];
+    this.userSignup.access_token = authResult['accessToken'];
+    this.userSignup.access_token_expire = authResult['expiresIn'];
+    this.http.post('http://13.66.167.226/wfceApp/public/api/logindummy', this.userSignup)
+    .subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    );
+}
 
   public logout(): void {
     // Remove tokens and expiry time from localStorage
@@ -113,6 +143,9 @@ export class AuthService {
   public retryFailedRequests(): void {
     // retry the requests. this method can
     // be called after the token is refreshed
+    /* for(let i = 0; i < this.cachedRequests.length; i++) {
+
+    } */
   }
 
 }
