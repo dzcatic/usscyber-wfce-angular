@@ -48,8 +48,15 @@
             overflow: auto;
             li{
                 padding-right: 5px;
+                margin-bottom: 5px;
+                margin-top: 5px;
                 &:hover {
                     @include selectable;
+                }
+                img{
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 10px;
                 }
             }
         }

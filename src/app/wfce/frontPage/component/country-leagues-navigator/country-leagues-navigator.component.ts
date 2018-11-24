@@ -12,10 +12,16 @@ export class CountryLeaguesNavigatorComponent implements OnInit {
   @Input()
   currentCountry;
 
+  public leagues;
+
 
   constructor(private areaSelectedService: AreaSelectedService, private leagueSelectedService: LeagueSelectedService) { }
 
   ngOnInit() {
+    this.leagueSelectedService.countryLeagues$.subscribe((leagues)=>{
+      this.leagues = leagues;
+      console.log(leagues)
+    })
   }
 
   close() {

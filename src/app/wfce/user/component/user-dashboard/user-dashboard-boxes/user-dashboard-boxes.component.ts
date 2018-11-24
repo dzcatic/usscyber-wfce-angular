@@ -1,11 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ModalService } from '../../../../shared-modules/modal/modal.service';
 
 @Component({
   selector: 'app-user-dashboard-boxes',
   templateUrl: './user-dashboard-boxes.component.html',
-  styleUrls: ['./user-dashboard-boxes.component.scss']
+  styleUrls: ['./user-dashboard-boxes.component.scss'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({height: '100%', opacity: 1})),
+      transition(':enter', [
+        style({ height: '0%', opacity: 0 }),
+        animate('.5s ease-in-out')
+      ]),
+      transition(':leave', [
+        animate('.5s ease-in-out', style({height: '0%', opacity: 0}))
+      ])
+    ])
+  ]
 })
 export class UserDashboardBoxesComponent implements OnInit {
+
+  public openedModal = false;
 
   get dayOfTheWeek() : string { return new Date().toLocaleString('en-us', {  weekday: 'long' }); }
 
@@ -28,9 +44,16 @@ export class UserDashboardBoxesComponent implements OnInit {
         default: return "th";
     }
   }
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit() {
+    this.modalService.toggleModal$.subscribe((value)=>{
+      this.openedModal = value;
+    })
+  }
+
+  openModal(){
+    this.modalService.openModal();
   }
 
 }

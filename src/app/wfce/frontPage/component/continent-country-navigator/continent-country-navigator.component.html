@@ -1,12 +1,13 @@
 <div class="heading continentCountriesDiv">
   <div>
     <!-- <img [src]="'assets/img/flags/'+currentCountry.id.toLowerCase()+'.png'"> -->
+    <img [src]="'assets/img/navigator/'+currentContinent.name+'.svg'">
     <label>{{currentContinent.name}} countries</label>
   </div>
   <div class="close" (click)="close()"><i class="gi-cross"></i></div>
 </div>
 <div class="continentCountriesDiv" >
   <ul>
-    <li *ngFor= "let country of currentContinent.countries" (click)="selectCountry(country)">{{country.name}}</li>
+    <li *ngFor= "let country of countries" (click)="selectCountry(country)"><img [src]="'assets/img/flags/'+country.alpha2Code.toLowerCase()+'.png'">{{country.name}}</li>
   </ul>
 </div>

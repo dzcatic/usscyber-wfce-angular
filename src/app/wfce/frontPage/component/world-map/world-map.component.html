@@ -14,7 +14,7 @@
         (mouseover)="hoveredArea = country.name"
         (click)="clickedCountry(i)"
         class="blob"
-        [class.selected]="country.name == currentCountry?.name"
+        [class.selected]="country.alpha2Code == currentCountry?.alpha2Code"
         [attr.d]="country.path"
         fill="currentColor">
       </svg:path>

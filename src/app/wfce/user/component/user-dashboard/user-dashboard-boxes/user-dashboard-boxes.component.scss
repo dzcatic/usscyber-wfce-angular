@@ -11,5 +11,109 @@
     .boxBigGreen{
         font-size: 34px;
         color: $green-color;
+        display: flex;
+        align-items: center;
+    }
+    .boxBig{
+        font-size: 34px;
+    }
+    .smallGreenHeading{
+        font-size: 12px;
+        color: $green-color;
+        margin-bottom: 5px;
+        &:hover{
+            @include selectable;
+        }
+    }
+    .twoColumnsBox{
+        margin-bottom: 5px;
+        font-size: 12px;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        .twoRowsBox{
+            display: flex;
+            flex-direction: column;
+            .smallerFadedBox{
+                font-size: 8px;
+                opacity: 0.5;
+            }
+        }
+    }
+    .highestOfferBoxFooter{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        .highestOfferBoxFooterBigger{
+            font-size: 12px;
+            color: $green-color;
+        }
+        .smallerFadedBox{
+            font-size: 8px;
+            opacity: 0.5;
+            &.viewAllBox{
+                &:hover{
+                    opacity: 1;
+                    @include selectable;
+                }
+            }
+        }
+    }
+    .modalBoxClass{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .modalBoxTwoRows{
+            display: flex;
+            flex-direction: column;
+            font-size: 25px;
+            .smallerFadedBox{
+                opacity: 0.4;
+                font-size: 16px;
+            }
+        }
+        .modalBoxTwoRowsImage{
+            display: flex;
+            width: 23%;
+            justify-content: space-between;
+            align-items: center;
+            img{
+                width: 40px;
+            }
+            .modalBoxTwoRows{
+                display: flex;
+                flex-direction: column;
+                font-size: 25px;
+                .smallerFadedBox{
+                    opacity: 0.4;
+                    font-size: 16px;
+                }
+            }
+        }
+        
+    }
+    .modalFooterGroup{
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        .buyTokenModalButton{
+            font-size: 16px;
+            height: 40px;
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            border-radius: 3px;
+            background-color: #69e881;
+            &:hover{
+                @include selectableGlow;
+            }
+            i{
+                margin-right: 10px;
+            }
+        }
     }
 }

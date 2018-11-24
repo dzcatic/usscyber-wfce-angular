@@ -52,16 +52,21 @@ export class WorldMapComponent implements OnInit {
   }
   
   clickedCountry(index) {
-    this.areaSelectedService.setCurrentCountry(this.countries[index]);
+    if(this.countries[index]['isActive']==true){
+      this.areaSelectedService.setCurrentCountry(this.countries[index]);
+    }
+    //else display not available under navbar
   }
 
   clickedContinent(index){
+    console.log(this.currentCountry)
     //this.viewbox = this.continents[index].viewbox;
     this.areaSelectedService.setCurrentContinent(this.continents[index]);
   }
 
 
   ngOnInit(){
+    console.log(this.currentCountry)
     this.areaSelectedService.currentContinent$.subscribe((value)=>{
       this.currentContinent = value;
     });

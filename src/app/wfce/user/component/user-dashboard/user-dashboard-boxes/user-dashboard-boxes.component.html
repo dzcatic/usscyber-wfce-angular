@@ -5,16 +5,65 @@
 </app-user-dashboard-box> -->
 <app-user-dashboard-box>
   <app-user-dashboard-box-title>WFCE WALLET<i class="gi-arrow-circle-o-up arrowUp"></i></app-user-dashboard-box-title>
-  <app-user-dashboard-box-data class="boxBigGreen"><img src="assets/img/dashboard/bitmap.png">1873.46</app-user-dashboard-box-data>
+  <app-user-dashboard-box-data class="boxBigGreen"><img width="30px" src="assets/img/dashboard/Bitmap.png">1873.46</app-user-dashboard-box-data>
   <app-user-dashboard-box-footer>{{month}} - {{year}}</app-user-dashboard-box-footer>
 </app-user-dashboard-box>
 <app-user-dashboard-box>
   <app-user-dashboard-box-title>HIGHEST PRIVATE OFFERS</app-user-dashboard-box-title>
-  <app-user-dashboard-box-data>Ekica</app-user-dashboard-box-data>
-  <app-user-dashboard-box-footer>{{month}} - {{year}}</app-user-dashboard-box-footer>
+  <app-user-dashboard-box-data>
+    <div (click)="openModal()" class="smallGreenHeading">Salt Lake City, Utah</div>
+    <div class="twoColumnsBox">
+      <div class="twoRowsBox">
+        <div>18.7M</div>
+        <div class="smallerFadedBox">Shared traded</div>
+      </div>
+      <div class="twoRowsBox">
+        <div>19.9M</div>
+        <div class="smallerFadedBox">Market cap</div>
+      </div>
+    </div>
+  </app-user-dashboard-box-data>
+  <app-user-dashboard-box-footer>
+    <div class="highestOfferBoxFooter">
+      <div class="highestOfferBoxFooterBigger">+120.93</div>
+      <div class="smallerFadedBox">Yearly change</div>
+      <div class="smallerFadedBox viewAllBox">View all</div>
+    </div>
+</app-user-dashboard-box-footer>
 </app-user-dashboard-box>
 <app-user-dashboard-box>
   <app-user-dashboard-box-title>{{dayOfTheWeek | uppercase}}</app-user-dashboard-box-title>
-  <app-user-dashboard-box-data>{{dayOfTheMonth}}</app-user-dashboard-box-data>
+  <app-user-dashboard-box-data class="boxBig">{{dayOfTheMonth}}</app-user-dashboard-box-data>
   <app-user-dashboard-box-footer>{{month}} - {{year}}</app-user-dashboard-box-footer>
 </app-user-dashboard-box>
+
+<app-modal *ngIf="openedModal">
+    <app-modal-box [@flyInOut]="''">
+      <app-modal-box-title><div>Highest private offers</div></app-modal-box-title>
+      <app-modal-box-data >
+        <div class="modalBoxClass">
+          <img src="assets/img/temp/group27.png">
+          <div class="modalBoxTwoRows">
+            <div>Stallions</div>
+            <div class="smallerFadedBox">Utah</div>
+          </div>
+          <div class="modalBoxTwoRowsImage">
+              <img src="assets/img/dashboard/Bitmap.png">
+              <div class="modalBoxTwoRows">
+                <div>84.130,10</div>
+                <div class="smallerFadedBox">Tokens</div>
+              </div>
+          </div>
+          <div class="modalBoxTwoRows">
+              <div>$80.500,823</div>
+              <div class="smallerFadedBox">Value</div>
+          </div>
+        </div>
+      </app-modal-box-data>
+      <app-modal-box-footer >
+        <div class="modalFooterGroup">
+            <div class="buyTokenModalButton"><i class="gi-cart"></i>Add to Cart</div>
+          </div>
+      </app-modal-box-footer>
+  </app-modal-box>
+  </app-modal>
