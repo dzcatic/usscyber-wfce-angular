@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AreaSelectedService } from '../../services/area-selected.service';
+import { WorldMapService } from '../../services/world-map.service';
 
 @Component({
   selector: 'app-continent-country-navigator',
@@ -11,9 +12,12 @@ export class ContinentCountryNavigatorComponent implements OnInit {
   @Input()
   currentContinent;
 
-  constructor(private areaSelectedService: AreaSelectedService) { }
+  public countries;
+
+  constructor(private areaSelectedService: AreaSelectedService, private worldMapService: WorldMapService) { }
 
   ngOnInit() {
+    this.countries = this.worldMapService.getCountriesByContinentId(this.currentContinent.id);
   }
 
   close() {
