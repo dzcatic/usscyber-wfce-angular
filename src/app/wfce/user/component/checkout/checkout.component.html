@@ -5,9 +5,9 @@
 
     <rect  [class.active]="checkoutStep == 'payment' || checkoutStep == 'bill'" class="cls-1" height="25" width="1207" x="74" y="520" ></rect>
     <rect  [class.active]="checkoutStep == 'bill'" class="cls-1" height="25" width="1207" x="1353" y="520"></rect>
-    <circle  (click)="goToStep('cart')" class="cls-1 active" cx="38.5" cy="530.5" r="38.5"></circle>
-    <circle  (click)="goToStep('payment')" [class.active]="checkoutStep == 'payment' || checkoutStep == 'bill'" class="cls-1" cx="1317" cy="530.5" r="38.5"></circle>
-    <circle  (click)="goToStep('bill')" [class.active]="checkoutStep == 'bill'" class="cls-1" cx="2595" cy="530.5" r="38.5"></circle>
+    <circle class="cls-1 active" cx="38.5" cy="530.5" r="38.5"></circle>
+    <circle [class.active]="checkoutStep == 'payment' || checkoutStep == 'bill'" class="cls-1" cx="1317" cy="530.5" r="38.5"></circle>
+    <circle [class.active]="checkoutStep == 'bill'" class="cls-1" cx="2595" cy="530.5" r="38.5"></circle>
     </svg>
     <div class="stepper-content">
       <p>Cart</p>

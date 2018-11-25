@@ -1,15 +1,18 @@
 <div class="navbarContent row">
   <div class="col-6 logo">
-    <div><img src="assets/img/logo/bitmap.png"></div>
+    <div><img (click)="openDashboard()" src="assets/img/logo/bitmap.png"></div>
     <div class="logo-links">Quick links</div>
     <!-- <div class="logo-links">All teams</div> -->
     <div class="logo-links">Hello {{user.name}}!</div>
   </div>
   <div class="userProfile col-6">
+      <div>
+        <p style="margin:0px" (click)="logout()"> Logout </p>
+      </div>
     <div [class.dropdownSelected] = "dropdownSelected" (click)="openCart()"><i class="gi-cart"></i>{{numberOfCartItems}}
       <app-user-navbar-dropdown *ngIf="dropdownSelected" [@flyInOut]="''"></app-user-navbar-dropdown>
     </div>
-    <div (click)="openProfile()"><img [src]="user.avatar"></div>
+    <div (click)="openProfile()"><img [src]="user.image_url"></div>
   </div>
 </div>
 

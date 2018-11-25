@@ -19,6 +19,7 @@ import { UserModule } from './user/user.module';
     UserModule,
     FrontPageModule
   ],
-  declarations: []
+  declarations: [],
+  providers:[]
 })
 export class WfceModule { }

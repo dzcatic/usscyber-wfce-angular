@@ -4,7 +4,7 @@
 </app-left-panel>
 <app-right-panel>
     <p class="title">Sign in to WFCE</p>
-    <div content class="google" id='googleBtn'>
+    <div content class="google" (click)="googleAuth()">
         <div class="google-img">
             <img src="assets/img/login-signup/search@2x.png">
         </div>
@@ -13,7 +13,7 @@
         </div>
 
       </div>
-      <div content class="microsoft" (click)="microsoftLogin()">
+      <div content class="microsoft" (click)="microsoftAuth()">
           <div class="microsoft-img">
               <img src="assets/img/login-signup/microsoft@2x.png">
           </div>

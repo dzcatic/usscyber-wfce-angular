@@ -51,6 +51,7 @@ import { UserTableTitleComponent } from './component/data-table-area/user-table-
 import { UserAutocompleteComponent } from './component/data-table-area/user-autocomplete/user-autocomplete.component';
 import { UserAutocompleteDropdownComponent } from './component/data-table-area/user-autocomplete/user-autocomplete-dropdown/user-autocomplete-dropdown.component';
 
+import { UserModule } from '../user/user.module';
 
 
 
@@ -60,7 +61,8 @@ import { UserAutocompleteDropdownComponent } from './component/data-table-area/u
     NavbarModule,
     FooterModule,
     FrontPageRoutingModule,
-    HttpModule
+    HttpModule,
+    UserModule
   ],
   declarations: [FrontPageComponent, 
                  WorldMapComponent, 
@@ -99,8 +101,8 @@ import { UserAutocompleteDropdownComponent } from './component/data-table-area/u
                  UserAutocompleteDropdownComponent
                 ],
   providers: [WorldMapService,
-             AreaSelectedService, 
-             LeagueSelectedService, 
+             AreaSelectedService,
+             LeagueSelectedService,
              TimelineService,
              FrontPageResolverService,
              GlobalErrorService,

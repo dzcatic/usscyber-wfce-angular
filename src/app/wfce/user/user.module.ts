@@ -45,6 +45,7 @@ import { SuccessComponent } from './component/checkout/success/success.component
 
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { UserNavbarDropdownComponent } from './component/user-navbar/user-navbar-dropdown/user-navbar-dropdown.component';
+import { UserGuardService } from '../auth/user.guard.service';
 
 
 @NgModule({
@@ -75,25 +76,27 @@ import { UserNavbarDropdownComponent } from './component/user-navbar/user-navbar
                  UserTableRowClubComponent,
                  UserTeamsComponent,
                  UserManageTeamsComponent,
-                 UserTableRowMatchComponent, 
-                 UserManageTeamsBoxesComponent, 
-                 UserChartAreaComponent, 
-                 UserTeamsFilterComponent, 
-                 UserAutocompleteComponent, 
-                 UserAutocompleteDropdownComponent, 
+                 UserTableRowMatchComponent,
+                 UserManageTeamsBoxesComponent,
+                 UserChartAreaComponent,
+                 UserTeamsFilterComponent,
+                 UserAutocompleteComponent,
+                 UserAutocompleteDropdownComponent,
                  UserTableOptionsComponent,
-                 CheckoutComponent, 
-                 CartComponent, 
-                 PaymentComponent, 
-                 BillComponent, 
+                 CheckoutComponent,
+                 CartComponent,
+                 PaymentComponent,
+                 BillComponent,
                  SuccessComponent, UserNavbarDropdownComponent
                 ],
   providers: [UserService,
-              CartService, 
+              CartService,
               TopTeamsService,
               ScheduledMatchesService,
               ManageTeamService,
-              CheckoutService],
+              CheckoutService,
+              UserGuardService],
+    exports:[UserNavbarComponent],
   entryComponents: [SuccessComponent]
 })
 export class UserModule { }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './wfce/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'WFCE';
+
+  constructor(public auth: AuthService) {
+    auth.handleAuthentication();
+  }
 }
