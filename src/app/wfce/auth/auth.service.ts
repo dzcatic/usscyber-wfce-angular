@@ -187,7 +187,10 @@ export class AuthService {
             }
             this.router.navigate(['/dashboard']);
         },
-        err => console.log(err)
+        err => {
+          alert('Please sign up first!')
+          this.router.navigate(['/signup']);
+        }
       );
   }
 
