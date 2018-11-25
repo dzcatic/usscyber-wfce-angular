@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import { FrontPageComponent } from './frontPage/component/front-page/front-page.component';
+import { FrontPageModule } from './frontPage/front-page.module';
 
 const routes: Routes = [
     /**
@@ -16,7 +17,7 @@ const routes: Routes = [
     },
     {
       path: "",
-      loadChildren: './frontPage/front-page.module#FrontPageModule'
+      loadChildren: () => FrontPageModule//'./frontPage/front-page.module#FrontPageModule'
     }
   
 ];

@@ -1,0 +1,24 @@
+@import "../../../../../../../sass/variables";
+@import "../../../../../../../sass/mixins";
+
+:host{
+    position: absolute;
+    background-color: white;
+    border: 1px solid $border-color;
+    width: 100%;
+    ul{
+        list-style-type: none;
+        padding: inherit;
+        margin: 0;
+        li{
+            width: 100%;
+            &:hover{
+                background-color: $border-color;
+                @include selectable;
+            }
+            &.hovered{
+                background-color: $border-color;
+            }
+        }
+    }
+}

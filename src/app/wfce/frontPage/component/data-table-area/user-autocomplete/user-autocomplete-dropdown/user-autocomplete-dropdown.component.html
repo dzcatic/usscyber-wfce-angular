@@ -1,0 +1,8 @@
+<div *ngIf="data.length === 0; else autocompleteData">
+  No results!
+</div>
+<ng-template #autocompleteData>
+  <ul>
+    <li *ngFor="let row of data; let i=index" (click)="selectRow(i)" [class.hovered]="counter === i">{{row.name}}</li>
+  </ul>
+</ng-template>

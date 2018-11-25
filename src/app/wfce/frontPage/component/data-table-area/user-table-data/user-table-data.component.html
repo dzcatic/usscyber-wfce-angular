@@ -1,0 +1,32 @@
+<table>
+    <tr class="tableHeading">
+      <th class="oneColumnHeading" *ngIf="style['component']=='match'; else defaultHeading">{{dayOfTheWeek + ', ' + month + " " + dayOfTheMonth + ", " + year}}</th>
+      <ng-template #defaultHeading>
+        <th *ngFor="let columnName of columnNames">{{columnName}}</th> <!--Translations will take care of the column names-->
+        <!-- <th *ngIf="style['options'] != undefined">Options</th> -->
+      </ng-template>
+    </tr>
+    <tr *ngFor="let dataRow of data; index as i" >
+     <ng-container *ngIf="style['component']=='match'; else defaultData">
+        <td><app-user-table-row-match [style]="style" [data]="dataRow"></app-user-table-row-match></td>
+    </ng-container>
+    <ng-template #defaultData>
+      <ng-container  *ngFor="let columnName of columnNames; last as last" [ngSwitch]="true">
+          <ng-container *ngSwitchCase="style[columnName]['component']=='image-rows'">
+                <td><app-user-table-row-club [class.revert]="style[columnName]['revert']" [style]="style[columnName]" [columnName]="columnName" [data]="dataRow"></app-user-table-row-club></td>
+          </ng-container>
+          <ng-container *ngSwitchCase="style[columnName]['component']=='image-row'">
+                <td><img class="smallCoin" [attr.src]="style[columnName]['src']">{{dataRow[columnName]}}</td>
+          </ng-container>
+          <ng-container *ngSwitchCase="style['options'] != undefined && last">
+                <td><app-user-table-options [row]="dataRow" [options]="style['options']"></app-user-table-options></td>
+          </ng-container>
+          
+          <ng-container *ngSwitchDefault>
+              <td>{{dataRow[columnName]}}</td>
+          </ng-container>
+      </ng-container>
+      
+    </ng-template>
+    </tr>
+</table>

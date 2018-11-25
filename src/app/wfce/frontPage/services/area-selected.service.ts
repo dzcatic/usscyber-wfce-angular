@@ -6,6 +6,7 @@ import { AbstractService } from './abstract.service';
 import { environment } from '../../../../environments/environment';
 import { Observable, forkJoin, of  } from 'rxjs';
 import { LeagueSelectedService } from './league-selected.service';
+import { TeamsSelectedService } from './teams-selected.service';
 
 @Injectable()
 export class AreaSelectedService extends AbstractService  {
@@ -21,7 +22,9 @@ export class AreaSelectedService extends AbstractService  {
   http: HttpClient;
   _router: Router;
   
-  constructor(injector: Injector, private leagueSelectedService: LeagueSelectedService) {
+  constructor(injector: Injector, 
+              private leagueSelectedService: LeagueSelectedService,
+              private teamsSelectedService: TeamsSelectedService) {
     super(injector);
     this.http = injector.get(HttpClient);
     this._router = injector.get(Router);
@@ -56,6 +59,7 @@ export class AreaSelectedService extends AbstractService  {
           this.setCountrySelected(true);
           this.currentCountry$.next(value);
           setTimeout(()=>{
+            this.teamsSelectedService.setMostValuableTeams(teams);
             this.leagueSelectedService.setCountryLeagues(leagues);
           }, 0)
           
@@ -70,6 +74,10 @@ export class AreaSelectedService extends AbstractService  {
 
   public loadLeaguesByCountry(countryId: number):Observable<any>{
     return this._map(this.http.get<any>(this._baseUrl + "countries/get_leagues/"+ countryId, {withCredentials: true}));
+  }
+
+  public loadMostValuableTeams():Observable<any>{
+    return this._map(this.http.get<any>(this._baseUrl + "teams/get", {withCredentials: true}));
   }
 
   public loadMostValuableTeamsByCountry(countryId: number):Observable<any>{

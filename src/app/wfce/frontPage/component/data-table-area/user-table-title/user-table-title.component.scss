@@ -1,0 +1,21 @@
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+:host{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    padding: 10px;
+    width: 100%;
+    .showByNumber{
+        font-size: 18px;
+        //opacity: 0.5;
+        @include selectable;
+        display: flex;
+        align-items: center;
+        .showLabel{
+            margin-right: 10px;
+            opacity: 0.5;
+        }
+    }
+}

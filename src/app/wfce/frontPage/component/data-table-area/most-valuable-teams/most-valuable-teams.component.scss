@@ -1,0 +1,54 @@
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    border: solid 1px  $border-color;
+    border-radius: 6px;
+    color: black;
+    .pagination{
+        display: flex;
+        height: $navbar-height;
+        align-items: center;
+        .arrow{
+            @include selectable;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid $border-color;
+            border-radius: 3px;
+            background-color: white;
+        }
+        .pagesPagination{
+            display: flex;
+            align-items: center;
+            .pagePagination{
+                @include selectable;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                border: 1px solid $border-color;
+                border-radius: 3px;
+                background-color: white;
+                &.selected{
+                    color: $green-color;
+                    background-color: $data-color;
+                }
+            }
+            .pagePaginationDots{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+            }
+        }
+    }
+}

@@ -1,8 +1,13 @@
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
+
 :host{
     width: 100%;
-    height: 700px;
+    //height: 700px;
     display: flex;
     justify-content: center;
+    padding-top: $navbar-height;
+    padding-bottom: $navbar-height;
     div{
         width: 80%;
     }

@@ -40,6 +40,17 @@ import { FrontPageResolverService } from './services/resolver-service/front-page
 import { GlobalErrorService } from './services/global.error.state.service';
 import { RequestService } from './services/request.service';
 import { HttpModule } from '@angular/http';
+import { DataNavbarService } from './services/data-navbar.service';
+import { UserTableDataComponent } from './component/data-table-area/user-table-data/user-table-data.component';
+import { TeamsSelectedService } from './services/teams-selected.service';
+import { UserTableRowMatchComponent } from './component/data-table-area/user-table-data/user-table-row-match/user-table-row-match.component';
+import { UserTableRowClubComponent } from './component/data-table-area/user-table-data/user-table-row-club/user-table-row-club.component';
+import { UserTableOptionsComponent } from './component/data-table-area/user-table-data/user-table-options/user-table-options.component';
+import { MostValuableTeamsComponent } from './component/data-table-area/most-valuable-teams/most-valuable-teams.component';
+import { UserTableTitleComponent } from './component/data-table-area/user-table-title/user-table-title.component';
+import { UserAutocompleteComponent } from './component/data-table-area/user-autocomplete/user-autocomplete.component';
+import { UserAutocompleteDropdownComponent } from './component/data-table-area/user-autocomplete/user-autocomplete-dropdown/user-autocomplete-dropdown.component';
+
 
 
 
@@ -72,14 +83,30 @@ import { HttpModule } from '@angular/http';
                  TimelineCoinComponent, 
                  WorldMapImageComponent, 
                  TimelineEndComponent, 
-                 TimelineCenteredPointComponent, LoginComponent, LeftPanelComponent, RightPanelComponent, LeftPanelBoxComponent, SignupComponent],
+                 TimelineCenteredPointComponent, 
+                 LoginComponent, 
+                 LeftPanelComponent, 
+                 RightPanelComponent, 
+                 LeftPanelBoxComponent, 
+                 SignupComponent,
+                 UserTableTitleComponent,
+                 UserTableDataComponent,
+                 UserTableRowMatchComponent,
+                 UserTableRowClubComponent,
+                 UserTableOptionsComponent,
+                 MostValuableTeamsComponent,
+                 UserAutocompleteComponent,
+                 UserAutocompleteDropdownComponent
+                ],
   providers: [WorldMapService,
              AreaSelectedService, 
              LeagueSelectedService, 
              TimelineService,
              FrontPageResolverService,
              GlobalErrorService,
-            RequestService
+            RequestService,
+            DataNavbarService,
+            TeamsSelectedService
           ]
 })
 export class FrontPageModule { }

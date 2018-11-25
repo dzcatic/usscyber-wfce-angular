@@ -1,0 +1,37 @@
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+:host{
+    display: flex;
+    align-items: center;
+    width:100%;
+    .revert{
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+    
+    table{
+        width:100%;
+        .tableHeading{
+            color: $data-text-color;
+            background-color:  $data-color;
+            border:none;
+            .oneColumnHeading{
+                text-align: center;
+            }
+        }
+        tr{
+            border-bottom: 1px solid $border-color;
+            margin-left: 30px;
+        }
+        td{
+            padding: 10px;
+            .smallCoin{
+                padding: 2px;
+                 width: 20px;
+            }
+        }
+        th{
+            padding: 10px;
+        }
+    }
+}

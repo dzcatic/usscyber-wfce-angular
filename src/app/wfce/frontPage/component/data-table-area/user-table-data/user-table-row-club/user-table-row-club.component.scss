@@ -1,0 +1,58 @@
+@import "../../../../../../../sass/variables";
+@import "../../../../../../../sass/mixins";
+
+:host{
+    display: flex;
+    align-items: center;
+    //width: 40%;
+    //justify-content: space-between;
+    img{
+        width: 32px;
+        margin-right: 10px;
+        //height: 32px;
+    }
+    .circle{
+        width: 13px;
+        height: 13px;
+        font-size: 6px;
+        border-radius: 50%;
+        background-color: rgb(127, 143, 164);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.up{
+            background-color: $green-color;
+        }
+        &.down{
+            background-color: red;
+        }
+    }
+    .rows{
+        display: flex;
+        flex-direction: column;
+        margin-right: 10px;
+        //align-items: center;
+        .small{
+            font-size: 15px;
+        }
+        .fade{
+            opacity: 0.3;
+        }
+        .up{
+            color: $green-color;
+        }
+        .down{
+            color: red;
+        }
+        /* .change{
+            font-size: 15px;
+            opacity: 0.3;
+            &.up{
+                color: $green-color;
+            }
+            &.down{
+                color: red;
+            }
+        } */
+    }
+}

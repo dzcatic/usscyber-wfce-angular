@@ -1,0 +1,14 @@
+:host{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .small{
+        font-size: 15px;
+    }
+    .fade{
+        opacity: 0.3;
+    }
+    .revert{
+        flex-direction: row-reverse;
+    }
+}

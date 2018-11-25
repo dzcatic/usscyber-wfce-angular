@@ -1,0 +1,6 @@
+<ng-content></ng-content>
+<div class="showByNumber">
+    <div class="showLabel">Show</div>
+    <!-- <div class="showEnumeration"></div> -->
+    <app-user-autocomplete (selectedValueEmit)="showMoreOnPage($event)" [readonly]="true" [data]="showMany"></app-user-autocomplete>
+</div>

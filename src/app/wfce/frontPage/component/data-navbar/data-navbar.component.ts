@@ -1,6 +1,8 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { AreaSelectedService } from '../../services/area-selected.service';
 import { TimelineService } from '../../services/timeline.service';
+import { DataNavbarService } from '../../services/data-navbar.service';
+import { TeamsSelectedService } from '../../services/teams-selected.service';
 
 @Component({
   selector: 'app-data-navbar',
@@ -14,7 +16,10 @@ export class DataNavbarComponent implements OnInit {
   public selectedContinent;
   public selectedCountry;
 
-  constructor(private areaSelectedService: AreaSelectedService, private timelineService: TimelineService) { }
+  constructor(private areaSelectedService: AreaSelectedService, 
+              private timelineService: TimelineService,
+              private dataNavbarService: DataNavbarService,
+              private teamsSelectedService: TeamsSelectedService) { }
 
   ngOnInit() {
     this.areaSelectedService.countrySelected$.subscribe((value)=>{
@@ -47,7 +52,30 @@ export class DataNavbarComponent implements OnInit {
   }
 
   toggleTimeline(){
-    this.timelineService.toggleTimeline();
+    this.dataNavbarService.setToggleData({value: 'timeline',
+                                          scroll: true});
+  }
+
+  toggleMostValuableTeams(){
+    this.areaSelectedService.loadMostValuableTeams().subscribe((value)=>{
+      setTimeout(()=>{
+        this.dataNavbarService.setToggleData({value: 'most-valuable-teams',
+                                          scroll: true});
+      }, 0)
+      this.teamsSelectedService.setMostValuableTeams(value);
+      
+    })
+    
+  }
+
+  toggleMostValuableTeamsByCountry(){
+    this.dataNavbarService.setToggleData({value: 'most-valuable-teams-country',
+                                          scroll: true});
+  }
+
+  toggleMostValuableTeamsByContinent(){
+    this.dataNavbarService.setToggleData({value: 'most-valuable-teams-continent',
+                                          scroll: true});
   }
 
 }

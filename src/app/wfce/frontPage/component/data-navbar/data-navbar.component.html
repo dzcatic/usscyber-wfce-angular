@@ -3,8 +3,8 @@
   <li *ngIf="isContinentSelected" class="col-2" (click)="toggleCountryListView()">Countries in {{selectedContinent.name}}</li>
   <li *ngIf="isContinentSelected" class="col-2" >Match schedule</li>
   <li *ngIf="isContinentSelected" class="col-2" >Live results</li>
-  <li *ngIf="isContinentSelected && !isCountrySelected" class="col-4" >Most valuable teams in {{selectedContinent.name}}</li>
-  <li *ngIf="isCountrySelected" class="col-4" >Most valuable teams in {{selectedCountry.name}}</li>
+  <li *ngIf="isContinentSelected && !isCountrySelected" class="col-4" (click)="toggleMostValuableTeamsByContinent()">Most valuable teams in {{selectedContinent.name}}</li>
+  <li *ngIf="isCountrySelected" class="col-4" (click)="toggleMostValuableTeamsByCountry()">Most valuable teams in {{selectedCountry.name}}</li>
   <li *ngIf="!isContinentSelected" class="col-6 col-sm-6 col-md-6 col-lg-3 firstLi" (click)="toggleTimeline()">About WFCE</li>
-  <li *ngIf="!isContinentSelected" class="col-6 col-sm-6 col-md-6 col-lg-3 firstLi">Most valuable teams</li>
+  <li *ngIf="!isContinentSelected" class="col-6 col-sm-6 col-md-6 col-lg-3 firstLi" (click)="toggleMostValuableTeams()">Most valuable teams</li>
 </ul>

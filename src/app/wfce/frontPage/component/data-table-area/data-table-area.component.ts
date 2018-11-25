@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamsSelectedService } from '../../services/teams-selected.service';
 
 @Component({
   selector: 'app-data-table-area',

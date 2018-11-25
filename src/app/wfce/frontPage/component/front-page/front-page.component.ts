@@ -4,6 +4,8 @@ import { TimelineService } from '../../services/timeline.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
 import { WorldMapService } from '../../services/world-map.service';
+import { DataNavbarService } from '../../services/data-navbar.service';
+import { TeamsSelectedService } from '../../services/teams-selected.service';
 
 
 @Component({
@@ -25,16 +27,30 @@ import { WorldMapService } from '../../services/world-map.service';
 })
 export class FrontPageComponent implements OnInit {
 
+  /**
+   * Attribute that navigates between tabs in data navbar
+   */
+  public toggleData;
 
   public isLeagueSelected: boolean;
   public timelineSelected: boolean;
-  private backendCountries;
+
+  /**
+   * Getting countries from api in resolver service
+   */
+  public backendCountries;
+
 
   constructor(private leagueSelected: LeagueSelectedService, 
               private timelineService: TimelineService,
               private _route: ActivatedRoute,
-              private worldMapService: WorldMapService) {
+              private worldMapService: WorldMapService,
+              private dataNavbarService: DataNavbarService,
+              private teamsSelectedService: TeamsSelectedService) {
     this.backendCountries =  this._route.snapshot.data["backendCountries"];
+    /* const [ countries, teams ] = this._route.snapshot.data["backendCountries"];
+    this.backendCountries = countries;
+    this.teamsSelectedService.setMostValuableTeams(teams); */      
     this.worldMapService.setBackendCountries(this.backendCountries);
    }
 
@@ -48,6 +64,9 @@ export class FrontPageComponent implements OnInit {
     this.timelineService.toggleTimeline$.subscribe((value)=>{
       this.timelineSelected = value;
     });
+    this.dataNavbarService.toggleData$.subscribe((value)=>{
+      this.toggleData = value;
+    })
   }
 
   animationDone($event){
