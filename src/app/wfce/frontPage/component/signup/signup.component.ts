@@ -25,11 +25,13 @@ export class SignupComponent implements OnInit {
   }
 
   googleAuth() {
-    this.authService.userSigninType = 'signup';
+    // this.authService.userSigninType = 'signup';
+    localStorage.setItem('userSigninType', 'signup');
     this.authService.loginGoogle();
   }
   microsoftAuth() {
-    this.authService.userSigninType = 'signup';
+    // this.authService.userSigninType = 'signup';
+    localStorage.setItem('userSigninType', 'signup');
     this.authService.loginMicrosoft();
   }
 

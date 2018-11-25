@@ -6,11 +6,13 @@ import { UserManageTeamsComponent } from './component/user-manage-teams/user-man
 import { UserDashboardComponent } from './component/user-dashboard/user-dashboard.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { CheckoutComponent } from './component/checkout/checkout.component';
+import { UserGuardService } from '../auth/user.guard.service';
 
 const routes: Routes = [
   {
     path: "",
     component: UserComponent,
+    canActivate: [UserGuardService],
     children: [
       {
         path: "",

@@ -43,12 +43,5 @@ export class CheckoutComponent implements OnInit {
     this.checkoutService.loadCheckoutStep$.next(step)
   }
 
-  senreq() {
-    this.httpClient.get('http://13.66.167.226/wfceApp/public/api/test401').subscribe(
-      (data) => console.log(data),
-      (error) => console.log(error)
-    );
-  }
-
 
 }

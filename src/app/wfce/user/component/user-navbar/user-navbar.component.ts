@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import 'rxjs/add/operator/filter';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-user-navbar',
@@ -22,6 +24,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class UserNavbarComponent implements OnInit {
 
   dropdownSelected = false;
+  dashboardActivated = true;
 
   @Input()
   user;
@@ -29,17 +32,54 @@ export class UserNavbarComponent implements OnInit {
   @Input()
   numberOfCartItems;
 
-  constructor(private _router: Router, private _route: ActivatedRoute) { }
+  constructor(private _router: Router, private _route: ActivatedRoute, private authService: AuthService) {
+    console.log(this._router.url)
+    if(this._router.url.includes('dashboard')){
+      this.dashboardActivated = true;
+    } else {
+      this.dashboardActivated = false;
+    }
+  }
 
   ngOnInit() {
+    this._router.events.filter(event => event instanceof NavigationEnd)
+    .subscribe((event:NavigationEnd) => {
+      if(event.url.includes('dashboard')){
+      this.dashboardActivated = true;
+    } else {
+      this.dashboardActivated = false;
+    }
+    });
   }
 
   openProfile(){
-    this._router.navigate(['profile'], { relativeTo: this._route });
+    if(this.dashboardActivated) {
+      this._router.navigate(['profile'], { relativeTo: this._route });
+    } else {
+      this._router.navigate(['dashboard','profile'], { relativeTo: this._route });
+    }
+
   }
 
   openCart(){
     this.dropdownSelected = !this.dropdownSelected;
+  }
+
+  openDashboard(){
+    if(this.dashboardActivated) {
+      this._router.navigate(['/']);
+    } else {
+      this._router.navigate(['dashboard'], { relativeTo: this._route });
+    }
+
+  }
+
+  logout() {
+    console.log("usli")
+    this.authService.user = null;
+    this.authService.currentUser.next(null);
+    this.authService.resetSession();
+    this._router.navigate(['/']);
   }
 
 }

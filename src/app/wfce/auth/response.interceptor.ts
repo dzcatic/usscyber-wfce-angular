@@ -19,6 +19,7 @@ export class ResponseInterceptor implements HttpInterceptor {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
           this.auth.collectFailedRequest(request);
+          this.auth.resetSession();
           this.router.navigate(['/login']);
         }
       }
