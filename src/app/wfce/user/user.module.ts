@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import { NavbarModule } from '../shared-modules/navbar/navbar.module';
@@ -46,6 +46,7 @@ import { SuccessComponent } from './component/checkout/success/success.component
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { UserNavbarDropdownComponent } from './component/user-navbar/user-navbar-dropdown/user-navbar-dropdown.component';
 import { UserGuardService } from '../auth/user.guard.service';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -56,7 +57,9 @@ import { UserGuardService } from '../auth/user.guard.service';
     ModalModule,
     UserRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModalModule,
+    NgbTooltipModule,
     NgxChartsModule
   ],
   declarations: [UserComponent,

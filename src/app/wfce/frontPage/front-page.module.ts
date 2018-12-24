@@ -41,16 +41,25 @@ import { GlobalErrorService } from './services/global.error.state.service';
 import { RequestService } from './services/request.service';
 import { HttpModule } from '@angular/http';
 import { UserModule } from '../user/user.module';
+import { SignupFormComponent } from './component/signup/signup-form/signup-form.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     NavbarModule,
     FooterModule,
     FrontPageRoutingModule,
+    NgbTooltipModule,
     HttpModule,
+    NgbModule,
     UserModule
   ],
   declarations: [FrontPageComponent,
@@ -74,7 +83,7 @@ import { UserModule } from '../user/user.module';
                  TimelineCoinComponent,
                  WorldMapImageComponent,
                  TimelineEndComponent,
-                 TimelineCenteredPointComponent, LoginComponent, LeftPanelComponent, RightPanelComponent, LeftPanelBoxComponent, SignupComponent],
+                 TimelineCenteredPointComponent, LoginComponent, LeftPanelComponent, RightPanelComponent, LeftPanelBoxComponent, SignupComponent, SignupFormComponent],
   providers: [WorldMapService,
              AreaSelectedService,
              LeagueSelectedService,

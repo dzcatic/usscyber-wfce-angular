@@ -7,7 +7,6 @@ import { AuthService } from './wfce/auth/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'WFCE';
 
   constructor(public auth: AuthService) {
     auth.handleAuthentication();

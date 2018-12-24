@@ -5,6 +5,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { UserLogin } from '../model/user.login.interface';
 import { UserSignup } from '../model/user.signup.interface';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { ServerResponse } from '../interfaces/server.resposne.interface';
 
 
 (window as any).global = window;
@@ -14,11 +15,9 @@ export class AuthService {
 
   userSigninType;
   cachedRequests: Array<HttpRequest<any>> = [];
+  openSignupDialog: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   currentUser = new Subject();
-
-
-  testObservable
 
   private userLogin: UserLogin = {
       id: null,
@@ -26,16 +25,34 @@ export class AuthService {
       access_token_expire: null
   };
 
-  private userSignup: UserSignup = {
-    id: null,
-    name: null,
-    image_url: null,
-    email: null,
-    access_token: null,
-    access_token_expire: null
+  public userSignup: UserSignup = {
+      id: null,
+      idToken: null,
+      name: null,
+      first_name: null,
+      family_name: null,
+      access_token: null,
+      email: null,
+      access_token_expire: null,
+      image_url: null
   };
 
   public user;
+
+  public testUser = {
+      id: '12345',
+      access_token: 'avaevaevaevae',
+      access_token_expire: '3650',
+      first_name: 'Aleksandar',
+      family_name: 'Veselinovic',
+      image_url: 'https://apis.live.net/v5.0/9ae514bc961aa34d/picture',
+      email: '',
+      mobile_phone: '',
+      country: '',
+      date_of_birth: '',
+      language: ''
+
+  }
 
   auth0 = new auth0.WebAuth({
     clientID: 'aq5W8YIBfbbEaWkdXba9VBvFUF04AB6S',
@@ -63,51 +80,34 @@ export class AuthService {
 
    public handleAuthentication() {
 
+
+    // if there is no hash in url, it's not redirected by oAuth
     if(!window.location.hash) {
-      // check with backend is user autheticated (access token valid), and set data about user
-      this.http.get('http://13.66.167.226/wfceApp/public/api/userdata')
+      // check if user is autheticated (access token valid), and set data about user
+      this.http.get<ServerResponse>('http://13.66.167.226/wfceApp/public/api/userdata')
           .subscribe(
             (data) => {
               console.log(data);
-              //if user is not set, set him
-                this.user = data["payload"];
-                /* if(!this.user) {
-                  this.user = {
-                    name: "cree",
-                    avatar: "assets/img/temp/pic.png",
-                    email: "franciscoggg@gmail.com",
-                    country: "London, United Kingdom",
-                    role: "user"
-                }
-                } */
-                if(this.user.constructor === Array && this.user.length == 0) {
-                  this.user = null;
-                }
-                console.log(this.user);
-              },
-            err => console.log(err)
-          )
-    } else {
-      /* let parsedObject = this.parseHash(window.location.hash);
-      console.log(parsedObject);
-      if(parsedObject) {
-        window.location.hash = '';
-        this.setSession(parsedObject);
-        this.userSigninType = localStorage.getItem('userSigninType')
-        localStorage.removeItem('userSigninType');
 
-        if(this.userSigninType === 'login') {
-          this.setUserLogin(parsedObject);
-        } else {
-          this.setUserSignup(parsedObject);
-        }
-      } else {
-        this.router.navigate(['/login']);
-      } */
+              // server returned empty array, so user is not authenticated
+              if(data.payload.constructor === Array && (data.payload as Array<any>).length == 0) {
+                this.user = null;
+              } else {
+              this.user = data.payload;
+              }
+            },
+            (err) => {
+              console.log(err)
+            }
+          )
+
+    } else {
+
       this.auth0.parseHash((err, authResult) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
           window.location.hash = '';
           this.setSession(authResult);
+          console.log(authResult);
           this.userSigninType = localStorage.getItem('userSigninType');
           localStorage.removeItem('userSigninType');
           if(this.userSigninType === 'login') {
@@ -125,47 +125,21 @@ export class AuthService {
 
   }
 
-  private parseHash(windowHash) {
-    const parsedHashToObj = windowHash.substr(1).split("&")
-    .map(v => v.split("="))
-    .reduce( (pre, [key, value]) => ({ ...pre, [key]: value }), {} );
-
-    let parsedJWT = this.parseJwt(parsedHashToObj['id_token']);
-    parsedHashToObj['id_token_payload'] = parsedJWT;
-    return parsedHashToObj;
-  }
-
-  private parseJwt(idToken) {
-    let base64Url = idToken.split('.')[1];
-    let base64 = base64Url.replace('-', '+').replace('_', '/');
-    let base64Decoded = window.atob(base64);
-    if(base64Decoded) {
-      try {
-          let parsedBase64 = JSON.parse(base64Decoded);
-          return parsedBase64;
-      } catch(e) {
-          console.log(e);
-          this.router.navigate(['/login'])
-
-      }
-    }
-
-  }
-
-
   private setSession(authResult): void {
-    const expiresAt = JSON.stringify((+authResult.expires_in * 1000) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
   }
 
-  public resetSession() {
+  public resetSession(): void {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
   }
 
+  /**
+   * Fill information about logged in user, and send it to server
+   * @param authResult response from oAuth0 server which contains information about user
+   */
   private setUserLogin(authResult): void {
 
       let userSub = <String>authResult['idTokenPayload']['sub']
@@ -175,11 +149,8 @@ export class AuthService {
       this.userLogin.access_token_expire = +authResult['expiresIn'];
 
       // send to loginAPI
-
-      this.http.post('http://13.66.167.226/wfceApp/public/api/login',this.userLogin)
+      this.http.post('http://13.66.167.226/wfceApp/public/api/login', this.userLogin)
       .subscribe(
-
-        // set user in authService
 
         (user) => {
             if(!this.user) {
@@ -187,67 +158,49 @@ export class AuthService {
             }
             this.router.navigate(['/dashboard']);
         },
-        err => {
+        (err) => {
+          // show error base on error type ( user is not signed up or some other error on server occurred)
           alert('Please sign up first!')
           this.router.navigate(['/signup']);
         }
       );
   }
 
+  /**
+   * Fill information about signed up user, and send it to server
+   * @param authResult response from oAuth0 server which contains information about user
+   */
   private setUserSignup(authResult): void {
+
     let userSub = <String>authResult['idTokenPayload']['sub']
     let userId = userSub.split('|').pop();
     this.userSignup.id = userId;
+    this.userSignup.idToken = authResult['idToken'];
     this.userSignup.name = authResult['idTokenPayload']['name'];
+    this.userSignup.first_name = authResult['idTokenPayload']['given_name'];
+    this.userSignup.family_name = authResult['idTokenPayload']['family_name'];
     this.userSignup.image_url = authResult['idTokenPayload']['picture'];
     this.userSignup.email = authResult['idTokenPayload']['email'];
     this.userSignup.access_token = authResult['accessToken'];
     this.userSignup.access_token_expire = authResult['expiresIn'];
 
     // send to signupAPI
-
-    this.http.post('http://13.66.167.226/wfceApp/public/api/signup', this.userSignup)
-    .subscribe(
-
-      // set user in authService
-
-      (user) => {
-          console.log(user)
-            if(!this.user) {
-              // this.user = user;
-              if(!this.user) {
-                this.user = user['payload'];
-              }
-            }
-            this.router.navigate(['/dashboard']);
-        },
-        err => console.log(err)
-    );
+    console.log(this.userSignup)
+    // open signup dialog
+    this.openSignupDialog.next(true);
 }
 
   public logout(): void {
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
     // Go back to the home route
     this.router.navigate(['/']);
   }
 
-  /* public isAuthenticated(): boolean {
-    // Check whether the current time is past the
-    // Access Token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
-    return new Date().getTime() < expiresAt;
-  } */
-
   public getUserData() {
     return this.http.get('http://13.66.167.226/wfceApp/public/api/userdata')
   }
-
-  /* public getUser() {
-    return this.user;
-  } */
 
   public getAccessToken(): string {
     return localStorage.getItem('access_token');

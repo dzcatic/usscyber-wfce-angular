@@ -25,7 +25,7 @@ import { ResponseInterceptor } from './wfce/auth/response.interceptor';
     AppRoutingModule,
     TranslateModule.forRoot(),
     HttpModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [AuthService,
     {
