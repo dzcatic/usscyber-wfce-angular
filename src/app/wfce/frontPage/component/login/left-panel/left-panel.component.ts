@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataNavbarService } from '../../../services/data-navbar.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-left-panel',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataNavbarService: DataNavbarService,
+              private _router: Router,
+              private _route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
+  openDashobardTimeline(){
+    this._router.navigate(['dashboard'], { relativeTo: this._route });
+    this.dataNavbarService.setToggleData({value: 'timeline',
+                                          scroll: true});
+  }
+
 }
+

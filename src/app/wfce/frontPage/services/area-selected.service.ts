@@ -7,6 +7,7 @@ import { environment } from '../../../../environments/environment';
 import { Observable, forkJoin, of  } from 'rxjs';
 import { LeagueSelectedService } from './league-selected.service';
 import { TeamsSelectedService } from './teams-selected.service';
+import { DataNavbarService } from './data-navbar.service';
 
 @Injectable()
 export class AreaSelectedService extends AbstractService  {
@@ -24,7 +25,8 @@ export class AreaSelectedService extends AbstractService  {
   
   constructor(injector: Injector, 
               private leagueSelectedService: LeagueSelectedService,
-              private teamsSelectedService: TeamsSelectedService) {
+              private teamsSelectedService: TeamsSelectedService,
+              private dataNavbarService: DataNavbarService) {
     super(injector);
     this.http = injector.get(HttpClient);
     this._router = injector.get(Router);
@@ -33,14 +35,33 @@ export class AreaSelectedService extends AbstractService  {
 
   setCurrentContinent(value){
     if(value != ""){
-      this.setContinentSelected(true);
+      
+      const combined = Observable.forkJoin(
+        this.loadMostValuableTeamsByContinent(value.id),
+      )
+      
+      combined.subscribe(latestValues => {
+        //console.log( "all" , latestValues);
+          const [ teams ] = latestValues;
+          //console.log( "leagues" , leagues);
+          //console.log( "teams" , teams);
+          this.setContinentSelected(true);
+          this.currentContinent$.next(value);
+          setTimeout(()=>{
+            this.teamsSelectedService.setMostValuableTeams(teams);
+            this.dataNavbarService.setToggleData({value: 'most-valuable-teams',
+                                                scroll: false});
+          }, 0)
+          
+      });
     }
     else{
       this.setContinentSelected(false);
       this.toggleCountriesList(false);
       this.setCurrentCountry("");
+      this.currentContinent$.next(value);
     }
-    this.currentContinent$.next(value);
+    
   }
 
   setCurrentCountry(value){
@@ -61,12 +82,15 @@ export class AreaSelectedService extends AbstractService  {
           setTimeout(()=>{
             this.teamsSelectedService.setMostValuableTeams(teams);
             this.leagueSelectedService.setCountryLeagues(leagues);
+            this.dataNavbarService.setToggleData({value: 'most-valuable-teams',
+                                                scroll: false});
           }, 0)
           
       });
     }
     else{
       this.setCountrySelected(false);
+      this.currentCountry$.next(value);
     }
     
     
@@ -76,12 +100,20 @@ export class AreaSelectedService extends AbstractService  {
     return this._map(this.http.get<any>(this._baseUrl + "countries/get_leagues/"+ countryId, {withCredentials: true}));
   }
 
+  
+
+  
+
   public loadMostValuableTeams():Observable<any>{
     return this._map(this.http.get<any>(this._baseUrl + "teams/get", {withCredentials: true}));
   }
 
   public loadMostValuableTeamsByCountry(countryId: number):Observable<any>{
     return this._map(this.http.get<any>(this._baseUrl + "teams/get_by_country/"+ countryId, {withCredentials: true}));
+  }
+
+  public loadMostValuableTeamsByContinent(continentId: number):Observable<any>{
+    return this._map(this.http.get<any>(this._baseUrl + "teams/get_by_continent/"+ continentId, {withCredentials: true}));
   }
 
   setCountrySelected(value){

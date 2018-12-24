@@ -46,6 +46,7 @@ import { SuccessComponent } from './component/checkout/success/success.component
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { UserNavbarDropdownComponent } from './component/user-navbar/user-navbar-dropdown/user-navbar-dropdown.component';
 import { UserGuardService } from '../auth/user.guard.service';
+import { Bill2Component } from './component/checkout/bill2/bill.component';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { UserGuardService } from '../auth/user.guard.service';
                  CartComponent,
                  PaymentComponent,
                  BillComponent,
+                 Bill2Component,
                  SuccessComponent, UserNavbarDropdownComponent
                 ],
   providers: [UserService,

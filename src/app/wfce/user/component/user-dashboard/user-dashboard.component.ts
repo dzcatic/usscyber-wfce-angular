@@ -18,12 +18,11 @@ export class UserDashboardComponent implements OnInit {
         league: "small fade"
     },
     points: {
-      component: "image-row",
-      src: "assets/img/dashboard/Bitmap.png"
     },
     marketPrice: {
         component: "image-rows",
-        change: "small fade"
+        change: "small fade",
+        image: "assets/img/dashboard/Bitmap.png"
     }
   };
 

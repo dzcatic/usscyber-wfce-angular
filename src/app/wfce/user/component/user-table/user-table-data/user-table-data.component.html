@@ -12,6 +12,9 @@
     </ng-container>
     <ng-template #defaultData>
       <ng-container  *ngFor="let columnName of columnNames" [ngSwitch]="true">
+            <ng-container *ngSwitchCase="style[columnName]['component']=='image-rows-image'">
+                    <td><div class="imageRowsImage"><img class="smallCoin" [attr.src]="style[columnName]['src']"><app-user-table-row-club [class.revert]="style[columnName]['revert']" [style]="style[columnName]" [columnName]="columnName" [data]="dataRow[columnName]"></app-user-table-row-club></div></td>
+              </ng-container>
           <ng-container *ngSwitchCase="style[columnName]['component']=='image-rows'">
                 <td><app-user-table-row-club [class.revert]="style[columnName]['revert']" [style]="style[columnName]" [columnName]="columnName" [data]="dataRow[columnName]"></app-user-table-row-club></td>
           </ng-container>

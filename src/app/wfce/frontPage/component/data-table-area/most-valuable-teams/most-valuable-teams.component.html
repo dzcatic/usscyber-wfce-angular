@@ -1,4 +1,7 @@
-<app-user-table-title (showBy)="showByThisMany($event)">Most valuable teams</app-user-table-title>
+<app-user-table-title *ngIf="isContinentSelected && !isCountrySelected" (showBy)="showByThisMany($event)">Most valuable teams in {{selectedContinent.name}}</app-user-table-title>
+<app-user-table-title *ngIf="isCountrySelected" (showBy)="showByThisMany($event)">Most valuable teams in {{selectedCountry.name}}</app-user-table-title>
+<app-user-table-title *ngIf="!isContinentSelected" (showBy)="showByThisMany($event)">Most valuable teams</app-user-table-title>
+
 <app-user-table-data [data]="nowShowingMostValuableTeams" [style]="styleTopTeams"></app-user-table-data>
 <div class="pagination">
     <div class="arrow" (click)="setOffset(offset - 1)"><i class="gi-slider_arrow_left"></i></div>

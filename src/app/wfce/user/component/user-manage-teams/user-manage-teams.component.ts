@@ -22,7 +22,8 @@ export class UserManageTeamsComponent implements OnInit {
     marketPrice: {
         revert: true,
         icon: true,
-        component: "image-rows",
+        src: "assets/img/dashboard/Bitmap.png",
+        component: "image-rows-image",
         change: "small fade"
     }
   };

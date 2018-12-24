@@ -12,6 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './wfce/auth/auth.service';
 import { AccessTokenInterceptor } from './wfce/auth/access.token.interceptor';
 import { ResponseInterceptor } from './wfce/auth/response.interceptor';
+import { SpinnerModule } from './wfce/shared-modules/spinner/spinner.module';
 
 
 
@@ -26,6 +27,7 @@ import { ResponseInterceptor } from './wfce/auth/response.interceptor';
     TranslateModule.forRoot(),
     HttpModule,
     HttpClientModule,
+    SpinnerModule
   ],
   providers: [AuthService,
     {

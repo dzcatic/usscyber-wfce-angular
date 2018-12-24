@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TeamsSelectedService } from '../../../services/teams-selected.service';
+import { AreaSelectedService } from '../../../services/area-selected.service';
 
 @Component({
   selector: 'app-most-valuable-teams',
@@ -10,10 +11,15 @@ export class MostValuableTeamsComponent implements OnInit {
 
   public mostValuableTeams;
   public nowShowingMostValuableTeams;
+  public isCountrySelected = false;
+  public isContinentSelected = false;
+  public selectedContinent;
+  public selectedCountry;
 
-  private showByPage = 10;
-  private offset = 0;
-  private numberOfPages;
+
+  public showByPage = 10;
+  public offset = 0;
+  public numberOfPages;
   pagesArray;
 
   public styleTopTeams={
@@ -50,7 +56,7 @@ export class MostValuableTeamsComponent implements OnInit {
 
   //@Output() showBy: EventEmitter<any> = new EventEmitter();
 
-  constructor(private teamsSelectedService: TeamsSelectedService) {
+  constructor(private teamsSelectedService: TeamsSelectedService, private areaSelectedService: AreaSelectedService) {
     
    }
 
@@ -58,6 +64,18 @@ export class MostValuableTeamsComponent implements OnInit {
     this.teamsSelectedService.mostValuableTeams$.subscribe((value)=>{
       this.mostValuableTeams = value;
       this.setNowShowing();
+    })
+    this.areaSelectedService.countrySelected$.subscribe((value)=>{
+      this.isCountrySelected = value;
+    });
+    this.areaSelectedService.continentSelected$.subscribe((value)=>{
+      this.isContinentSelected = value;
+    });
+    this.areaSelectedService.currentContinent$.subscribe((value)=>{
+      this.selectedContinent = value;
+    })
+    this.areaSelectedService.currentCountry$.subscribe((value)=>{
+      this.selectedCountry = value;
     })
   }
 
@@ -67,8 +85,12 @@ export class MostValuableTeamsComponent implements OnInit {
   }
 
   setNowShowing(){
-    this.nowShowingMostValuableTeams = this.mostValuableTeams.slice(this.offset*Number(this.showByPage), this.offset*Number(this.showByPage) + Number(this.showByPage));
     this.calculatePages();
+    if(this.numberOfPages < this.offset + 1){
+      this.offset = this.numberOfPages -1;
+    }
+    this.nowShowingMostValuableTeams = this.mostValuableTeams.slice(this.offset*Number(this.showByPage), this.offset*Number(this.showByPage) + Number(this.showByPage));
+    
   }
 
   calculatePages(){
@@ -76,10 +98,15 @@ export class MostValuableTeamsComponent implements OnInit {
     let currentAmount = Number(this.showByPage);
     this.numberOfPages = Math.ceil(length/currentAmount);
     this.pagesArray= Array.from(Array(this.numberOfPages).keys());
-    console.log(this.pagesArray)
   }
 
   setOffset(value){
+    if(value < 0){
+      value = 0;
+    }
+    if(value>this.numberOfPages-1){
+      value = this.numberOfPages - 1;
+    }
     this.offset = value;
     this.setNowShowing();
   }

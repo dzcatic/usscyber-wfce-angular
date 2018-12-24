@@ -7,6 +7,7 @@ import { WorldMapService } from '../../services/world-map.service';
 import { DataNavbarService } from '../../services/data-navbar.service';
 import { TeamsSelectedService } from '../../services/teams-selected.service';
 import { AuthService } from '../../../auth/auth.service';
+import { SpinnerService } from '../../../shared-modules/spinner/spinner.service';
 
 
 @Component({
@@ -48,8 +49,13 @@ export class FrontPageComponent implements OnInit {
               private _route: ActivatedRoute,
               private worldMapService: WorldMapService,
               private dataNavbarService: DataNavbarService,
-              private teamsSelectedService: TeamsSelectedService) {
+              private teamsSelectedService: TeamsSelectedService,
+              private spinnerService: SpinnerService) {
     this.backendCountries =  this._route.snapshot.data["backendCountries"];
+    if(this.dataNavbarService.getToggleData() != undefined){
+      this.toggleData = this.dataNavbarService.getToggleData();
+    }
+    this.spinnerService.closeSpinner();
     /* const [ countries, teams ] = this._route.snapshot.data["backendCountries"];
     this.backendCountries = countries;
     this.teamsSelectedService.setMostValuableTeams(teams); */      

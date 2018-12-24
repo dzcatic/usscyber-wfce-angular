@@ -52,6 +52,7 @@ import { UserAutocompleteComponent } from './component/data-table-area/user-auto
 import { UserAutocompleteDropdownComponent } from './component/data-table-area/user-autocomplete/user-autocomplete-dropdown/user-autocomplete-dropdown.component';
 
 import { UserModule } from '../user/user.module';
+import { SpinnerModule } from '../shared-modules/spinner/spinner.module';
 
 
 
@@ -60,6 +61,7 @@ import { UserModule } from '../user/user.module';
     CommonModule,
     NavbarModule,
     FooterModule,
+    SpinnerModule,
     FrontPageRoutingModule,
     HttpModule,
     UserModule

@@ -36,7 +36,7 @@ export class AuthService {
   };
 
   public user;
-
+//redirectUri: 'http://usscyber.com/wfce/',
   auth0 = new auth0.WebAuth({
     clientID: 'aq5W8YIBfbbEaWkdXba9VBvFUF04AB6S',
     domain: 'codegeass.auth0.com',

@@ -5,8 +5,10 @@ import { BehaviorSubject } from 'rxjs';
 export class DataNavbarService {
 
   /**
-   * Service for navigating between selected tabs for continent, country and fron page
+   * Service for navigating between selected tabs for continent, country and front page
    */
+
+  private toggleData;
 
   public toggleData$ = new BehaviorSubject<any>({value: 'timeline',
                                                 scroll: true});
@@ -14,7 +16,13 @@ export class DataNavbarService {
   constructor() { }
 
   setToggleData(value){
+    this.toggleData = value;
     this.toggleData$.next(value);
   }
+
+  getToggleData(){
+    return this.toggleData;
+  }
+
   
 }

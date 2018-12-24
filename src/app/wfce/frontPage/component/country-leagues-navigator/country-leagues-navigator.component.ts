@@ -20,7 +20,6 @@ export class CountryLeaguesNavigatorComponent implements OnInit {
   ngOnInit() {
     this.leagueSelectedService.countryLeagues$.subscribe((leagues)=>{
       this.leagues = leagues;
-      console.log(leagues)
     })
   }
 
@@ -28,8 +27,8 @@ export class CountryLeaguesNavigatorComponent implements OnInit {
     this.areaSelectedService.setCurrentCountry("");
   }
 
-  setLeague(){
-    this.leagueSelectedService.setCurrentLeague(true);
+  setLeague(league){
+    this.leagueSelectedService.setCurrentLeague(league.id);
   }
 
 }

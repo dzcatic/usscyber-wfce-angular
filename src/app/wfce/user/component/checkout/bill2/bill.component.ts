@@ -9,7 +9,7 @@ import {
 import { CheckoutService } from '../../../services/checkout.service';
 
 @Component({
-  selector: 'app-bill',
+  selector: 'app-bill2',
   templateUrl: './bill.component.html',
   styleUrls: ['./bill.component.scss'],
   animations: [
@@ -22,7 +22,7 @@ import { CheckoutService } from '../../../services/checkout.service';
     ])
   ]
 })
-export class BillComponent implements OnInit {
+export class Bill2Component implements OnInit {
 
   showModal = false;
 
