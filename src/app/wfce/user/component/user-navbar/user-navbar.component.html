@@ -10,7 +10,7 @@
         <p style="margin:0px" (click)="logout()"> Logout </p>
       </div>
     <div [class.dropdownSelected] = "dropdownSelected" (click)="openCart()"><i class="gi-cart"></i>{{numberOfCartItems}}
-      <app-user-navbar-dropdown *ngIf="dropdownSelected" [@flyInOut]="''"></app-user-navbar-dropdown>
+      <app-user-navbar-dropdown *ngIf="dropdownSelected" [@flyInOut]="''" [cart]="cart"></app-user-navbar-dropdown>
     </div>
     <div (click)="openProfile()"><img [src]="user.image_url"></div>
   </div>

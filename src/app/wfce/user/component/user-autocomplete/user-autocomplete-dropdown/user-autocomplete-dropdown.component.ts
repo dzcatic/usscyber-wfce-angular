@@ -13,6 +13,9 @@ export class UserAutocompleteDropdownComponent implements OnInit {
   @Input()
   counter;
 
+  @Input()
+  attributeToShow;
+
   @Output() 
   setSelected: EventEmitter<any> = new EventEmitter();
 

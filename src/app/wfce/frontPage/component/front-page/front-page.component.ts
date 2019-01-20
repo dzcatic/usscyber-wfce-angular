@@ -42,6 +42,7 @@ export class FrontPageComponent implements OnInit {
    */
   public backendCountries;
   user;
+  showSignupDialog = false;
 
   constructor(private leagueSelected: LeagueSelectedService,
               private timelineService: TimelineService,
@@ -78,7 +79,11 @@ export class FrontPageComponent implements OnInit {
 
     this.authService.currentUser.subscribe((user) => {
       this.user = user;
-    })
+    });
+
+    this.authService.openSignupDialog.subscribe(show => {
+      this.showSignupDialog = show;
+    });
 
     this.user = this.authService.user;
   }

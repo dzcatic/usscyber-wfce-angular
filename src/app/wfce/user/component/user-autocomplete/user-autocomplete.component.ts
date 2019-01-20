@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, HostListener, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-user-autocomplete',
@@ -15,6 +15,9 @@ export class UserAutocompleteComponent implements OnInit {
   }
 
   @Input()
+  attributeToShow = "name";
+
+  @Input()
   data;
 
   @Input()
@@ -25,6 +28,9 @@ export class UserAutocompleteComponent implements OnInit {
 
   @Input()
   searchApi = "";
+
+  @Output() 
+  setSelected: EventEmitter<any> = new EventEmitter();
 
   filteredData =[];
 
@@ -39,7 +45,7 @@ export class UserAutocompleteComponent implements OnInit {
   }
 
   showDropdownData(event){
-    this.filteredData = this.data.filter(row => row.name.toLowerCase().startsWith(event.target.value));//.includes(event.target.value));
+    this.filteredData = this.data.filter(row => row[this.attributeToShow].toLowerCase().startsWith(event.target.value));//.includes(event.target.value));
     this.toggleDropdown = true;
   }
 
@@ -86,7 +92,8 @@ export class UserAutocompleteComponent implements OnInit {
   setSelectedValue(value){
     this.resetValues();
     
-    this.selectedValue = value.name;
+    this.selectedValue = value[this.attributeToShow];
+    this.setSelected.emit(value);
   }
 
 }

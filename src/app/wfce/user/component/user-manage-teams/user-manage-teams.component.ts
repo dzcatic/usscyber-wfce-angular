@@ -15,6 +15,7 @@ export class UserManageTeamsComponent implements OnInit {
   styleTopTeams={
     club: {
         component: "image-rows",
+        name: {},
         league: "small fade"
     },
     points: {},

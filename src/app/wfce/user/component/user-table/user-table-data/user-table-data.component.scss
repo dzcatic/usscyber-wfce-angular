@@ -20,6 +20,13 @@
         }
         tr{
             border-bottom: 1px solid $user-data-border-color;
+            &.selectable{
+                @include selectable;
+            }
+            &.selected{
+                border-left: 3px solid $green-color;
+                background-color: $user-data-border-color;
+            }
         }
         td{
             padding: 10px;

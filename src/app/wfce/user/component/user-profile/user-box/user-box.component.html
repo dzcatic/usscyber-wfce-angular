@@ -1,19 +1,117 @@
 <div>General info</div>
 <div class="grid-container">
-  <div>Name</div>
-  <div><input [(ngModel)] = "user.name"></div>
-  <div>Email</div>
-  <div><input [(ngModel)] = "user.email"></div>
-  <div>Avatar</div>
-  <div>
-    <img [src]="user.image_url">
-    <ul class="grid-image">
-      <li><i class="gi-image"></i></li>
-      <li class="lastRow"><i class="gi-trash"></i></li>
-    </ul>
+
+ <div class="signup_form_wrapper">
+
+    <div class="signup_form_wrapper_info">
+        <form [formGroup]="form">
+          <div class="form_group">
+              <label for="first_name">First name</label>
+              <div>
+                  <input id="first_name" type="text" name="first_name" (blur)='validate("first_name")' (keyup)='validate("first_name")' formControlName="first_name">
+              </div>
+              <i *ngIf="requiredFirstName" [ngbTooltip]="firstNameContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+              <ng-template #firstNameContent>First name is required.</ng-template>
+          </div>
+          <div class="form_group">
+            <label for="family_name">Last name</label>
+            <div>
+                <input id="family_name" type="text" name="family_name" (blur)='validate("family_name")' (keyup)='validate("family_name")' formControlName="family_name">
+            </div>
+            <i *ngIf="requiredLastName" [ngbTooltip]="lastNameContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px; "></i>
+            <ng-template #lastNameContent>Last name is required.</ng-template>
+          </div>
+          <div class="form_group">
+              <label for="email">Email</label>
+              <div >
+                <input id="email" type="email" (blur)='validate("email")' name="email" (keyup)='validate("email")' formControlName="email">
+              </div>
+              <i *ngIf="requiredEmail || invalidEmail" [ngbTooltip]="emailContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+               <ng-template #emailContent> {{ requiredEmail ? 'Email is required.' : 'Please provide valid email.' }} </ng-template>
+          </div>
+          <div class="form_group avatar">
+              <label class="avatar_label" for="avatar">
+                <p>Avatar</p>
+                <p>JPG, max, 500KB</p>
+              </label>
+              <div class="avatar">
+                <img src="https://lh6.googleusercontent.com/-SLs1Y3Nxhso/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-j2UTx7go6wUwTBunMbxIT-hH2_vA/mo/photo.jpg">
+                <!-- <div>
+                    <div>
+                      <label for="upload" style="color: inherit; margin-right: 10px;">
+                          <i class="gi-image"></i>
+                          <input type="file" id="upload" style="display:none" (change)="onFileChange($event)">
+                      </label>
+
+                    </div>
+                    <div>
+                      <i class="gi-trash"></i>
+                    </div>
+                </div> -->
+              </div>
+
+          </div>
+          <div class="form_group">
+            <label for="mobile_phone">Mobile phone</label>
+            <div>
+              <input id="mobile_phone" (blur)='validate("mobile_phone")' (keyup)='validate("mobile_phone")'  formControlName="mobile_phone"  name="mobile_phone" type="text" >
+
+             <!--  <p *ngIf="requiredMobilePhone"> Mobile Phone is required. </p>
+              <p *ngIf="invalidMobilePhone"> Invalid mobile phone. Phone number must begin with your conutry code. </p> -->
+            </div>
+            <i *ngIf="requiredMobilePhone || invalidMobilePhone" [ngbTooltip]="mobileContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+              <ng-template #mobileContent>{{ requiredMobilePhone ? 'Mobile Phone is required.' : 'Invalid mobile phone.' }}</ng-template>
+          </div>
+          <div class="form_group">
+            <label for="country">Country</label>
+            <div >
+              <select formControlName="country" (blur)='validate("country")' (change)="countrySelect($event)" name="country" >
+                  <!-- <option value="">Select Country</option>
+                  <option *ngFor="let country of countries" [value]="country.name" > {{ country.name }}</option> -->
+
+                  <option *ngIf="!(countries.length > 0)" [ngValue]="userProfile['country']"> {{ userProfile["country"] }}</option>
+                  <ng-container *ngIf="languages.length > 0">
+                    <option *ngFor="let country of countries; let i = index" [ngValue]="country.name" > {{ country.name }}</option>
+                  </ng-container>
+              </select>
+            </div>
+            <i *ngIf="requiredCountry" [ngbTooltip]="countryContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+              <ng-template #countryContent>Please select a country.</ng-template>
+          </div>
+            <div class="form_group">
+
+              <label for="password">Date of birth </label>
+              <div >
+                <input  name="date_of_birth" (blur)='validate("date_of_birth")' type="date" formControlName="date_of_birth">
+              </div>
+              <i *ngIf="requiredBirthday" [ngbTooltip]="birthdayContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+              <ng-template #birthdayContent>Please choose a date of birth.</ng-template>
+            </div>
+            <div class="form_group">
+              <label for="language">Language</label>
+              <div >
+                <!-- <input id="language" name="language" (blur)='validate("language")' (keyup)='validate("language")' formControlName="language"  type="text"> -->
+                <select formControlName="language">
+                  <option *ngIf="!(languages.length > 0)" [ngValue]="userProfile['language']"> {{ userProfile["language"] }}</option>
+                  <ng-container *ngIf="languages.length > 0">
+                    <option *ngFor="let language of languages; let i = index" [ngValue]="language" > {{ language }}</option>
+                  </ng-container>
+                  </select>
+              </div>
+              <i *ngIf="requiredLanguage" [ngbTooltip]="languageContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+              <ng-template #languageContent>Language is required.</ng-template>
+            </div>
+
+        </form>
+
+    </div>
+
+
   </div>
-  <div class="last-row">Country</div>
- <!--  <div class="last-row"><input [(ngModel)] = "user.country"></div> -->
- <div class="last-row"><input [value]="user.country ? user.country : ''" ></div>
+
+
 </div>
-<div class="greenGlowingButton" (click)="saveChanges()">Save changes</div>
+<div class="greenGlowingButton" (click)="saveChanges()">
+  <button type="submit" [disabled]="!form.valid || disableSubmitButton" [class.disabled]="!form.valid || disableSubmitButton"  > {{ !saveChangesBtnClicked ? 'Save changes' : 'Please wait...' }}</button>
+</div>
+<!-- <button type="submit" [disabled]="!form.valid || disableSubmitButton" [class.disabled]="!form.valid || disableSubmitButton"  [value]="'Sign Up'"> {{ !loginBtnClicked ? 'Sign Up' : 'Please wait...' }}</button> -->

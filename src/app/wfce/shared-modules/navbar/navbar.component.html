@@ -1,6 +1,9 @@
 <div class="navbarContent row">
   <div class="logo col-6"><img (click)="openDashboard()" src="assets/img/logo/bitmap.png"></div>
   <div class="buttons col-6">
+    <div [class.dropdownSelected] = "dropdownSelected" (click)="openCart()"><i class="gi-cart"></i>{{numberOfCartItems}}
+      <app-navbar-dropdown *ngIf="dropdownSelected" [@flyInOut]="''" [cart]="cart"></app-navbar-dropdown>
+    </div>
     <div (click)="openLogin()">Login</div>
     <div class="signup" (click)="openSignUp()">Signup</div>
   </div>

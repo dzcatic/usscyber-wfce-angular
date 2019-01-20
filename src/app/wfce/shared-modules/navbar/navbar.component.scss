@@ -22,6 +22,16 @@
             align-items: center;
             div{
                 padding: 10px;
+                display: flex;
+                align-items: center;
+                &.dropdownSelected{
+                    background-color: $user-data-border-color;
+                    height: 100%;
+                }
+                i{
+                    padding:10px;
+                    font-size: 20px;
+                }
                 &:hover {
                     @include selectable;
                 }
@@ -31,7 +41,19 @@
                     border-radius: 3px;
                 }
             }
-        }
+            /* div{
+                
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                &:hover {
+                    @include selectable;
+                }
+                i{
+                    padding:10px;
+                    font-size: 20px;
+                }*/
+        } 
         .logo{
             //padding: 20px 0px;
             padding: 0px;

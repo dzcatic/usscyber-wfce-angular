@@ -17,7 +17,12 @@ export class AreaSelectedService extends AbstractService  {
   continentSelected$ = new BehaviorSubject<boolean>(false);
   countrySelected$ = new BehaviorSubject<boolean>(false);
   toggleCountriesList$ = new BehaviorSubject<boolean>(false);
-  currentContinent$  = new Subject();//change this to object maybe
+  currentContinent$  = new BehaviorSubject<any>({
+    id: 5,
+    viewbox: "800 0 500 400",
+    name: 'Europe',
+    countries: []
+  });//change this to object maybe
   currentCountry$ = new Subject();//change this to object maybe
 
   http: HttpClient;
@@ -39,15 +44,20 @@ export class AreaSelectedService extends AbstractService  {
       const combined = Observable.forkJoin(
         this.loadMostValuableTeamsByContinent(value.id),
       )
-      
+      console.log("before load");
       combined.subscribe(latestValues => {
         //console.log( "all" , latestValues);
           const [ teams ] = latestValues;
+          console.log("after load", value);
           //console.log( "leagues" , leagues);
           //console.log( "teams" , teams);
-          this.setContinentSelected(true);
-          this.currentContinent$.next(value);
+          
+          
+          
           setTimeout(()=>{
+            
+            this.setContinentSelected(true);
+            this.currentContinent$.next(value);
             this.teamsSelectedService.setMostValuableTeams(teams);
             this.dataNavbarService.setToggleData({value: 'most-valuable-teams',
                                                 scroll: false});

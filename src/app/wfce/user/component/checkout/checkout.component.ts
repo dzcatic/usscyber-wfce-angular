@@ -8,6 +8,9 @@ import {
   transition
 } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { Cart } from '../../../interfaces/cart.interface';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -28,15 +31,24 @@ import { HttpClient } from '@angular/common/http';
 export class CheckoutComponent implements OnInit {
 
   checkoutStep: string;
+  cart: Cart;
 
-  constructor(private checkoutService: CheckoutService, private httpClient: HttpClient) {
-
+  constructor(private checkoutService: CheckoutService, 
+              private httpClient: HttpClient, 
+              private _route: ActivatedRoute,
+              private cartService: CartService) {
+    /* this.cart =  this._route.parent.snapshot.data["cartData"];
+    this.cartService.refreshCart(this.cart);
+    console.log("inside checkout" ,this.cart); */
   }
 
   ngOnInit() {
     this.checkoutService.loadCheckoutStep$.subscribe((step) => {
       this.checkoutStep = step;
-    })
+    });
+    this.cartService.cart$.subscribe((value)=>{
+      this.cart = value;
+    });
   }
 
   goToStep(step: string) {

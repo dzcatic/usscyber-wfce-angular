@@ -20,3 +20,28 @@
     </div>
     <div class="arrow" (click)="setOffset(offset + 1)"><i class="gi-slider_arrow_right"></i></div>
 </div>
+
+<app-modal *ngIf="openedModal">
+    <app-modal-box [@flyInOut]="''">
+      <app-modal-box-title><div>Buy tokens</div></app-modal-box-title>
+      <app-modal-box-data class="modalBoxClass">
+        <div class="modalDataGroup">
+            <div class="modalDataLabel">Number of tokens</div>
+            <div class="modalDataInput"><input class="numberIput" type="number"/></div>
+        </div>
+        <div class="modalDataGroup">
+            <div class="modalDataLabel">Token price <div>(per token)</div></div>
+            <div class="modalDataInput"><input value="350 USD"></div>
+        </div>
+      </app-modal-box-data>
+      <app-modal-box-footer class="modalFooterGroup">
+        <div>
+            <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['club']"></app-user-table-row-club>
+            <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['tokens']"></app-user-table-row-club>
+            <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['value']"></app-user-table-row-club>
+            <div class="buyTokenModalButton" (click)="buyToken()">Buy token</div>
+        </div>
+          
+      </app-modal-box-footer>
+  </app-modal-box>
+  </app-modal>

@@ -1,11 +1,26 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TeamsSelectedService } from '../../../services/teams-selected.service';
 import { AreaSelectedService } from '../../../services/area-selected.service';
+import { ModalService } from '../../../../shared-modules/modal/modal.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { CartService } from '../../../../user/services/cart.service';
 
 @Component({
   selector: 'app-most-valuable-teams',
   templateUrl: './most-valuable-teams.component.html',
-  styleUrls: ['./most-valuable-teams.component.scss']
+  styleUrls: ['./most-valuable-teams.component.scss'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({height: '100%', opacity: 1})),
+      transition(':enter', [
+        style({ height: '0%', opacity: 0 }),
+        animate('.5s ease-in-out')
+      ]),
+      transition(':leave', [
+        animate('.5s ease-in-out', style({height: '0%', opacity: 0}))
+      ])
+    ])
+  ]
 })
 export class MostValuableTeamsComponent implements OnInit {
 
@@ -22,6 +37,9 @@ export class MostValuableTeamsComponent implements OnInit {
   public numberOfPages;
   pagesArray;
 
+  openedModal = false;
+  modalData;
+
   public styleTopTeams={
     rank: {},
     team: {
@@ -33,7 +51,9 @@ export class MostValuableTeamsComponent implements OnInit {
     marketPrice: {
       image: "assets/img/dashboard/Bitmap.png",
       component: "image-rows",
-      change: "small fade"
+      currentPrice: {},
+      priceFluxPercentage: "small fade",
+      
     },
     options: [
       /* {
@@ -56,7 +76,10 @@ export class MostValuableTeamsComponent implements OnInit {
 
   //@Output() showBy: EventEmitter<any> = new EventEmitter();
 
-  constructor(private teamsSelectedService: TeamsSelectedService, private areaSelectedService: AreaSelectedService) {
+  constructor(private teamsSelectedService: TeamsSelectedService, 
+              private areaSelectedService: AreaSelectedService,
+              private modalService: ModalService,
+              private cartService: CartService) {
     
    }
 
@@ -70,12 +93,27 @@ export class MostValuableTeamsComponent implements OnInit {
     });
     this.areaSelectedService.continentSelected$.subscribe((value)=>{
       this.isContinentSelected = value;
+      console.log(this.isContinentSelected);
     });
+    /* this.areaSelectedService.currentContinent$.subscribe((value)=>{
+      this.selectedContinent = value;
+      console.log(this.selectedContinent);
+    }) */
     this.areaSelectedService.currentContinent$.subscribe((value)=>{
+      console.log(value);
       this.selectedContinent = value;
     })
     this.areaSelectedService.currentCountry$.subscribe((value)=>{
       this.selectedCountry = value;
+    })
+    this.modalService.toggleModal$.subscribe((value)=>{
+      this.openedModal = value;
+    })
+    this.modalService.data$.subscribe((value)=>{
+      this.modalData = value;
+      if(this.modalData !== undefined){
+        this.modalService.openModal();
+      }
     })
   }
 
@@ -109,6 +147,10 @@ export class MostValuableTeamsComponent implements OnInit {
     }
     this.offset = value;
     this.setNowShowing();
+  }
+
+  buyToken(){
+    this.cartService.addToCart(this.modalData['id'], this.modalData['tokens']['name']);
   }
 
 }

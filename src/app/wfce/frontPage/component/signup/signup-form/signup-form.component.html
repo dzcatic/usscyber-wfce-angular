@@ -1,0 +1,187 @@
+<div class="backlayer">
+</div>
+
+<div *ngIf="showSignupForm" class="signup_form_wrapper" [@flyInFromTop]="'in'">
+
+  <div class="signup_form_wrapper_header">
+    <div class="signup_form_wrapper_header_image_wrapper">
+        <img [src]="authService.testUser.image_url">
+        <!-- <button>+</button> -->
+    </div>
+    <div class="signup_form_wrapper_header_text_wrapper">
+        <p style="margin-bottom: 2px;">Hi {{userSignup['first_name']}}, please fill out remaining part of your profile.</p>
+        <p> Fields marked with * are mandatory.</p>
+    </div>
+  </div>
+
+  <div class="signup_form_wrapper_info">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+          <div class="form_group">
+              <label for="first_name">First name*</label>
+              <div>
+                  <input id="first_name" type="text" name="first_name" formControlName="first_name">
+                  <p *ngIf="requiredFirstName"> First name is required. </p>
+              </div>
+          </div>
+          <div class="form_group">
+            <label for="family_name">Last name*</label>
+            <div>
+                <input id="family_name" type="text" name="family_name" formControlName="family_name">
+                <p *ngIf="requiredLastName"> First name is required. </p>
+            </div>
+          </div>
+          <div class="form_group">
+              <label for="email">Email*</label>
+              <i *ngIf="requiredEmail || invalidEmail" [ngbTooltip]="emailContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+              <div >
+                <input id="email" type="email" (blur)='validate("email")' (keyup)='validate("email")' name="email" formControlName="email">
+                <!-- <p *ngIf="requiredEmail"> Email is required. </p>
+                <p *ngIf="invalidEmail"> Please provide valid email. </p> -->
+              </div>
+
+               <ng-template #emailContent> {{ requiredEmail ? 'Email is required.' : 'Please provide valid email.' }} </ng-template>
+          </div>
+          <div class="form_group">
+            <label for="mobile_phone">Mobile phone*</label>
+            <i *ngIf="requiredMobilePhone || invalidMobilePhone" [ngbTooltip]="mobileContent" class="gi-error" style="color:red;margin-left: auto;font-size: 18px;"></i>
+            <div >
+              <input id="mobile_phone" (blur)='validate("mobile_phone")' placeholder="E.g. +16177541848" (keyup)='validate("mobile_phone")'  formControlName="mobile_phone"  name="mobile_phone" type="text" >
+              <!-- <p *ngIf="requiredMobilePhone"> Mobile Phone is required. </p>
+              <p *ngIf="invalidMobilePhone"> Invalid mobile phone. Phone number must begin with your conutry code. </p> -->
+            </div>
+
+              <ng-template #mobileContent>{{ requiredMobilePhone ? 'Mobile Phone is required.' : 'Invalid mobile phone. ' }}</ng-template>
+          </div>
+          <div class="form_group">
+            <label for="country">Country*</label>
+            <i *ngIf="requiredCountry" [ngbTooltip]="countryContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+            <div>
+              <select formControlName="country" (blur)='validate("country")'  (change)="countrySelect($event)" name="country" >
+                  <option value="">Select Country</option>
+                  <option *ngFor="let country of countries" [value]="country.name" > {{ country.name }}</option>
+              </select>
+              <!-- <p *ngIf="requiredCountry"> Please select a country. </p> -->
+            </div>
+
+            <ng-template #countryContent>Please select a country.</ng-template>
+          </div>
+          <div class="form_group">
+
+            <label for="password">Date of birth*</label>
+            <i *ngIf="requiredBirthday" [ngbTooltip]="birthdayContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+            <div >
+              <input  name="date_of_birth" (blur)='validate("date_of_birth")' type="date" formControlName="date_of_birth">
+              <!-- <p *ngIf="requiredBirthday"> Please choose a date of birth. </p> -->
+            </div>
+
+              <ng-template #birthdayContent>Please choose a date of birth.</ng-template>
+          </div>
+          <div class="form_group">
+            <label for="language">Language</label>
+            <i *ngIf="requiredLanguage" [ngbTooltip]="languageContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+            <div>
+                <select formControlName="language">
+                    <ng-container *ngIf="languages.length > 0">
+                      <option *ngFor="let language of languages; let i = index" [value]="language" > {{ language }}</option>
+                    </ng-container>
+                  </select>
+              <!-- <input id="language" name="language" (blur)='validate("language")' (keyup)='validate("language")' formControlName="language"  type="text"> -->
+              <!-- <p *ngIf="requiredLanguage"> Language is required. </p> -->
+            </div>
+
+            <ng-template #languageContent>Language is required.</ng-template>
+          </div>
+          <div class="form_group">
+            <label for="streetaddress">Street Address</label>
+            <!-- <i *ngIf="requiredLanguage" [ngbTooltip]="languageContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i> -->
+            <div>
+              <input id="streetaddress" name="streetaddress"  formControlName="streetaddress"  type="text">
+              <!-- <p *ngIf="requiredLanguage"> Language is required. </p> -->
+            </div>
+
+            <!-- <ng-template #languageContent>Language is required.</ng-template> -->
+          </div>
+          <div class="form_group">
+            <label for="gender">Gender</label>
+            <!-- <i *ngIf="requiredLanguage" [ngbTooltip]="languageContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i> -->
+            <div>
+              <!-- <input id="gender" name="gender"  formControlName="gender"  type="text"> -->
+              <select formControlName="gender">
+                <ng-container *ngIf="genders.length > 0">
+                  <option *ngFor="let gender of genders; let i = index" [selected]="gender == 'Male'" [value]="gender" > {{ gender }}</option>
+                </ng-container>
+
+              </select>
+              <!-- <p *ngIf="requiredLanguage"> Language is required. </p> -->
+            </div>
+
+            <!-- <ng-template #languageContent>Language is required.</ng-template> -->
+          </div>
+          <div class="form_group">
+            <label for="zip">Zip</label>
+            <i *ngIf="invalidZip" [ngbTooltip]="zipContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
+            <div>
+              <input id="zip" name="zip"  formControlName="zip" (keyup)='validate("zip")' type="text">
+              <!-- <p *ngIf="requiredLanguage"> Language is required. </p> -->
+            </div>
+
+            <ng-template #zipContent>Invalid zip.</ng-template>
+          </div>
+          <div class="form_group">
+            <label for="additionaladdressinfo">Additional Address Info</label>
+            <!-- <i *ngIf="requiredLanguage" [ngbTooltip]="languageContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i> -->
+            <div>
+              <input id="additionaladdressinfo" name="additionaladdressinfo"  formControlName="additionaladdressinfo"  type="text">
+              <!-- <p *ngIf="requiredLanguage"> Language is required. </p> -->
+            </div>
+
+            <!-- <ng-template #languageContent>Language is required.</ng-template> -->
+          </div>
+          <div class="form_group">
+            <label for="city">City</label>
+            <!-- <i *ngIf="requiredLanguage" [ngbTooltip]="languageContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i> -->
+            <div>
+              <input id="city" name="city"  formControlName="city"  type="text">
+              <!-- <p *ngIf="requiredLanguage"> Language is required. </p> -->
+            </div>
+
+            <!-- <ng-template #languageContent>Language is required.</ng-template> -->
+          </div>
+          <div class="form_group">
+            <label for="state">State</label>
+            <!-- <i *ngIf="requiredLanguage"  class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i> -->
+            <div>
+              <input id="state" name="state"  formControlName="state"  type="text">
+              <!-- <p *ngIf="requiredLanguage"> Language is required. </p> -->
+            </div>
+
+            <!-- <ng-template #languageContent>Language is required.</ng-template> -->
+          </div>
+          <button type="submit" [disabled]="!form.valid || disableSubmitButton" [class.disabled]="!form.valid || disableSubmitButton"  [value]="'Sign Up'"> {{ !loginBtnClicked ? 'Sign Up' : 'Please wait...' }}</button>
+      </form>
+
+  </div>
+
+
+  <div class="signup_form_wrapper_footer">
+
+  <p>By clicking the <i>Sign Up</i> button, you agree to our </p>
+  <p><span>Terms &amp; Conditions</span> and <span>Privacy Policy</span></p>
+  </div>
+
+</div>
+
+
+<div *ngIf="verifyEmailDialog" [@flyInFromTop]="'in'" class="host">
+  <div class="modal-header">
+    <h4 class="modal-title">Congratulations</h4>
+  </div>
+  <div class="modal-body">
+    <p>Thank You for signing up with WFCE, You will receive an email with a verification link. Once You click on that link, Your account will be activated.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" (click)="closeModal()" >OK</button>
+  </div>
+</div>
+
+

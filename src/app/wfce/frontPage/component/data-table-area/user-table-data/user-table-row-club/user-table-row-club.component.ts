@@ -22,8 +22,14 @@ export class UserTableRowClubComponent implements OnInit {
 
   ngOnInit() {
     this.rowNames = Object.keys(this.style);
-    this.rowNames.splice( this.rowNames.indexOf('component'), 1 );
-    this.rowNames.splice( this.rowNames.indexOf('image'), 1 );
+    let index = this.rowNames.indexOf('component');
+    if(index>-1){
+      this.rowNames.splice( index, 1 );
+    }
+    index = this.rowNames.indexOf('image');
+    if(index>-1){
+      this.rowNames.splice( index, 1 );
+    }
   }
 
   adjustLogoUrl(logo){

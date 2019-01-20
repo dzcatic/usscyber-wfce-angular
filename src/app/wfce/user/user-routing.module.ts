@@ -7,12 +7,16 @@ import { UserDashboardComponent } from './component/user-dashboard/user-dashboar
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { UserGuardService } from '../auth/user.guard.service';
+import { CheckoutResolverService } from './services/resolver-service/checkout-resolver.service';
 
 const routes: Routes = [
   {
     path: "",
     component: UserComponent,
     canActivate: [UserGuardService],
+    resolve: {
+      cartData: CheckoutResolverService
+    },
     children: [
       {
         path: "",
@@ -32,7 +36,8 @@ const routes: Routes = [
       },
       {
         path: "checkout",
-        component: CheckoutComponent
+        component: CheckoutComponent,
+        
       },
     ]
   }

@@ -6,7 +6,7 @@
         <th *ngIf="style['options'] != undefined">Options</th>
       </ng-template>
     </tr>
-    <tr *ngFor="let dataRow of data; index as i" >
+    <tr *ngFor="let dataRow of data; index as i" [class.selectable]="selectable" (click)="selectRow(i)" [class.selected]="selectable && i == selectedIndex">
      <ng-container *ngIf="style['component']=='match'; else defaultData">
         <td><app-user-table-row-match [style]="style" [data]="dataRow"></app-user-table-row-match></td>
     </ng-container>

@@ -8,12 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserTableDataComponent implements OnInit {
 
   private columnNames;
+  public selectedIndex = 0;
 
   @Input()
   data;
 
   @Input()
   style;
+
+  @Input()
+  selectable = false;
 
   get dayOfTheWeek() : string { return new Date().toLocaleString('en-us', {  weekday: 'long' }); }
 
@@ -41,6 +45,12 @@ export class UserTableDataComponent implements OnInit {
 
   ngOnInit() {
     this.columnNames = Object.keys(this.data[0]);
+  }
+
+  selectRow(index){
+    if(this.selectable){
+      this.selectedIndex = index;
+    }
   }
 
 }

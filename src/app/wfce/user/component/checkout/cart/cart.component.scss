@@ -23,7 +23,7 @@
           background-color: rgb(227,231,236);
           color: rgb(53, 64, 82);
           font-size: 14pt;
-          font-family: "Lato-Semibold";
+          //font-family: "Lato-Semibold";
           .team{
             display: flex;
             &-image {
@@ -132,6 +132,16 @@
       }
     }
 
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
 }
 
 

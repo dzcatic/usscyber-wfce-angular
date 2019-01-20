@@ -44,6 +44,7 @@ export class WorldMapComponent implements OnInit {
   selectingStarted: boolean = false;
   currentContinent;
   currentCountry;
+  forbidNewClick = false;
   hoveredArea: String = "";
 
   constructor(private geoService: WorldMapService, private areaSelectedService: AreaSelectedService) {
@@ -59,9 +60,12 @@ export class WorldMapComponent implements OnInit {
   }
 
   clickedContinent(index){
-    console.log(this.currentCountry)
     //this.viewbox = this.continents[index].viewbox;
-    this.areaSelectedService.setCurrentContinent(this.continents[index]);
+    if(!this.forbidNewClick){
+      this.forbidNewClick = true;
+      this.areaSelectedService.setCurrentContinent(this.continents[index]);
+    }
+    
   }
 
 
@@ -71,6 +75,7 @@ export class WorldMapComponent implements OnInit {
       this.currentContinent = value;
     });
     this.areaSelectedService.continentSelected$.subscribe((value)=>{
+      this.forbidNewClick = false;
       this.displayCountries = value;
       if(!this.displayCountries){
         this.hoveredArea = "";

@@ -29,7 +29,9 @@ export class UserTeamsComponent implements OnInit {
   styleTopTeams={
     club: {
         component: "image-rows",
-        league: "small fade"
+        name: {},
+        league: "small fade",
+        
     },
     marketPrice: {
       image: "assets/img/dashboard/Bitmap.png",

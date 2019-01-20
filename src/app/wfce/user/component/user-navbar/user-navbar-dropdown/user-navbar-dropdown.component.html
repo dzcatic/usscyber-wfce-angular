@@ -1,14 +1,26 @@
 <div class="userDropdownNavbar">
-  <div class="userDropdownNavbarTitle">
-    Cart
-  </div>
-  <div class="userDropdownNavbarData">Currently in the cart</div>
-  <div class="userDropdownNavbarFooter">
-    <div class="userDropdownNavbarItem">
-      <div>1 item</div>
-      <div>$4670</div>
+    <div class="userDropdownNavbarTitle">
+      Cart
     </div>
-    
+    <div class="userDropdownNavbarData">Currently in the cart</div>
+    <div *ngIf="cart === null || (cart !== null && cart.numberOfItems == 0) ; else cartItems" class="userDropdownNavbarFooter">
+        <div class="userDropdownNavbarItem">
+          No results!
+        </div>
+    </div>
+    <ng-template #cartItems>
+      <div class="userDropdownNavbarFooter">
+        <!-- <div *ngFor="let item of cart.items" class="userDropdownNavbarItem">
+          <div>{{item.amount}} tokens</div>
+          <div>$ {{item.price}}</div>
+        </div> -->
+        <div class="userDropdownNavbarItem">
+            <div>{{cart.numberOfItems}} tokens</div>
+            <div>$ {{cart.totalPrice}}</div>
+          </div>
+        
+      </div>
+      <div (click)="openCheckout()" class="userDropdownNavbarButton">Check and finish</div>
+    </ng-template>
   </div>
-  <div (click)="openCheckout()" class="userDropdownNavbarButton">Check and finish</div>
-</div>
+  

@@ -53,17 +53,28 @@ import { UserAutocompleteDropdownComponent } from './component/data-table-area/u
 
 import { UserModule } from '../user/user.module';
 import { SpinnerModule } from '../shared-modules/spinner/spinner.module';
+import { SignupFormComponent } from './component/signup/signup-form/signup-form.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from '../shared-modules/modal/modal.module';
 
 
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     NavbarModule,
     FooterModule,
+    ModalModule,
     SpinnerModule,
     FrontPageRoutingModule,
+    NgbTooltipModule,
     HttpModule,
+    NgbModule,
     UserModule
   ],
   declarations: [FrontPageComponent, 
@@ -93,6 +104,7 @@ import { SpinnerModule } from '../shared-modules/spinner/spinner.module';
                  RightPanelComponent, 
                  LeftPanelBoxComponent, 
                  SignupComponent,
+                 SignupFormComponent,
                  UserTableTitleComponent,
                  UserTableDataComponent,
                  UserTableRowMatchComponent,

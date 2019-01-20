@@ -1,0 +1,42 @@
+{
+  "countries": [
+	{
+    "id": 1,
+    "name": "Argentina",
+    "alpha2Code": "AR",
+    "alpha3Code": "ARG",
+    "isActive": true,
+    "allowedJoin": true,
+    "allowedBuy": true,
+    "allowedView": true,
+    "continentId": 7,
+    "leagues": null,
+    "teams": []
+    },
+    {
+    "id": 2,
+    "name": "Australia",
+    "alpha2Code": "AU",
+    "alpha3Code": "AUS",
+    "isActive": true,
+    "allowedJoin": true,
+    "allowedBuy": true,
+    "allowedView": true,
+    "continentId": 4,
+    "leagues": null,
+    "teams": []
+    },
+    {
+    "id": 3,
+    "name": "Bosnia and Herzegovina",
+    "alpha2Code": "BA",
+    "alpha3Code": "BIH",
+    "isActive": true,
+    "allowedJoin": true,
+    "allowedBuy": true,
+    "allowedView": true,
+    "continentId": 5,
+    "leagues": null,
+    "teams": []
+    }]
+}

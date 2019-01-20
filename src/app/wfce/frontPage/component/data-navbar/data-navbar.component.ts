@@ -29,6 +29,7 @@ export class DataNavbarComponent implements OnInit {
       this.isContinentSelected = value;
     });
     this.areaSelectedService.currentContinent$.subscribe((value)=>{
+      console.log(value);
       this.selectedContinent = value;
     })
     this.areaSelectedService.currentCountry$.subscribe((value)=>{

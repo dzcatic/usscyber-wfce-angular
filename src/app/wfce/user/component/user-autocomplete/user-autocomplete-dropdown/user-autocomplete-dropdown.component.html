@@ -3,6 +3,6 @@
 </div>
 <ng-template #autocompleteData>
   <ul>
-    <li *ngFor="let row of data; let i=index" (click)="selectRow(i)" [class.hovered]="counter === i">{{row.name}}</li>
+    <li *ngFor="let row of data; let i=index" (click)="selectRow(i)" [class.hovered]="counter === i">{{row[attributeToShow]}}</li>
   </ul>
 </ng-template>

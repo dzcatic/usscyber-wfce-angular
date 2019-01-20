@@ -5,12 +5,12 @@
         <img [style.width]="'24px'" [src]=style.image>
 </ng-container>
 <ng-container *ngIf="style.hasOwnProperty('icon')">
-        <div class="circle" [class.up]="data['change']>0" [class.down]="data['change']<0" ><i class="gi-triangle-up"></i></div>
+        <div class="circle" [class.up]="data['priceFluxPercentage']>0" [class.down]="data['priceFluxPercentage']<0" ><i class="gi-triangle-up"></i></div>
 </ng-container>
 <div class="rows">
     <ng-container *ngFor="let rowName of rowNames">
-    <div [ngClass]="style[rowName]" [class.up]="data[rowName]>0" [class.down]="data[rowName]<0" [ngClass]="rowName" *ngIf="rowName=='change'; else others">{{data[rowName]}}%</div>
-    <div #others [ngClass]="style[rowName]" [ngClass]="rowName" *ngIf="rowName != 'image' && rowName!='change'">{{data[rowName]}}</div>
+    <div [ngClass]="style[rowName]" [class.up]="data[rowName]>0" [class.down]="data[rowName]<0" [ngClass]="rowName" *ngIf="rowName=='priceFluxPercentage'; else others">{{data[rowName]}}%</div>
+    <div #others [ngClass]="style[rowName]" [ngClass]="rowName" *ngIf="rowName != 'image' && rowName!='priceFluxPercentage'">{{data[rowName]}}</div>
 </ng-container>
 </div>
 

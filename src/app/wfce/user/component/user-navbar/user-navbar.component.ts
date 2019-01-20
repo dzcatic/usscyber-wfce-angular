@@ -3,6 +3,8 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import 'rxjs/add/operator/filter';
 import { AuthService } from '../../../auth/auth.service';
+import { Cart } from '../../../interfaces/cart.interface';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-user-navbar',
@@ -25,14 +27,17 @@ export class UserNavbarComponent implements OnInit {
 
   dropdownSelected = false;
   dashboardActivated = true;
+  numberOfCartItems;
+  cart: Cart;
 
   @Input()
   user;
+  
 
-  @Input()
-  numberOfCartItems;
-
-  constructor(private _router: Router, private _route: ActivatedRoute, private authService: AuthService) {
+  constructor(private _router: Router, 
+              private _route: ActivatedRoute, 
+              private authService: AuthService,
+              private cartService: CartService) {
     console.log(this._router.url)
     if(this._router.url.includes('dashboard')){
       this.dashboardActivated = true;
@@ -50,6 +55,19 @@ export class UserNavbarComponent implements OnInit {
       this.dashboardActivated = false;
     }
     });
+    this.cartService.numberOfCartItems$.subscribe((value)=>{
+      if(value == 0){
+        this.numberOfCartItems = "";
+      }
+      else {
+        this.numberOfCartItems = value;
+      }
+      
+    })
+    this.cartService.cart$.subscribe((value)=>{
+      this.cart = value;
+      console.log("inside icon", this.cart)
+    })
   }
 
   openProfile(){

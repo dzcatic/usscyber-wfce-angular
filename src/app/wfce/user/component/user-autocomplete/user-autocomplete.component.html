@@ -19,6 +19,7 @@
 <app-user-autocomplete-dropdown *ngIf="toggleDropdown" 
                                 [data]="filteredData" 
                                 [counter]="counter"
+                                [attributeToShow]="attributeToShow"
                                 (setSelected)="setSelectedValue($event)">
 
 </app-user-autocomplete-dropdown>

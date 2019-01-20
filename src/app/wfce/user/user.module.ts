@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import { NavbarModule } from '../shared-modules/navbar/navbar.module';
@@ -47,6 +47,10 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { UserNavbarDropdownComponent } from './component/user-navbar/user-navbar-dropdown/user-navbar-dropdown.component';
 import { UserGuardService } from '../auth/user.guard.service';
 import { Bill2Component } from './component/checkout/bill2/bill.component';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { GlobalErrorService } from './services/global.error.state.service';
+import { RequestService } from './services/request.service';
+import { CheckoutResolverService } from './services/resolver-service/checkout-resolver.service';
 
 
 @NgModule({
@@ -57,7 +61,9 @@ import { Bill2Component } from './component/checkout/bill2/bill.component';
     ModalModule,
     UserRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModalModule,
+    NgbTooltipModule,
     NgxChartsModule
   ],
   declarations: [UserComponent,
@@ -93,11 +99,14 @@ import { Bill2Component } from './component/checkout/bill2/bill.component';
                 ],
   providers: [UserService,
               CartService,
+              GlobalErrorService,
+              RequestService,
               TopTeamsService,
               ScheduledMatchesService,
               ManageTeamService,
               CheckoutService,
-              UserGuardService],
+              UserGuardService,
+              CheckoutResolverService],
     exports:[UserNavbarComponent],
   entryComponents: [SuccessComponent]
 })

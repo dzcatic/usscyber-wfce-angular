@@ -21,6 +21,7 @@ export class AnimateSvgDirective {
     this.areaSelectedService.currentContinent$.subscribe((value: Continent)=>{
       if(this.continentZoom)
       {
+        console.log(value)
         this.continentViewbox = value.viewbox;
         this.zoomInOutContinent(this.originalContinentViewbox, value.viewbox)
       }

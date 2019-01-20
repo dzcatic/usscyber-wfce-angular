@@ -1,6 +1,3 @@
-/**
- * Created by mb on 4/13/16.
- */
 import {Injectable} from "@angular/core";
 
 import 'rxjs/Rx';

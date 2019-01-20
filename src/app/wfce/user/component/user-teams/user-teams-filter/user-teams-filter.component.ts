@@ -1,60 +1,58 @@
 import { Component, OnInit } from '@angular/core';
+import { WorldMapService } from '../../../../frontPage/services/world-map.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { TopTeamsService } from '../../../services/teams.service';
 
 @Component({
   selector: 'app-user-teams-filter',
   templateUrl: './user-teams-filter.component.html',
-  styleUrls: ['./user-teams-filter.component.scss']
+  styleUrls: ['./user-teams-filter.component.scss'],
+  animations: [
+    trigger('appearAndMove', [
+      state('in', style({width: 'fit-content', opacity: 1})),
+      transition(':enter', [
+        style({ width: '0%', opacity: 0 }),
+        animate('.5s ease-in-out')
+      ]),
+      transition(':leave', [
+        animate('.5s ease-in-out', style({width: '0%', opacity: 0}))
+      ])
+    ])
+  ]
 })
 export class UserTeamsFilterComponent implements OnInit {
 
-  continents= [
-    {
-      id: 5,
-      viewbox: "800 0 500 400",
-      name: 'Europe',
-      countries: []
-    },
-    {
-      id: 3,
-      viewbox: "1000 0 900 700",
-      name: 'Asia',
-      countries: []
-    },
-    {
-      id: 1,
-      viewbox: "800 300 500 500",
-      name: 'Africa',
-      countries: []
-    },
-    {
-      id: 6,
-      viewbox: "0 0 1000 600",
-      name: 'North America',
-      countries: []
-    },
-    {
-      id: 7,
-      viewbox: "0 400 900 600",
-      name: 'South America',
-      countries: []
-    },
-    {
-      id: 4,
-      viewbox: "1500 500 800 400",
-      name: 'Australia',
-      countries: []
-    },
-    {
-      id: 8,
-      viewbox: "1500 500 800 400",
-      name: 'Oceania',
-      countries: []
-    }
-    ];;
+  continents;
+  countries;
+  leagues;
+  showCountriesFilter = false;
+  showLeaguesFilter = false;
 
-  constructor() { }
+  constructor(private worldMapService: WorldMapService,
+              private teamsService: TopTeamsService) { }
 
   ngOnInit() {
+    this.continents = this.worldMapService.importContinents();
   }
 
+  setSelectedContinent($event){
+    
+    this.teamsService.loadCountriesByContinent($event.id).subscribe((data)=>{
+      this.countries = data[0]; //this has to be replaced
+      console.log(this.countries);
+      this.showCountriesFilter = true;
+    })
+    console.log("insideFilter", $event);
+  }
+
+  setSelectedCountry($event){
+    
+    this.teamsService.loadLeaguesByCountry($event.id).subscribe((data)=>{
+      this.leagues = data; //this has to be replaced
+      console.log(this.leagues);
+      this.showLeaguesFilter = true;
+    })
+    console.log("insideFilter", $event);
+  }
+ 
 }

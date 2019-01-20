@@ -1,11 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
+import { AbstractService } from './abstract.service';
+import { environment } from '../../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable()
-export class TopTeamsService {
+export class TopTeamsService extends AbstractService {
 
   private teams;
 
-  constructor() { }
+  private _baseUrl: string = environment.apiUrl;
+  http: HttpClient;
+  _router: Router;
+
+  constructor(injector: Injector) {
+    super(injector);
+    this.http = injector.get(HttpClient);
+    this._router = injector.get(Router);
+
+    }
 
   public importTeams(){
       this.teams = 
@@ -192,6 +206,14 @@ export class TopTeamsService {
   public getLongTeams() {
       this.importLongTeams();
       return this.teams;
+  }
+
+  public loadCountriesByContinent(continentId: number): Observable<any>{
+    return this._map(this.http.get<any>(this._baseUrl + "continents/get_countries/" + continentId, {withCredentials: true}));
+  }
+
+  public loadLeaguesByCountry(countryId: number): Observable<any>{
+    return this._map(this.http.get<any>(this._baseUrl + "countries/get_leagues/" + countryId, {withCredentials: true}));
   }
 
 }

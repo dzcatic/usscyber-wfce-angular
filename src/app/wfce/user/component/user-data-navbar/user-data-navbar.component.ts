@@ -14,10 +14,10 @@ export class UserDataNavbarComponent implements OnInit {
   }
 
   openTeams(){
-    this._router.navigate(['view-teams'], { relativeTo: this._route });
+    this._router.navigate(['view-teams']);
   }
   openManageTeams(){
-    this._router.navigate(['manage-teams'], { relativeTo: this._route });
+    this._router.navigate(['manage-teams']);
   }
 
 }

@@ -1310,7 +1310,7 @@ export class WorldMapService extends AbstractService {
   }
 
   public importContinents() {
-    this.continents = [
+    return this.continents = [
       {
         id: 5,
         viewbox: "800 0 500 400",

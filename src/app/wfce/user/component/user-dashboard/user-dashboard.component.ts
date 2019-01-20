@@ -15,6 +15,7 @@ export class UserDashboardComponent implements OnInit {
   styleTopTeams={
     club: {
         component: "image-rows",
+        name: {},
         league: "small fade"
     },
     points: {
@@ -30,11 +31,13 @@ export class UserDashboardComponent implements OnInit {
     component: "match",
     club1: {
       component: "image-rows",
+      name: {},
       league: "small fade"
     },
     club2: {
       revert: true,
       component: "image-rows",
+      name: {},
       league: "small fade"
     },
 };
