@@ -1,6 +1,7 @@
 import {translations as wfce} from "../wfce/translations/en.translation";
-const translations = {
+
+export let translations = {
   wfce: wfce
 };
 
-export let t = translations
+// export let t = translations

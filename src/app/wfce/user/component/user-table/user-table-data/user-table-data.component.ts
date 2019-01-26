@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserTableDataComponent implements OnInit {
 
-  private columnNames;
+  public columnNames;
   public selectedIndex = 0;
 
   @Input()
@@ -25,7 +25,7 @@ export class UserTableDataComponent implements OnInit {
 
   get month() : string { return new Date().toLocaleString('en-us', {  month: 'long' }); }
 
-  get dayOfTheMonth() : string { 
+  get dayOfTheMonth() : string {
     let day = new Date().getDate();
     return day + this.getDayOfMonthSuffix(day);
   }
@@ -44,7 +44,9 @@ export class UserTableDataComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
     this.columnNames = Object.keys(this.data[0]);
+    console.log( this.columnNames)
   }
 
   selectRow(index){

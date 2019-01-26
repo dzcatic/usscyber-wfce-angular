@@ -5,7 +5,7 @@
       </div>
       <div class="payment-wrapper-option">
         <div class="payment-wrapper-option-title">
-            <p>Please select option for payment: </p>
+            <p>{{ 'checkout.paymentOption' | userTranslation | translate  }}: </p>
         </div>
         <div class="payment-wrapper-option-paymentoptions">
           <div class="payment-wrapper-option-paymentoptions--option">
@@ -24,11 +24,11 @@
       </div>
       <div class="payment-wrapper--footer">
           <div class="total-cost">
-            <p>Total cost</p>
+            <p>{{ 'checkout.totalCost' | userTranslation | translate  }}</p>
             <p><span>- 324 WFCE</span> (234 USD) </p>
           </div>
           <div class="wallet-status">
-            <p>New wallet status</p>
+            <p>{{ 'checkout.newWalletStatus' | userTranslation | translate  }}</p>
             <p><span>- 4,185,403 WFCE</span> (3.244M USD) </p>
           </div>
       </div>
@@ -36,11 +36,11 @@
 
 <div class="buttons">
   <div class="buttons-prev" (click)="goToStep('cart')">
-      Previous step
+    {{ 'checkout.previousStep' | userTranslation | translate  }}
     </div>
 
    <div class="buttons-next" (click)="goToStep('bill')">
-     Next Step
+    {{ 'checkout.nextStep' | userTranslation | translate  }}
    </div>
 
 </div>

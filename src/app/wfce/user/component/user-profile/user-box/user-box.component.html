@@ -1,4 +1,4 @@
-<div>General info</div>
+<div>{{ 'profile.generalInfo' | userTranslation | translate  }}</div>
 <div class="grid-container">
 
  <div class="signup_form_wrapper">
@@ -6,28 +6,28 @@
     <div class="signup_form_wrapper_info">
         <form [formGroup]="form">
           <div class="form_group">
-              <label for="first_name">First name</label>
+              <label for="first_name">{{ 'profile.firstName' | sharedTranslation | translate  }}</label>
               <div>
                   <input id="first_name" type="text" name="first_name" (blur)='validate("first_name")' (keyup)='validate("first_name")' formControlName="first_name">
               </div>
               <i *ngIf="requiredFirstName" [ngbTooltip]="firstNameContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
-              <ng-template #firstNameContent>First name is required.</ng-template>
+              <ng-template #firstNameContent>{{ 'profile.firstNameRequired' | sharedTranslation | translate  }}.</ng-template>
           </div>
           <div class="form_group">
-            <label for="family_name">Last name</label>
+            <label for="family_name">{{ 'profile.lastName' | sharedTranslation | translate  }}</label>
             <div>
                 <input id="family_name" type="text" name="family_name" (blur)='validate("family_name")' (keyup)='validate("family_name")' formControlName="family_name">
             </div>
             <i *ngIf="requiredLastName" [ngbTooltip]="lastNameContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px; "></i>
-            <ng-template #lastNameContent>Last name is required.</ng-template>
+            <ng-template #lastNameContent>{{ 'profile.lastNameRequired' | sharedTranslation | translate  }}.</ng-template>
           </div>
           <div class="form_group">
-              <label for="email">Email</label>
+              <label for="email">{{ 'profile.email' | sharedTranslation | translate  }}</label>
               <div >
                 <input id="email" type="email" (blur)='validate("email")' name="email" (keyup)='validate("email")' formControlName="email">
               </div>
               <i *ngIf="requiredEmail || invalidEmail" [ngbTooltip]="emailContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
-               <ng-template #emailContent> {{ requiredEmail ? 'Email is required.' : 'Please provide valid email.' }} </ng-template>
+               <ng-template #emailContent> {{ requiredEmail ? ('profile.emailRequired' | sharedTranslation | translate) : ('profile.emailInvalid' | sharedTranslation | translate ) }} </ng-template>
           </div>
           <div class="form_group avatar">
               <label class="avatar_label" for="avatar">
@@ -52,7 +52,7 @@
 
           </div>
           <div class="form_group">
-            <label for="mobile_phone">Mobile phone</label>
+            <label for="mobile_phone">{{ 'profile.mobilePhone' | sharedTranslation | translate  }}</label>
             <div>
               <input id="mobile_phone" (blur)='validate("mobile_phone")' (keyup)='validate("mobile_phone")'  formControlName="mobile_phone"  name="mobile_phone" type="text" >
 
@@ -60,10 +60,10 @@
               <p *ngIf="invalidMobilePhone"> Invalid mobile phone. Phone number must begin with your conutry code. </p> -->
             </div>
             <i *ngIf="requiredMobilePhone || invalidMobilePhone" [ngbTooltip]="mobileContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
-              <ng-template #mobileContent>{{ requiredMobilePhone ? 'Mobile Phone is required.' : 'Invalid mobile phone.' }}</ng-template>
+              <ng-template #mobileContent>{{ requiredMobilePhone ? ('profile.mobileRequired' | sharedTranslation | translate) : ('profile.mobileInvalid' | sharedTranslation | translate ) }}</ng-template>
           </div>
           <div class="form_group">
-            <label for="country">Country</label>
+            <label for="country">{{ 'profile.country' | sharedTranslation | translate  }}</label>
             <div >
               <select formControlName="country" (blur)='validate("country")' (change)="countrySelect($event)" name="country" >
                   <!-- <option value="">Select Country</option>
@@ -76,19 +76,19 @@
               </select>
             </div>
             <i *ngIf="requiredCountry" [ngbTooltip]="countryContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
-              <ng-template #countryContent>Please select a country.</ng-template>
+              <ng-template #countryContent>{{ 'profile.pleaseSelectCountry' | sharedTranslation | translate  }}.</ng-template>
           </div>
             <div class="form_group">
 
-              <label for="password">Date of birth </label>
+              <label for="password">{{ 'profile.birthday' | sharedTranslation | translate  }} </label>
               <div >
                 <input  name="date_of_birth" (blur)='validate("date_of_birth")' type="date" formControlName="date_of_birth">
               </div>
               <i *ngIf="requiredBirthday" [ngbTooltip]="birthdayContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
-              <ng-template #birthdayContent>Please choose a date of birth.</ng-template>
+              <ng-template #birthdayContent>{{ 'profile.pleaseChooseDateOFBirth' | sharedTranslation | translate  }}.</ng-template>
             </div>
             <div class="form_group">
-              <label for="language">Language</label>
+              <label for="language">{{ 'profile.language' | sharedTranslation | translate  }}</label>
               <div >
                 <!-- <input id="language" name="language" (blur)='validate("language")' (keyup)='validate("language")' formControlName="language"  type="text"> -->
                 <select formControlName="language">
@@ -99,7 +99,7 @@
                   </select>
               </div>
               <i *ngIf="requiredLanguage" [ngbTooltip]="languageContent" class="gi-error" style="color:red;margin-left: auto;font-size: 20px;"></i>
-              <ng-template #languageContent>Language is required.</ng-template>
+              <ng-template #languageContent>{{ 'profile.languageRequired' | sharedTranslation | translate  }}.</ng-template>
             </div>
 
         </form>
@@ -112,6 +112,6 @@
 
 </div>
 <div class="greenGlowingButton" (click)="saveChanges()">
-  <button type="submit" [disabled]="!form.valid || disableSubmitButton" [class.disabled]="!form.valid || disableSubmitButton"  > {{ !saveChangesBtnClicked ? 'Save changes' : 'Please wait...' }}</button>
+  <button type="submit" [disabled]="!form.valid || disableSubmitButton" [class.disabled]="!form.valid || disableSubmitButton"  > {{ !saveChangesBtnClicked ? ('profile.saveChanges' | userTranslation | translate) : ('profile.pleaseWait' | userTranslation | translate ) }}</button>
 </div>
 <!-- <button type="submit" [disabled]="!form.valid || disableSubmitButton" [class.disabled]="!form.valid || disableSubmitButton"  [value]="'Sign Up'"> {{ !loginBtnClicked ? 'Sign Up' : 'Please wait...' }}</button> -->

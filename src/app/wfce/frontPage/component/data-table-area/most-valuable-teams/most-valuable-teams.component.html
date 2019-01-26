@@ -1,6 +1,6 @@
-<app-user-table-title *ngIf="isContinentSelected && !isCountrySelected" (showBy)="showByThisMany($event)">Most valuable teams in {{selectedContinent.name}}</app-user-table-title>
-<app-user-table-title *ngIf="isCountrySelected" (showBy)="showByThisMany($event)">Most valuable teams in {{selectedCountry.name}}</app-user-table-title>
-<app-user-table-title *ngIf="!isContinentSelected" (showBy)="showByThisMany($event)">Most valuable teams</app-user-table-title>
+<app-user-table-title *ngIf="isContinentSelected && !isCountrySelected" (showBy)="showByThisMany($event)">{{ 'dataTableArea.mostValuableTeams' | frontPageTranslation | translate }} {{selectedContinent.name}}</app-user-table-title>
+<app-user-table-title *ngIf="isCountrySelected" (showBy)="showByThisMany($event)">{{ 'dataTableArea.mostValuableTeamsIn' | frontPageTranslation | translate }} {{selectedCountry.name}}</app-user-table-title>
+<app-user-table-title *ngIf="!isContinentSelected" (showBy)="showByThisMany($event)">{{ 'dataTableArea.mostValuableTeams' | frontPageTranslation | translate }}</app-user-table-title>
 
 <app-user-table-data [data]="nowShowingMostValuableTeams" [style]="styleTopTeams"></app-user-table-data>
 <div class="pagination">
@@ -14,7 +14,7 @@
         <ng-container *ngFor="let index of pagesArray">
             <div *ngIf=" (index == offset || index == offset - 1 || index == offset + 1)" class="pagePagination" (click)="setOffset(index)" [class.selected]="index==offset" >{{index + 1}}</div>
         </ng-container>
-        
+
         <div class="pagePaginationDots" *ngIf="numberOfPages > 4 && offset < (numberOfPages-2)">...</div>
         <div class="pagePagination" (click)="setOffset(numberOfPages-1)" [class.selected]="offset==numberOfPages-1" *ngIf="numberOfPages > 4 && offset < (numberOfPages-2)">{{numberOfPages}}</div>
     </div>
@@ -23,14 +23,14 @@
 
 <app-modal *ngIf="openedModal">
     <app-modal-box [@flyInOut]="''">
-      <app-modal-box-title><div>Buy tokens</div></app-modal-box-title>
+      <app-modal-box-title><div>{{ 'dataTableArea.buyTokens' | frontPageTranslation | translate }}</div></app-modal-box-title>
       <app-modal-box-data class="modalBoxClass">
         <div class="modalDataGroup">
-            <div class="modalDataLabel">Number of tokens</div>
+            <div class="modalDataLabel">{{ 'dataTableArea.numberOfTokens' | frontPageTranslation | translate }}</div>
             <div class="modalDataInput"><input class="numberIput" type="number"/></div>
         </div>
         <div class="modalDataGroup">
-            <div class="modalDataLabel">Token price <div>(per token)</div></div>
+            <div class="modalDataLabel">{{ 'dataTableArea.tokenPrice' | frontPageTranslation | translate }} <div>({{ 'dataTableArea.perToken' | frontPageTranslation | translate }})</div></div>
             <div class="modalDataInput"><input value="350 USD"></div>
         </div>
       </app-modal-box-data>
@@ -39,9 +39,9 @@
             <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['club']"></app-user-table-row-club>
             <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['tokens']"></app-user-table-row-club>
             <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['value']"></app-user-table-row-club>
-            <div class="buyTokenModalButton" (click)="buyToken()">Buy token</div>
+            <div class="buyTokenModalButton" (click)="buyToken()">{{ 'dataTableArea.buyToken' | frontPageTranslation | translate }}</div>
         </div>
-          
+
       </app-modal-box-footer>
   </app-modal-box>
   </app-modal>

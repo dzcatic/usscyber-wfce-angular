@@ -1,25 +1,25 @@
 <app-user-teams-filter></app-user-teams-filter>
 
 <app-user-table [style.width]="'60%'">
-    <app-user-table-title>Top teams</app-user-table-title>
+    <app-user-table-title>{{ 'dashboard.topTeams' | userTranslation | translate  }}</app-user-table-title>
     <app-user-table-data [style]="styleTopTeams" [data]="topTeams"></app-user-table-data>
 </app-user-table>
 <div class="pagination">
   <div class="arrow"><i class="gi-triangle-left"></i></div>
-  <div class="page">Page 1 of 30</div>
+  <div class="page">{{ 'table.page' | userTranslation | translate  }} 1 of 30</div>
   <div class="arrow"><i class="gi-triangle-right"></i></div>
 </div>
 
 <app-modal *ngIf="openedModal">
   <app-modal-box [@flyInOut]="''">
-    <app-modal-box-title><div>Buy tokens</div></app-modal-box-title>
+    <app-modal-box-title><div>{{ 'modal.buyTokens' | sharedTranslation | translate }}</div></app-modal-box-title>
     <app-modal-box-data class="modalBoxClass">
       <div class="modalDataGroup">
-          <div class="modalDataLabel">Number of tokens</div>
-          <app-user-autocomplete [data]="continents" [placeholder]="'Continent'"></app-user-autocomplete>
+          <div class="modalDataLabel">{{ 'modal.numberOfTokens' | sharedTranslation | translate }}</div>
+          <app-user-autocomplete [data]="continents" placeholder="{{ 'modal.continent' | sharedTranslation | translate }}"></app-user-autocomplete>
       </div>
       <div class="modalDataGroup">
-          <div class="modalDataLabel">Token price <div>(per token)</div></div>
+          <div class="modalDataLabel">{{ 'modal.tokenPrice' | sharedTranslation | translate }} <div>({{ 'modal.perToken' | sharedTranslation | translate }})</div></div>
           <div class="modalDataInput"><input value="350 USD"></div>
       </div>
     </app-modal-box-data>
@@ -28,9 +28,9 @@
           <app-user-table-row-club [class.revert]="styleTopTeams['club']['revert']" [style]="styleTopTeams['club']" [columnName]="'club'" [data]="topTeams[0]['club']"></app-user-table-row-club>
           <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['tokens']"></app-user-table-row-club>
           <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['value']"></app-user-table-row-club>
-          <div class="buyTokenModalButton">Buy token</div>
+          <div class="buyTokenModalButton">{{ 'modal.buyToken' | sharedTranslation | translate }}</div>
       </div>
-        
+
     </app-modal-box-footer>
 </app-modal-box>
 </app-modal>

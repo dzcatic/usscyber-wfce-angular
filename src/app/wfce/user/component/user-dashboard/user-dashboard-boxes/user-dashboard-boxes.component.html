@@ -4,30 +4,30 @@
   <app-user-dashboard-box-footer>{{month}} - {{year}}</app-user-dashboard-box-footer>
 </app-user-dashboard-box> -->
 <app-user-dashboard-box>
-  <app-user-dashboard-box-title>WFCE WALLET<i class="gi-arrow-circle-o-up arrowUp"></i></app-user-dashboard-box-title>
+  <app-user-dashboard-box-title>{{ 'dashboard.wfceWallet' | userTranslation | translate | uppercase }}<i class="gi-arrow-circle-o-up arrowUp"></i></app-user-dashboard-box-title>
   <app-user-dashboard-box-data class="boxBigGreen"><img width="30px" src="assets/img/dashboard/Bitmap.png">1873.46</app-user-dashboard-box-data>
   <app-user-dashboard-box-footer>{{month}} - {{year}}</app-user-dashboard-box-footer>
 </app-user-dashboard-box>
 <app-user-dashboard-box>
-  <app-user-dashboard-box-title>PRIVATE SALES OFFERS</app-user-dashboard-box-title>
+  <app-user-dashboard-box-title>{{ 'dashboard.privateSalesOffers' | userTranslation | translate | uppercase }}</app-user-dashboard-box-title>
   <app-user-dashboard-box-data>
     <div (click)="openModal()" class="smallGreenHeading">Salt Lake City, Utah</div>
     <div class="twoColumnsBox">
       <div class="twoRowsBox">
         <div>18.7M</div>
-        <div class="smallerFadedBox">Shared traded</div>
+        <div class="smallerFadedBox">{{ 'dashboard.sharedTraded' | userTranslation | translate }}</div>
       </div>
       <div class="twoRowsBox">
         <div>19.9M</div>
-        <div class="smallerFadedBox">Market cap</div>
+        <div class="smallerFadedBox">{{ 'dashboard.marketCap' | userTranslation | translate }}</div>
       </div>
     </div>
   </app-user-dashboard-box-data>
   <app-user-dashboard-box-footer>
     <div class="highestOfferBoxFooter">
       <div class="highestOfferBoxFooterBigger">+120.93</div>
-      <div class="smallerFadedBox">Yearly change</div>
-      <div class="smallerFadedBox viewAllBox">View all</div>
+      <div class="smallerFadedBox">{{ 'dashboard.yearlyChange' | userTranslation | translate }}</div>
+      <div class="smallerFadedBox viewAllBox">{{ 'dashboard.viewAll' | userTranslation | translate }}</div>
     </div>
 </app-user-dashboard-box-footer>
 </app-user-dashboard-box>
@@ -39,7 +39,7 @@
 
 <app-modal *ngIf="openedModal">
     <app-modal-box [@flyInOut]="''">
-      <app-modal-box-title><div>Highest private offers</div></app-modal-box-title>
+      <app-modal-box-title><div>{{ 'dashboard.highestPrivateOffers' | userTranslation | translate }}</div></app-modal-box-title>
       <app-modal-box-data >
         <div class="modalBoxClass">
           <img src="assets/img/temp/group27.png">
@@ -51,18 +51,18 @@
               <img src="assets/img/dashboard/Bitmap.png">
               <div class="modalBoxTwoRows">
                 <div>84.130,10</div>
-                <div class="smallerFadedBox">Tokens</div>
+                <div class="smallerFadedBox">{{ 'dashboard.tokens' | userTranslation | translate }}</div>
               </div>
           </div>
           <div class="modalBoxTwoRows">
               <div>$80.500,823</div>
-              <div class="smallerFadedBox">Value</div>
+              <div class="smallerFadedBox">{{ 'dashboard.value' | userTranslation | translate }}</div>
           </div>
         </div>
       </app-modal-box-data>
       <app-modal-box-footer >
         <div class="modalFooterGroup">
-            <div class="buyTokenModalButton"><i class="gi-cart"></i>Add to Cart</div>
+            <div class="buyTokenModalButton"><i class="gi-cart"></i>{{ 'dashboard.addToCart' | userTranslation | translate }}</div>
           </div>
       </app-modal-box-footer>
   </app-modal-box>

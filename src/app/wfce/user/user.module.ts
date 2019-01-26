@@ -51,6 +51,8 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalErrorService } from './services/global.error.state.service';
 import { RequestService } from './services/request.service';
 import { CheckoutResolverService } from './services/resolver-service/checkout-resolver.service';
+import { UserTranslationModule } from './pipes/translation.pipe.module';
+import { SharedTranslationModule } from '../shared-modules/pipes/translation.pipe.module';
 
 
 @NgModule({
@@ -64,6 +66,8 @@ import { CheckoutResolverService } from './services/resolver-service/checkout-re
     ReactiveFormsModule,
     NgbModalModule,
     NgbTooltipModule,
+    UserTranslationModule,
+    SharedTranslationModule,
     NgxChartsModule
   ],
   declarations: [UserComponent,

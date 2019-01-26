@@ -1,10 +1,10 @@
 <div class="row">
 <div class="col-4 coinImage" (mouseover)="handleMouseOver($event)" (mouseleave)="handleMouseLeave($event)">
-  <img [@rotateIn]="inViewPort" class="icon" [class.hovered]="active"  src="assets/img/dashboard/Bitmap.png"> 
+  <img [@rotateIn]="inViewPort" class="icon" [class.hovered]="active"  src="assets/img/dashboard/Bitmap.png">
 </div>
 <div class="col-8 coinDescription">
-  <div class="coinHeading">WFCE coin</div>
-  <div class="coinText">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</div>
-  <div class="coinLearnMore">Lear more ></div>
+  <div class="coinHeading">{{ 'timeline.wfceCoin' | frontPageTranslation | translate }}</div>
+  <div class="coinText">{{ 'timeline.wfceCoinText' | frontPageTranslation | translate }}.</div>
+  <div class="coinLearnMore">{{ 'timeline.learnMore' | frontPageTranslation | translate }} ></div>
 </div>
 </div>

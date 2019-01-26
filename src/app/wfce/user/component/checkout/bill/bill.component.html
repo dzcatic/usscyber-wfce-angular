@@ -5,11 +5,10 @@
   </div>
   <div class="bill-wrapper-content">
     <div class="bill-wrapper-content--info">
-        <p>Please make payment in next 20 minutes.</p>
-        <p class="mb-20">Once payment are placed, tokens will be transfered
-          automatically to your account.</p>
-        <p class="mb-40">Please follow link below, or scan QR code.</p>
-        <p class="mb-40">Open link <a href="#">HERE</a>.</p>
+        <p>{{ 'checkout.paymentTime' | userTranslation | translate  }}.</p>
+        <p class="mb-20">{{ 'checkout.paymentPlaced' | userTranslation | translate  }}.</p>
+        <p class="mb-40">{{ 'checkout.followLink' | userTranslation | translate  }}.</p>
+        <p class="mb-40">{{ 'checkout.openLink' | userTranslation | translate  }} <a href="#">{{ 'checkout.here' | userTranslation | translate | uppercase  }}</a>.</p>
 
     </div>
     <div class="bill-wrapper-content-qr">
@@ -20,11 +19,11 @@
   </div>
   <div class="bill-wrapper--footer">
       <div class="total-cost">
-        <p>Total cost</p>
+        <p>{{ 'checkout.totalCost' | userTranslation | translate  }}</p>
         <p><span>- 324 WFCE</span> (234 USD) </p>
       </div>
       <div class="wallet-status">
-        <p>New wallet status</p>
+        <p>{{ 'checkout.newWalletStatus' | userTranslation | translate  }}</p>
         <p><span>- 4,185,403 WFCE</span> (3.244M USD) </p>
       </div>
   </div>
@@ -32,11 +31,11 @@
 
 <div class="buttons">
 <div class="buttons-prev" (click)="goToStep('payment')">
-  Previous step
+  {{ 'checkout.previousStep' | userTranslation | translate  }}
 </div>
 
 <div class="buttons-next" (click)="finishOrder()">
- Next Step
+  {{ 'checkout.nextStep' | userTranslation | translate  }}
 </div>
 
 </div>

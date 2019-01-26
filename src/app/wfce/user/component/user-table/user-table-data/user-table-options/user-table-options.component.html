@@ -1,3 +1,3 @@
 <ng-container *ngFor="let option of options">
-  <div [ngClass]="option['revertStyle']!=undefined && row['isSelected'] ? option['revertStyle'] : option['style']" (click)="handleClick(option)"><i [ngClass]="option['icon']"></i>{{option['name']}}</div>
+  <div [ngClass]="option['revertStyle']!=undefined && row['isSelected'] ? option['revertStyle'] : option['style']" (click)="handleClick(option)"><i [ngClass]="option['icon']"></i>{{ 'table.' + option['name'] | userTranslation | translate }}</div>
 </ng-container>

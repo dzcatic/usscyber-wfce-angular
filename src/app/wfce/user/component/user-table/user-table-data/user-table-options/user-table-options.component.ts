@@ -13,14 +13,17 @@ export class UserTableOptionsComponent implements OnInit {
 
   @Input()
   row;
-  
+
   constructor(private modalService: ModalService) { }
 
   ngOnInit() {
+    console.log("ROOOW::: " , this.options);
     this.row['isSelected'] = false;
   }
 
   handleClick(option){
+
+
     if(option['revertStyle'] !== undefined){
       this.row['isSelected'] = !this.row['isSelected'];
     }

@@ -10,10 +10,10 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
       state('in', style({transform: 'translateX(0%)'})),
       transition(':enter', [
         style({ transform: 'translateX({{from_x}})'}),
-        animate('1s ease-in-out')
+        animate('1s linear')
       ]),
       transition(':leave', [
-        animate('1s ease-in-out', style({transform: "translateX({{to_x}})"}))
+        animate('1s linear', style({transform: "translateX({{to_x}})"}))
       ])
     ])]
 })
@@ -29,19 +29,19 @@ export class TimelineTestimonialsComponent implements OnInit {
   public toX: string = "-100%";
   public activeTestimonials = [];
   public testimonials = [
-    { 
+    {
       words:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
       signature: "0 Testimonial by someone"
     },
-    { 
+    {
       words:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
       signature: "1 Testimonial by someone else"
     },
-    { 
+    {
       words:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
       signature: "2 Testimonial by someone totally new"
     },
-    { 
+    {
       words:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
       signature: "3 Testimonial by someone like totally new"
     }
@@ -60,7 +60,7 @@ export class TimelineTestimonialsComponent implements OnInit {
     //if(!this.inViewPort){
       this.inViewPort = this.elementInViewport(rect);
     //}
-    
+
   }
 
   private elementInViewport(rect) {
@@ -84,11 +84,11 @@ export class TimelineTestimonialsComponent implements OnInit {
       let temp = this.activeIndex - 1;
     if(temp < 0){
       this.activeIndex = this.testimonials.length - 1;
-      
+
     }
     else{
       this.activeIndex = temp;
-      
+
     }
   },0)
     this.fromX = "-100%";
@@ -99,20 +99,20 @@ export class TimelineTestimonialsComponent implements OnInit {
     setTimeout(()=>{
     let temp = this.activeIndex+ 1;
     if(temp > this.testimonials.length - 1){
-    
+
       this.activeIndex = 0;
     }
-      
+
     else{
       this.activeIndex = temp;
-      
+
     }
   },0)
     this.fromX = "100%";
       this.toX = "-100%";
   } */
 
-  
+
   /* oneBackTestimonial(){
     this.fromX = "-100%";
     this.toX = "100%";
@@ -122,8 +122,8 @@ export class TimelineTestimonialsComponent implements OnInit {
       this.removeElementFromTestimonials(lastIndex);
       this.testimonials.unshift(lastTestimonial);
     },0)
-    
-    
+
+
   }
 
   removeElementFromTestimonials(index){
@@ -142,7 +142,7 @@ export class TimelineTestimonialsComponent implements OnInit {
       this.removeElementFromTestimonials(this.activeIndex);
       this.testimonials.push(firstTestimonial);
     },0)
-    
+
   } */
 
   oneBackTestimonial(){
@@ -163,8 +163,8 @@ export class TimelineTestimonialsComponent implements OnInit {
       this.activeTestimonials.push(firstTestimonial);
       this.activeTestimonials.unshift(lastTestimonial);
     },0)
-    
-    
+
+
   }
 
   private nextIndex(index){
@@ -191,20 +191,20 @@ export class TimelineTestimonialsComponent implements OnInit {
   }
 
   oneForwardTestimonial(){
-   
+
     this.fromX = "100%";
     this.toX = "-100%";
     this.justifyLeft = false;
     this.activeTestimonialIndex = this.nextIndex(this.activeTestimonialIndex);
     //this.nextTestimonialIndex = this.nextIndex(this.nextTestimonialIndex);
     let nextIndex = this.nextIndex(this.activeTestimonialIndex);
-    
+
     setTimeout(()=>{
       let firstTestimonial = JSON.parse(JSON.stringify(this.testimonials[nextIndex]));
       this.removeElementFromTestimonials(this.activeIndex);
       this.activeTestimonials.push(firstTestimonial);
     },0)
-    
+
   }
 
   setTestimonial(index){

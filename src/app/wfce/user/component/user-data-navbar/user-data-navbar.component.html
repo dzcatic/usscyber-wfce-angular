@@ -1,4 +1,4 @@
 <div class="navbarContent">
-    <div (click)="openTeams()"><div>View teams</div></div>
-    <div (click)="openManageTeams()"><div>Manage teams</div></div>
+    <div (click)="openTeams()"><div>{{ 'dashboard.viewTeams' | userTranslation | translate  }}</div></div>
+    <div (click)="openManageTeams()"><div>{{ 'dashboard.manageTeams' | userTranslation | translate  }}</div></div>
 </div>
