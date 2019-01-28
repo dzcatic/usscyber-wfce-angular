@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ManageTeamService } from '../../../services/manage-team.service';
 
 @Component({
   selector: 'app-user-table-data',
@@ -8,7 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserTableDataComponent implements OnInit {
 
   private columnNames;
-  public selectedIndex = 0;
+  //public selectedIndex = 0;
+  //public selectedTeam;
+
+  @Input()
+  selectedTeam = null;
+
+  @Output() 
+  setSelected: EventEmitter<any> = new EventEmitter();
 
   @Input()
   data;
@@ -41,15 +49,16 @@ export class UserTableDataComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(private manageTeam: ManageTeamService) { }
 
   ngOnInit() {
-    this.columnNames = Object.keys(this.data[0]);
+    this.columnNames = Object.keys(this.style);
+    console.log("data", this.selectedTeam);
   }
 
-  selectRow(index){
+  selectRow(data){
     if(this.selectable){
-      this.selectedIndex = index;
+      this.setSelected.emit(data);
     }
   }
 

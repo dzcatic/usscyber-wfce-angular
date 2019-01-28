@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WorldMapService } from '../../../../frontPage/services/world-map.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { TopTeamsService } from '../../../services/teams.service';
@@ -28,6 +28,9 @@ export class UserTeamsFilterComponent implements OnInit {
   showCountriesFilter = false;
   showLeaguesFilter = false;
 
+  @Output() 
+  setSelected: EventEmitter<any> = new EventEmitter();
+
   constructor(private worldMapService: WorldMapService,
               private teamsService: TopTeamsService) { }
 
@@ -36,21 +39,38 @@ export class UserTeamsFilterComponent implements OnInit {
   }
 
   setSelectedContinent($event){
-    
-    this.teamsService.loadCountriesByContinent($event.id).subscribe((data)=>{
-      this.countries = data[0]; //this has to be replaced
-      console.log(this.countries);
-      this.showCountriesFilter = true;
-    })
-    console.log("insideFilter", $event);
-  }
+    this.setSelected.emit("continent");
+    this.showCountriesFilter = false;
+    this.showLeaguesFilter = false;
+    this.teamsService.filterByContinent($event.id).subscribe((data)=>{
+      
+        const [ countries, teams ] = data;
+        console.log( "countries" , countries);
+        console.log( "teams" , teams);
+        this.countries = countries[0]; //this has to be replaced
+        console.log(this.countries);
+        this.teamsService.setNumberOfPages(teams['numberOfPages']);
+        this.teamsService.setTopTeams(teams['data']);
+        
+        this.showCountriesFilter = true;
+        console.log("insideFilter", $event);
+  });
+}
 
   setSelectedCountry($event){
-    
-    this.teamsService.loadLeaguesByCountry($event.id).subscribe((data)=>{
-      this.leagues = data; //this has to be replaced
-      console.log(this.leagues);
-      this.showLeaguesFilter = true;
+    this.setSelected.emit("country");
+    this.showLeaguesFilter = false;
+    this.teamsService.filterByCountry($event.id).subscribe((data)=>{
+      
+      const [ leagues, teams ] = data;
+        console.log( "countries" , leagues);
+        console.log( "teams" , teams);
+        this.leagues = leagues; //this has to be replaced
+        console.log(this.leagues);
+        this.teamsService.setNumberOfPages(teams['numberOfPages']);
+        this.teamsService.setTopTeams(teams['data']);
+        this.showLeaguesFilter = true;
+      console.log("insideFilter", $event);
     })
     console.log("insideFilter", $event);
   }

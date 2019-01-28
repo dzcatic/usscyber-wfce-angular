@@ -3,7 +3,8 @@
 :host{
     
     //opacity: 0.8;
-    position: absolute;
+    //position: absolute; change this in order the spinner is shown only on elements  that are being loaded
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

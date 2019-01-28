@@ -1,16 +1,44 @@
-<app-user-teams-filter></app-user-teams-filter>
+<app-user-teams-filter (setSelected)="setSelectedValue($event)"></app-user-teams-filter>
 
-<app-user-table [style.width]="'60%'">
-    <app-user-table-title>Top teams</app-user-table-title>
-    <app-user-table-data [style]="styleTopTeams" [data]="topTeams"></app-user-table-data>
-</app-user-table>
-<div class="pagination">
-  <div class="arrow"><i class="gi-triangle-left"></i></div>
-  <div class="page">Page 1 of 30</div>
-  <div class="arrow"><i class="gi-triangle-right"></i></div>
-</div>
+
+    <app-user-table [style.width]="'60%'">
+            <app-user-table-title (reloadTrigger)="reloadTriggered($event)">Top teams</app-user-table-title>
+            <app-user-table-data [style]="styleTopTeams" [data]="topTeams"></app-user-table-data>
+        </app-user-table>
+        <div class="pagination">
+            <div *ngIf="currentPage > 1" class="arrow" (click)=setCurrentPage(currentPage-1)><i class="gi-triangle-left"></i></div>
+            <div class="page">Page {{currentPage}} of {{numberOfPages}}</div>
+            <div *ngIf="currentPage < numberOfPages" class="arrow" (click)=setCurrentPage(currentPage+1)><i class="gi-triangle-right"></i></div>
+        </div>
+
+
 
 <app-modal *ngIf="openedModal">
+        <app-modal-box [@flyInOut]="''">
+          <app-modal-box-title><div>Buy tokens</div></app-modal-box-title>
+          <app-modal-box-data class="modalBoxClass">
+            <div class="modalDataGroup">
+                <div class="modalDataLabel">Number of tokens</div>
+                <div class="modalDataInput"><input class="numberIput" type="number"/></div>
+            </div>
+            <div class="modalDataGroup">
+                <div class="modalDataLabel">Token price <div>(per token)</div></div>
+                <div class="modalDataInput"><input value="350 USD"></div>
+            </div>
+          </app-modal-box-data>
+          <app-modal-box-footer class="modalFooterGroup">
+            <div>
+                <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['club']"></app-user-table-row-club>
+                <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['tokens']"></app-user-table-row-club>
+                <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['value']"></app-user-table-row-club>
+                <div class="buyTokenModalButton" (click)="buyToken()">Buy token</div>
+            </div>
+              
+          </app-modal-box-footer>
+      </app-modal-box>
+      </app-modal>
+<app-spinner *ngIf="showSpinner" [style.backgroundImage]="'transparent'"></app-spinner>
+<!-- <app-modal *ngIf="openedModal">
   <app-modal-box [@flyInOut]="''">
     <app-modal-box-title><div>Buy tokens</div></app-modal-box-title>
     <app-modal-box-data class="modalBoxClass">
@@ -33,4 +61,4 @@
         
     </app-modal-box-footer>
 </app-modal-box>
-</app-modal>
+</app-modal> -->

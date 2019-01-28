@@ -3,7 +3,7 @@ import { AbstractService } from './abstract.service';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject, of } from 'rxjs';
 import { Cart } from '../../interfaces/cart.interface';
 
 @Injectable()
@@ -63,5 +63,16 @@ export class CartService extends AbstractService {
     this.numberOfCartItems$.next(this.cart.numberOfItems);
     this.cart$.next(this.cart);
     localStorage.setItem('laravel_session', this.cart.laravel_session);
+  }
+
+  public checkoutComplete(){
+    console.log("ready for api", this.cart.id)
+    return of({addresses: {
+      bitcoincash: "qz97hfzx0e2pmlyp9zu3df89kyx9n4kvv5n37e6aru",
+      bitcoin: "someString",
+      etherium: "someString",
+      litecoin: "someString" 
+    }});
+    //return this._map(this.http.post<any>(this._baseUrl + "cart/checkout/complete/" + this.cart.id, {withCredentials: true}));
   }
 }

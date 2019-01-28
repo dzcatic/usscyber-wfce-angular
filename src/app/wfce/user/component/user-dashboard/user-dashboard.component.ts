@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TopTeamsService } from '../../services/teams.service';
 import { ScheduledMatchesService } from '../../services/scheduled-matches.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -10,9 +11,10 @@ import { ScheduledMatchesService } from '../../services/scheduled-matches.servic
 export class UserDashboardComponent implements OnInit {
 
   public topTeams;
+  public myTopTeams;
   public scheduledMatches;
 
-  styleTopTeams={
+  /* styleTopTeams={
     club: {
         component: "image-rows",
         name: {},
@@ -24,6 +26,21 @@ export class UserDashboardComponent implements OnInit {
         component: "image-rows",
         change: "small fade",
         image: "assets/img/dashboard/Bitmap.png"
+    }
+  }; */
+  public styleTopTeams={
+    team: {
+        component: "image-rows",
+        name: {},
+        league: "small fade"
+    },
+    points: {},
+    marketPrice: {
+      image: "assets/img/dashboard/Bitmap.png",
+      component: "image-rows",
+      currentPrice: {},
+      priceFluxPercentage: "small fade",
+      
     }
   };
 
@@ -43,8 +60,18 @@ export class UserDashboardComponent implements OnInit {
 };
 
 
-  constructor(private topTeamsService: TopTeamsService, private scheduledMatchesService: ScheduledMatchesService) {
-    this.topTeams = topTeamsService.getTopTeams();
+  constructor(private topTeamsService: TopTeamsService, 
+              private scheduledMatchesService: ScheduledMatchesService,
+              private _route: ActivatedRoute) { 
+                let latestValues = this._route.snapshot.data["dashboardTeams"];
+                const [ topTeams, myTopTeams ] = latestValues;
+                console.log("topTeams", topTeams);
+                console.log("myTopTeams", myTopTeams);
+                this.topTeams = topTeams['data'];
+                this.myTopTeams = myTopTeams['data'];
+
+                
+    //this.topTeams = topTeamsService.getTopTeams();
     this.scheduledMatches = scheduledMatchesService.getMatches();
    }
 

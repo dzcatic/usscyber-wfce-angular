@@ -31,6 +31,7 @@ import { CartService } from '../../services/cart.service';
 export class CheckoutComponent implements OnInit {
 
   checkoutStep: string;
+  payment;
   cart: Cart;
 
   constructor(private checkoutService: CheckoutService, 
@@ -44,7 +45,24 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     this.checkoutService.loadCheckoutStep$.subscribe((step) => {
-      this.checkoutStep = step;
+      
+      switch(step) { 
+        case 'payment': {
+           this.cartService.checkoutComplete().subscribe((value)=>{
+             this.payment = value;
+             this.checkoutStep = step;
+           })
+           break; 
+        } 
+        case 'bill': { 
+          this.checkoutStep = step;
+           break; 
+        } 
+        default: { 
+          this.checkoutStep = step;
+           break; 
+        } 
+     } 
     });
     this.cartService.cart$.subscribe((value)=>{
       this.cart = value;

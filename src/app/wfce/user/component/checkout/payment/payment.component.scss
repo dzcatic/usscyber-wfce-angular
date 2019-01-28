@@ -1,3 +1,6 @@
+@import "../../../../../../sass/variables";
+@import "../../../../../../sass/mixins";
+
 :host {
   display: flex;
   flex-direction: column;
@@ -38,7 +41,7 @@
           font-size: 24pt;
           margin-bottom: 0;
           margin-left: 5px;
-          font-family: Lato-Bold;
+          //font-family: Lato-Bold;
           font-weight: 700;
           color: rgb(53,64,82);
           @media (max-width: 1024px) {
@@ -48,7 +51,7 @@
       }
       &-option {
         padding: 10px;
-        font-family: Lato-Regular;
+        //font-family: Lato-Regular;
         font-weight: 400;
         @media (max-width: 1024px) {
           padding: 3px;
@@ -72,6 +75,9 @@
             margin: 15px;
             color: rgb(53,64,82);
             font-size: 16pt;
+            &.selected{
+              box-shadow: 0 0 0 3px $green-color;
+            }
             @media (max-width: 1024px) {
               margin: 10px;
             }
@@ -118,7 +124,7 @@
         .total-cost {
           display: flex;
           justify-content: space-between;
-          font-family: Lato-Semibold;
+          //font-family: Lato-Semibold;
           font-weight: 600;
           p:last-child {
             color: #fff;
@@ -133,11 +139,11 @@
         .wallet-status {
           display: flex;
           justify-content: space-between;
-          font-family: Lato-Semibold;
+          //font-family: Lato-Semibold;
           font-weight: 600;
           p:last-child {
             color: #fff;
-            font-family: Lato-Black;
+            //font-family: Lato-Black;
             font-weight: 900;
             span {
               color: rgb(99,234,124);

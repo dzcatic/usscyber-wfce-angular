@@ -51,6 +51,10 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalErrorService } from './services/global.error.state.service';
 import { RequestService } from './services/request.service';
 import { CheckoutResolverService } from './services/resolver-service/checkout-resolver.service';
+import { ViewTeamsResolverService } from './services/resolver-service/view-teams-resolver.service';
+import { SpinnerModule } from '../shared-modules/spinner/spinner.module';
+import { ManageTeamsResolverService } from './services/resolver-service/manage-teams-resolver.service';
+import { DashboardResolverService } from './services/resolver-service/dashboard-resolver.service';
 
 
 @NgModule({
@@ -64,7 +68,8 @@ import { CheckoutResolverService } from './services/resolver-service/checkout-re
     ReactiveFormsModule,
     NgbModalModule,
     NgbTooltipModule,
-    NgxChartsModule
+    NgxChartsModule,
+    SpinnerModule
   ],
   declarations: [UserComponent,
                  UserNavbarComponent,
@@ -106,7 +111,10 @@ import { CheckoutResolverService } from './services/resolver-service/checkout-re
               ManageTeamService,
               CheckoutService,
               UserGuardService,
-              CheckoutResolverService],
+              CheckoutResolverService,
+              ViewTeamsResolverService,
+              ManageTeamsResolverService,
+              DashboardResolverService],
     exports:[UserNavbarComponent],
   entryComponents: [SuccessComponent]
 })

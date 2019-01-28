@@ -8,7 +8,16 @@
             <p>Please select option for payment: </p>
         </div>
         <div class="payment-wrapper-option-paymentoptions">
-          <div class="payment-wrapper-option-paymentoptions--option">
+          <ng-container *ngFor="let paymentMethod of paymentLogos">
+            <div *ngIf="payment.addresses[paymentMethod.name] !== undefined" 
+                  (click)="handlePaymentString(paymentMethod.name, payment.addresses[paymentMethod.name])" 
+                  class="payment-wrapper-option-paymentoptions--option"
+                  [class.selected]="selectedPaymentMethod == paymentMethod.name">
+                <img [attr.src]="paymentMethod.logo" alt="">
+                <p>{{paymentMethod.name}}</p>
+            </div>
+          </ng-container>
+          <!-- <div class="payment-wrapper-option-paymentoptions--option">
               <img src="assets/img/checkout/bitcoin@2x.png" alt="">
               <p>Bitcoin</p>
           </div>
@@ -20,7 +29,11 @@
             <img src="assets/img/checkout/litecoin@2x.png" alt="">
             <p>Litecoin</p>
           </div>
-        </div>
+          <div class="payment-wrapper-option-paymentoptions--option">
+              <img src="assets/img/checkout/litecoin@2x.png" alt="">
+              <p>Bitcoin cash</p>
+            </div>
+        </div> -->
       </div>
       <div class="payment-wrapper--footer">
           <div class="total-cost">

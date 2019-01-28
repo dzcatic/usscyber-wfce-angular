@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalService } from '../../../../../shared-modules/modal/modal.service';
+import { TopTeamsService } from '../../../../services/teams.service';
 
 @Component({
   selector: 'app-user-table-options',
@@ -14,16 +15,15 @@ export class UserTableOptionsComponent implements OnInit {
   @Input()
   row;
   
-  constructor(private modalService: ModalService) { }
+  constructor(private modalService: ModalService, private teamsService: TopTeamsService) { }
 
   ngOnInit() {
-    this.row['isSelected'] = false;
+    //this.row['isSelected'] = false;
+    console.log(this.row);
   }
 
   handleClick(option){
-    if(option['revertStyle'] !== undefined){
-      this.row['isSelected'] = !this.row['isSelected'];
-    }
+    
     if(option['functionName'] != undefined){
       this[option['functionName']](option);
     }
@@ -31,9 +31,17 @@ export class UserTableOptionsComponent implements OnInit {
 
   buyToken(option){
     let data = {
+      id: this.row['id'],
       modalStyle: {
         component: "image-rows",
-        label: "small fade"
+        label: "small fade",
+        name: {},
+        league: {}
+      },
+      club: {
+        logo: this.row['logo'],
+        name: this.row['name'],
+        league: "La Liga"
       },
       tokens: {
         name: "230",
@@ -48,4 +56,12 @@ export class UserTableOptionsComponent implements OnInit {
     this.modalService.setModalData(data);
   }
 
+  watchTeam(option){
+    if(option['revertStyle'] !== undefined){
+      this.row['watched'] = !this.row['watched'];
+    }
+    this.teamsService.watchTeam(this.row['id'], this.row['watched']).subscribe((data)=>{
+      this.row['watched'] = data['like'];
+    })
+  }
 }

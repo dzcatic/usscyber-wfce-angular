@@ -8,6 +8,9 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { UserGuardService } from '../auth/user.guard.service';
 import { CheckoutResolverService } from './services/resolver-service/checkout-resolver.service';
+import { ViewTeamsResolverService } from './services/resolver-service/view-teams-resolver.service';
+import { ManageTeamsResolverService } from './services/resolver-service/manage-teams-resolver.service';
+import { DashboardResolverService } from './services/resolver-service/dashboard-resolver.service';
 
 const routes: Routes = [
   {
@@ -20,15 +23,24 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        component: UserDashboardComponent
+        component: UserDashboardComponent,
+        resolve: {
+          dashboardTeams: DashboardResolverService
+        },
       },
       {
         path: "view-teams",
-        component: UserTeamsComponent
+        component: UserTeamsComponent,
+        resolve: {
+          topTeams: ViewTeamsResolverService
+        },
       },
       {
         path: "manage-teams",
-        component: UserManageTeamsComponent
+        component: UserManageTeamsComponent, 
+        resolve: {
+          watchedTeams: ManageTeamsResolverService
+        },
       },
       {
         path: "profile",

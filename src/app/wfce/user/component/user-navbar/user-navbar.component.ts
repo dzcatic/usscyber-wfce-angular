@@ -72,9 +72,9 @@ export class UserNavbarComponent implements OnInit {
 
   openProfile(){
     if(this.dashboardActivated) {
-      this._router.navigate(['profile'], { relativeTo: this._route });
+      this._router.navigate(['profile']);
     } else {
-      this._router.navigate(['dashboard','profile'], { relativeTo: this._route });
+      this._router.navigate(['profile']);
     }
 
   }

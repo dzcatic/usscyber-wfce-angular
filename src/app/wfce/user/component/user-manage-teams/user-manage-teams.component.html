@@ -1,58 +1,103 @@
 <div class="content">
   <app-user-table>
     <app-user-table-title>Top teams</app-user-table-title>
-    <app-user-table-data [selectable]="true" [style]="styleTopTeams" [data]="topTeams"></app-user-table-data>
+    <app-user-table-data [selectedTeam]="selectedMyTeam" (setSelected)="setMySelectedValue($event)" [selectable]="true" [style]="styleTopTeams" [data]="watchedTeams"></app-user-table-data>
   </app-user-table>
-  <div class="teamArea">
+  <!-- "team_id": "506",
+  "total_token_number": 4544,
+  "token_price": 140,
+  "paid_for_token": {
+      "profit": 179,
+      "loss": 0,
+      "value": 320
+  },
+  "total_value": 3124
+}, -->
+  <div *ngIf="myTeamsArea" class="teamArea">
       <app-user-manage-teams-boxes>
-        <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
-          <app-user-dashboard-box-data class="boxBigGreen">$1873.46</app-user-dashboard-box-data>
-          <app-user-dashboard-box-footer>TOTAL TOKEN NUMBER</app-user-dashboard-box-footer>
+          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
+            <app-user-dashboard-box-data class="boxBigGreen1">{{boxesData['total_token_number']}}</app-user-dashboard-box-data>
+            <app-user-dashboard-box-footer class="boxFooter1">TOTAL TOKEN NUMBER</app-user-dashboard-box-footer>
+          </app-user-dashboard-box>
+          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
+            <app-user-dashboard-box-data class="boxBigGreen1">${{boxesData['token_price']}}</app-user-dashboard-box-data>
+            <app-user-dashboard-box-footer class="boxFooter1">TOKEN PRICE</app-user-dashboard-box-footer>
+          </app-user-dashboard-box>
+          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
+              <app-user-dashboard-box-title class="titleBox">
+                <div class="rightBorder">
+                  <div class="greenColor">${{boxesData['paid_for_token']['profit']}}</div>
+                  <div class="smallerFade">Profit</div>
+                </div>
+                <div>
+                    <div>${{boxesData['paid_for_token']['loss']}}</div>
+                    <div class="smallerFade">Loss</div>
+                </div>
+              </app-user-dashboard-box-title>
+              <app-user-dashboard-box-data class="boxBigGreen1">${{boxesData['paid_for_token']['value']}}</app-user-dashboard-box-data>
+              <app-user-dashboard-box-footer class="boxFooter1">PAID FOR TOKEN</app-user-dashboard-box-footer>
+          </app-user-dashboard-box>
+          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
+            <app-user-dashboard-box-data class="boxBigGreen1">{{boxesData['total_value']}}</app-user-dashboard-box-data>
+            <app-user-dashboard-box-footer class="boxFooter1">TOKEN VALUE</app-user-dashboard-box-footer>
         </app-user-dashboard-box>
-        <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
-          <app-user-dashboard-box-data class="boxBigGreen">$1873.46</app-user-dashboard-box-data>
-          <app-user-dashboard-box-footer>TOKEN PRICE</app-user-dashboard-box-footer>
-        </app-user-dashboard-box>
-        <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
-            <app-user-dashboard-box-data class="boxBigGreen">$1873.46</app-user-dashboard-box-data>
-            <app-user-dashboard-box-footer>TOKEN PRICE</app-user-dashboard-box-footer>
-        </app-user-dashboard-box>
-        <div class="buttons">
-          <div class="green">BUY TOKENS</div>
-          <div class="white">SELL TOKENS</div>
-        </div>
-      </app-user-manage-teams-boxes>
+          <div class="buttons">
+            <div class="green"(click)="buyTokenButon(selectedMyTeam)">BUY TOKENS</div>
+            <div class="white">SELL TOKENS</div>
+          </div>
+        </app-user-manage-teams-boxes>
+      
       <app-user-chart-area [selectedTeam]="selectedTeam"></app-user-chart-area>
   </div>
 </div>
 <div class="content">
   <app-user-table>
     <app-user-table-title>Watched teams</app-user-table-title>
-    <app-user-table-data [style]="styleTopTeams" [data]="topTeams"></app-user-table-data>
+    <app-user-table-data [selectedTeam]="selectedWatchedTeam" (setSelected)="setWatchedSelectedValue($event)" [selectable]="true" [style]="styleTopTeams" [data]="watchedTeams"></app-user-table-data>
   </app-user-table>
-  <div class="teamArea">
-        <app-user-manage-teams-boxes>
-          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
-            <app-user-dashboard-box-data class="boxBigGreen1">$1873.46</app-user-dashboard-box-data>
-            <app-user-dashboard-box-footer>TOTAL TOKEN NUMBER</app-user-dashboard-box-footer>
+  <div *ngIf="watchedTeamsArea" class="teamArea">
+      <app-user-manage-teams-boxes>
+          <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
+            <app-user-dashboard-box-data class="boxBigGreen">{{boxesData['total_token_number']}}</app-user-dashboard-box-data>
+            <app-user-dashboard-box-footer class="boxFooter1">TOTAL TOKEN NUMBER</app-user-dashboard-box-footer>
           </app-user-dashboard-box>
-          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
-            <app-user-dashboard-box-data class="boxBigGreen1">$1873.46</app-user-dashboard-box-data>
-            <app-user-dashboard-box-footer>TOKEN PRICE</app-user-dashboard-box-footer>
+          <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
+            <app-user-dashboard-box-data class="boxBigGreen">${{boxesData['token_price']}}</app-user-dashboard-box-data>
+            <app-user-dashboard-box-footer class="boxFooter1">TOKEN PRICE</app-user-dashboard-box-footer>
           </app-user-dashboard-box>
-          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
-              <app-user-dashboard-box-data class="boxBigGreen1">$1873.46</app-user-dashboard-box-data>
-              <app-user-dashboard-box-footer>TOKEN PRICE</app-user-dashboard-box-footer>
+          <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
+              <app-user-dashboard-box-data class="boxBigGreen">{{boxesData['total_value']}}</app-user-dashboard-box-data>
+              <app-user-dashboard-box-footer class="boxFooter1">TOKEN VALUE</app-user-dashboard-box-footer>
           </app-user-dashboard-box>
-          <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
-            <app-user-dashboard-box-data class="boxBigGreen1">$1873.46</app-user-dashboard-box-data>
-            <app-user-dashboard-box-footer>TOKEN PRICE</app-user-dashboard-box-footer>
-        </app-user-dashboard-box>
           <div class="buttons">
-            <div class="green">BUY TOKENS</div>
-            <div class="white">SELL TOKENS</div>
+            <div class="green" (click)="buyTokenButon(selectedWatchedTeam)">BUY TOKENS</div>
           </div>
         </app-user-manage-teams-boxes>
       <app-user-chart-area [selectedTeam]="selectedTeam"></app-user-chart-area>
   </div>
 </div>
+
+<app-modal *ngIf="openedModal">
+    <app-modal-box [@flyInOut]="''">
+      <app-modal-box-title><div>Buy tokens</div></app-modal-box-title>
+      <app-modal-box-data class="modalBoxClass">
+        <div class="modalDataGroup">
+            <div class="modalDataLabel">Number of tokens</div>
+            <div class="modalDataInput"><input class="numberIput" type="number"/></div>
+        </div>
+        <div class="modalDataGroup">
+            <div class="modalDataLabel">Token price <div>(per token)</div></div>
+            <div class="modalDataInput"><input value="350 USD"></div>
+        </div>
+      </app-modal-box-data>
+      <app-modal-box-footer class="modalFooterGroup">
+        <div>
+            <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['club']"></app-user-table-row-club>
+            <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['tokens']"></app-user-table-row-club>
+            <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['value']"></app-user-table-row-club>
+            <div class="buyTokenModalButton" (click)="buyToken()">Buy token</div>
+        </div>
+          
+      </app-modal-box-footer>
+  </app-modal-box>
+  </app-modal>
