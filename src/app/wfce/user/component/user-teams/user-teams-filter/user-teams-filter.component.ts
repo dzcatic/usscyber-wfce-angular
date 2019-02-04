@@ -74,5 +74,18 @@ export class UserTeamsFilterComponent implements OnInit {
     })
     console.log("insideFilter", $event);
   }
+
+  setSelectedLeague($event){
+    this.setSelected.emit("league");
+    this.teamsService.filterByLeague($event.league_id).subscribe((data)=>{
+      
+      const [ teams ] = data;
+        console.log( "teams" , teams);
+        this.teamsService.setNumberOfPages(teams['numberOfPages']);
+        this.teamsService.setTopTeams(teams['data']);
+      console.log("insideFilter", $event);
+    })
+    console.log("insideFilter", $event);
+  }
  
 }

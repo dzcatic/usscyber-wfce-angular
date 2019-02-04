@@ -38,6 +38,9 @@ export class UserNavbarComponent implements OnInit {
               private _route: ActivatedRoute, 
               private authService: AuthService,
               private cartService: CartService) {
+    this.cartService.loadCart().subscribe((value)=>{
+      this.cartService.refreshCart(value);
+    })
     console.log(this._router.url)
     if(this._router.url.includes('dashboard')){
       this.dashboardActivated = true;
@@ -51,6 +54,7 @@ export class UserNavbarComponent implements OnInit {
     .subscribe((event:NavigationEnd) => {
       if(event.url.includes('dashboard')){
       this.dashboardActivated = true;
+      
     } else {
       this.dashboardActivated = false;
     }
@@ -87,7 +91,7 @@ export class UserNavbarComponent implements OnInit {
     if(this.dashboardActivated) {
       this._router.navigate(['/']);
     } else {
-      this._router.navigate(['dashboard'], { relativeTo: this._route });
+      this._router.navigate(['dashboard']);
     }
 
   }

@@ -55,6 +55,8 @@ import { ViewTeamsResolverService } from './services/resolver-service/view-teams
 import { SpinnerModule } from '../shared-modules/spinner/spinner.module';
 import { ManageTeamsResolverService } from './services/resolver-service/manage-teams-resolver.service';
 import { DashboardResolverService } from './services/resolver-service/dashboard-resolver.service';
+import { QRCodeModule } from 'angularx-qrcode';
+
 
 
 @NgModule({
@@ -69,7 +71,8 @@ import { DashboardResolverService } from './services/resolver-service/dashboard-
     NgbModalModule,
     NgbTooltipModule,
     NgxChartsModule,
-    SpinnerModule
+    SpinnerModule,
+    QRCodeModule
   ],
   declarations: [UserComponent,
                  UserNavbarComponent,

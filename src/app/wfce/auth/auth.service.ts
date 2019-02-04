@@ -120,7 +120,7 @@ export class AuthService {
             this.setUserSignup(authResult);
           }
         } else if (err) {
-          this.router.navigate(['/login']);
+          this.router.navigate(['login']);
           console.log(err);
         }
       });
@@ -163,13 +163,17 @@ export class AuthService {
               this.user = user['payload'];
             }
             this.returnUrl = localStorage.getItem('returnUrl');
-            localStorage.removeItem('returnUrl');
-            this.router.navigate([this.returnUrl]);
+            if(this.returnUrl){
+              localStorage.removeItem('returnUrl');
+              this.router.navigate([this.returnUrl]);
+            }
+            else this.router.navigate(['dashboard']);
+            
         },
         (err) => {
           // show error base on error type ( user is not signed up or some other error on server occurred)
           alert('Please sign up first!')
-          this.router.navigate(['/signup']);
+          this.router.navigate(['signup']);
         }
       );
   }

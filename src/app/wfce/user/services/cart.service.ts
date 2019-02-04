@@ -67,12 +67,12 @@ export class CartService extends AbstractService {
 
   public checkoutComplete(){
     console.log("ready for api", this.cart.id)
-    return of({addresses: {
+    /* return of({addresses: {
       bitcoincash: "qz97hfzx0e2pmlyp9zu3df89kyx9n4kvv5n37e6aru",
       bitcoin: "someString",
       etherium: "someString",
       litecoin: "someString" 
-    }});
-    //return this._map(this.http.post<any>(this._baseUrl + "cart/checkout/complete/" + this.cart.id, {withCredentials: true}));
+    }}); */
+    return this._map(this.http.post<any>(this._baseUrl + "cart/checkout/complete/" + this.cart.id, {withCredentials: true}));
   }
 }

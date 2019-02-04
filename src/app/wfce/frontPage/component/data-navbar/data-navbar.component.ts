@@ -63,7 +63,8 @@ export class DataNavbarComponent implements OnInit {
         this.dataNavbarService.setToggleData({value: 'most-valuable-teams',
                                           scroll: true});
       }, 0)
-      this.teamsSelectedService.setMostValuableTeams(value);
+      this.teamsSelectedService.setNumberOfPages(value['numberOfPages']);
+      this.teamsSelectedService.setMostValuableTeams(value['data']);
       
     })
     

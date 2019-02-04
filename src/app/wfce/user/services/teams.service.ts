@@ -229,6 +229,11 @@ export class TopTeamsService extends AbstractService {
     return this._map(this.http.get<any>(this._baseUrl + "teams/get_by_country/" + countryId + "?pageSize=" + pageSize + "&pageNumber="+pageNumber, {withCredentials: true}));
   }
 
+  public loadTeamsByLeague(leagueId: number, pageSize: number = 10, pageNumber: number = 1){
+    return this._map(this.http.get<any>(this._baseUrl + "teams/get_by_league/" + leagueId + "?pageSize=" + pageSize + "&pageNumber="+pageNumber, {withCredentials: true}));
+  }
+  
+
   public loadTeamsByWFCE(pageSize: number = 10, pageNumber: number = 1){
     return this._map(this.http.get<any>(this._baseUrl + "teams/paginate" + "?pageSize=" + pageSize + "&pageNumber="+pageNumber, {withCredentials: true}));
   }
@@ -254,6 +259,13 @@ export class TopTeamsService extends AbstractService {
     return Observable.forkJoin(
       this.loadLeaguesByCountry(countryId),
       this.loadTeamsByCountry(countryId),
+    )
+  }
+
+  public filterByLeague(leagueId: number): Observable<any>{
+    this.filterId = leagueId;
+    return Observable.forkJoin(
+      this.loadTeamsByLeague(leagueId)
     )
   }
 

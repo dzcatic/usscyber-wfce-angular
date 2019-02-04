@@ -26,7 +26,7 @@ export class UserGuardService implements CanActivate {
                   //if(!localStorage.getItem('returnUrl')){
                     localStorage.setItem('returnUrl', state.url);
                   //}
-                  this.router.navigate(['/login']);
+                  this.router.navigate(['login']);
                   return false;
                   // if user is not set, set him
                 } else if ( !this.authService.user ) {
@@ -41,7 +41,7 @@ export class UserGuardService implements CanActivate {
                 localStorage.setItem('returnUrl', state.url);
               //}
               
-              this.router.navigate(['/login']);
+              this.router.navigate(['login']);
                 return of(false);
             })
         )

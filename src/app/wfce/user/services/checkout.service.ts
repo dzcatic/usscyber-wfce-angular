@@ -14,6 +14,9 @@ export class CheckoutService {
    */
   showSuccesModal$: Subject<boolean> = new Subject();
 
+  /**QrCode string for payment
+   */
+  qrCodeString$: Subject<string> = new Subject();
   constructor() { }
 
 

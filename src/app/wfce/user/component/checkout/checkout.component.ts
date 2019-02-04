@@ -32,6 +32,7 @@ export class CheckoutComponent implements OnInit {
 
   checkoutStep: string;
   payment;
+  selectedStringQr;
   cart: Cart;
 
   constructor(private checkoutService: CheckoutService, 
@@ -49,13 +50,16 @@ export class CheckoutComponent implements OnInit {
       switch(step) { 
         case 'payment': {
            this.cartService.checkoutComplete().subscribe((value)=>{
-             this.payment = value;
+             this.payment = value['paymentReference'];
              this.checkoutStep = step;
            })
            break; 
         } 
         case 'bill': { 
-          this.checkoutStep = step;
+          if(this.selectedStringQr){
+            this.checkoutStep = step;
+          }
+          
            break; 
         } 
         default: { 
@@ -64,6 +68,9 @@ export class CheckoutComponent implements OnInit {
         } 
      } 
     });
+    this.checkoutService.qrCodeString$.subscribe((value)=>{
+      this.selectedStringQr = value;
+    })
     this.cartService.cart$.subscribe((value)=>{
       this.cart = value;
     });

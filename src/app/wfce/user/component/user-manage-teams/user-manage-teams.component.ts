@@ -141,12 +141,43 @@ export class UserManageTeamsComponent implements OnInit {
   }
 
   buyToken(){
-    this.cartService.addToCart(this.modalData['id'], this.modalData['tokens']['name']);
+    this.cartService.addToCart(this.modalData['id'], this.modalData['numberOfTokens']);
   }
 
   buyTokenButon(row){
     let data = {
       id: row['id'],
+      numberOfTokens: 0,
+      type: "buy",
+      modalStyle: {
+        component: "image-rows",
+        label: "small fade",
+        name: {},
+        league: {}
+      },
+      club: {
+        logo: row['logo'],
+        name: row['name'],
+        league: "La Liga"
+      },
+      tokens: {
+        name: "230",
+        label: "Tokens"
+      },
+      value: {
+        name: "$80,500",
+        label: "Value"
+      }
+    };
+
+    this.modalService.setModalData(data);
+  }
+
+  sellTokenButon(row){
+    let data = {
+      id: row['id'],
+      numberOfTokens: 0,
+      type: "sell",
       modalStyle: {
         component: "image-rows",
         label: "small fade",

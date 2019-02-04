@@ -43,7 +43,7 @@
         </app-user-dashboard-box>
           <div class="buttons">
             <div class="green"(click)="buyTokenButon(selectedMyTeam)">BUY TOKENS</div>
-            <div class="white">SELL TOKENS</div>
+            <div class="white" (click)="sellTokenButon(selectedMyTeam)" >SELL TOKENS</div>
           </div>
         </app-user-manage-teams-boxes>
       
@@ -77,13 +77,13 @@
   </div>
 </div>
 
-<app-modal *ngIf="openedModal">
+<app-modal *ngIf="openedModal && modalData['type']=='buy'">
     <app-modal-box [@flyInOut]="''">
       <app-modal-box-title><div>Buy tokens</div></app-modal-box-title>
       <app-modal-box-data class="modalBoxClass">
         <div class="modalDataGroup">
             <div class="modalDataLabel">Number of tokens</div>
-            <div class="modalDataInput"><input class="numberIput" type="number"/></div>
+            <div class="modalDataInput"><input class="numberIput" type="number" [(ngModel)]="modalData['numberOfTokens']"/></div>
         </div>
         <div class="modalDataGroup">
             <div class="modalDataLabel">Token price <div>(per token)</div></div>
@@ -101,3 +101,38 @@
       </app-modal-box-footer>
   </app-modal-box>
   </app-modal>
+
+  <app-modal *ngIf="openedModal && modalData['type']=='sell'">
+      <app-modal-box [@flyInOut]="''">
+        <app-modal-box-title><div>Sell tokens</div></app-modal-box-title>
+        <app-modal-box-data class="modalBoxClass">
+          <div class="modalDataGroup">
+              <div class="modalDataLabel">Number of tokens</div>
+              <div class="modalDataInput"><input class="numberIput" type="number" [(ngModel)]="modalData['numberOfTokens']"/></div>
+          </div>
+          <div class="modalDataGroup">
+              <div class="modalDataLabel">Set token price <div>(per token)</div></div>
+              <div class="modalDataInput"><input value="350 USD"></div>
+          </div>
+        </app-modal-box-data>
+        <app-modal-box-data class="modalBoxClass">
+            <div class="modalDataGroup">
+                <div class="modalDataLabel">Sale starts</div>
+                <div class="modalDataInput"><input type="datetime" /></div>
+            </div>
+            <div class="modalDataGroup">
+                <div class="modalDataLabel">Sale ends</div>
+                <div class="modalDataInput"><input value="Ekica"></div>
+            </div>
+          </app-modal-box-data>
+        <app-modal-box-footer class="modalFooterGroup">
+          <div>
+              <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['club']"></app-user-table-row-club>
+              <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['tokens']"></app-user-table-row-club>
+              <app-user-table-row-club [class.revert]="modalData['modalStyle']['revert']" [style]="modalData['modalStyle']" [columnName]="'club'" [data]="modalData['value']"></app-user-table-row-club>
+              <div class="buyTokenModalButton" >Save</div>
+          </div>
+            
+        </app-modal-box-footer>
+    </app-modal-box>
+    </app-modal>

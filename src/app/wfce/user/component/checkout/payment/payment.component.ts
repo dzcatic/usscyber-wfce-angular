@@ -12,6 +12,7 @@ export class PaymentComponent implements OnInit {
   payment;
 
   selectedPaymentMethod: string;
+  selectedStringQr: string;
 
   paymentLogos = [ 
     {
@@ -44,6 +45,7 @@ export class PaymentComponent implements OnInit {
 
   handlePaymentString(paymentMethod: string, paymentString: string){
     this.selectedPaymentMethod = paymentMethod;
+    this.checkoutService.qrCodeString$.next(paymentString);
     console.log(paymentMethod)
     console.log(paymentString)
   }

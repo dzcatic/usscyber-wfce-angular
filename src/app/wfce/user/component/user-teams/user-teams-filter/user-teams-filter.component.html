@@ -1,6 +1,6 @@
 <app-user-autocomplete (setSelected)="setSelectedContinent($event)" [data]="continents" [placeholder]="'Continent'"></app-user-autocomplete>
 <app-user-autocomplete *ngIf="showCountriesFilter" [@appearAndMove]="''" (setSelected)="setSelectedCountry($event)" [data]="countries" [placeholder]="'Country'"></app-user-autocomplete>
-<app-user-autocomplete *ngIf="showLeaguesFilter" [@appearAndMove]="''"  [data]="leagues" [attributeToShow]="'league_name'" [placeholder]="'League'"></app-user-autocomplete>
+<app-user-autocomplete *ngIf="showLeaguesFilter" [@appearAndMove]="''"  (setSelected)="setSelectedLeague($event)" [data]="leagues" [attributeToShow]="'league_name'" [placeholder]="'League'"></app-user-autocomplete>
 <app-user-autocomplete  [data]="continents" [placeholder]="'Search teams'" [type]="'search'"></app-user-autocomplete>
 <div class="searchButton">Search</div>
 <!-- <app-user-autocomplete [data]="countries" [placeholder]="'Continent'"></app-user-autocomplete> -->

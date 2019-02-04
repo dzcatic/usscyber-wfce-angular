@@ -22,6 +22,7 @@ export class UserComponent implements OnInit {
               private authService: AuthService,
               private _route: ActivatedRoute,
               private cartService: CartService) {
+    console.log("user se opet poziva");
     // this.user = userService.getUser();
     this.user = authService.user;
     this.cart =  this._route.snapshot.data["cartData"];

@@ -32,6 +32,7 @@ export class UserTableOptionsComponent implements OnInit {
   buyToken(option){
     let data = {
       id: this.row['id'],
+      numberOfTokens: 0,
       modalStyle: {
         component: "image-rows",
         label: "small fade",

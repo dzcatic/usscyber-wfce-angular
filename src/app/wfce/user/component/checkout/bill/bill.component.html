@@ -5,16 +5,17 @@
   </div>
   <div class="bill-wrapper-content">
     <div class="bill-wrapper-content--info">
-        <p>Please make payment in next 20 minutes.</p>
-        <p class="mb-20">Once payment are placed, tokens will be transfered
-          automatically to your account.</p>
+        <p>Please make payment in next 50 minutes.</p>
+        <p class="mb-20">Once payment is placed, tokens will be transferred automatically to your account.</p>
         <p class="mb-40">Please follow link below, or scan QR code.</p>
-        <p class="mb-40">Open link <a href="#">HERE</a>.</p>
+        <p class="mb-40">Use address to complete transaction:</p>
+        <p class="mb-40">{{selectedStringQr}}</p>
 
     </div>
     <div class="bill-wrapper-content-qr">
       <div class="bill-wrapper-content-qr--background">
-          <img src="assets/img/checkout/group13@2x.png">
+          <!-- <img src="assets/img/checkout/group13@2x.png"> -->
+          <qrcode *ngIf="selectedStringQr !== undefined" [qrdata]="selectedStringQr" [size]="120" [level]="'M'"></qrcode>
       </div>
     </div>
   </div>

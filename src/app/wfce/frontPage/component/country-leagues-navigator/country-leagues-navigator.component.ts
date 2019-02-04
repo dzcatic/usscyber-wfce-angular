@@ -28,7 +28,7 @@ export class CountryLeaguesNavigatorComponent implements OnInit {
   }
 
   setLeague(league){
-    this.leagueSelectedService.setCurrentLeague(league.id);
+    this.leagueSelectedService.setCurrentLeague(league);
   }
 
 }

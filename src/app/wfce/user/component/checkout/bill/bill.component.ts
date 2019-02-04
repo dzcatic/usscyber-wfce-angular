@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import {
   trigger,
   state,
@@ -24,6 +24,9 @@ import { CheckoutService } from '../../../services/checkout.service';
 })
 export class BillComponent implements OnInit {
 
+  @Input()
+  selectedStringQr;
+
   showModal = false;
 
   constructor(private checkoutService: CheckoutService) { }
@@ -32,6 +35,7 @@ export class BillComponent implements OnInit {
       this.checkoutService.showSuccesModal$.subscribe((show) => {
           this.showModal = show;
       });
+      console.log(this.selectedStringQr)
   }
 
   finishOrder() {

@@ -261,7 +261,7 @@ export class SignupFormComponent implements OnInit {
 
   closeModal() {
     this.verifyEmailDialog = false;
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['dashboard']);
   }
 
 }

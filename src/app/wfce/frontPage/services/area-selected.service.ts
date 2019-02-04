@@ -44,21 +44,16 @@ export class AreaSelectedService extends AbstractService  {
       const combined = Observable.forkJoin(
         this.loadMostValuableTeamsByContinent(value.id),
       )
-      console.log("before load");
       combined.subscribe(latestValues => {
         //console.log( "all" , latestValues);
-          const [ teams ] = latestValues;
-          console.log("after load", value);
-          //console.log( "leagues" , leagues);
-          //console.log( "teams" , teams);
-          
-          
-          
+          const [ teams ] = latestValues;    
           setTimeout(()=>{
             
             this.setContinentSelected(true);
             this.currentContinent$.next(value);
-            this.teamsSelectedService.setMostValuableTeams(teams);
+            this.teamsSelectedService.setNumberOfPages(teams['numberOfPages']);
+            this.teamsSelectedService.setMostValuableTeams(teams['data']);
+            
             this.dataNavbarService.setToggleData({value: 'most-valuable-teams',
                                                 scroll: false});
           }, 0)
@@ -90,7 +85,9 @@ export class AreaSelectedService extends AbstractService  {
           this.setCountrySelected(true);
           this.currentCountry$.next(value);
           setTimeout(()=>{
-            this.teamsSelectedService.setMostValuableTeams(teams);
+            this.teamsSelectedService.setNumberOfPages(teams['numberOfPages']);
+            this.teamsSelectedService.setMostValuableTeams(teams['data']);
+           
             this.leagueSelectedService.setCountryLeagues(leagues);
             this.dataNavbarService.setToggleData({value: 'most-valuable-teams',
                                                 scroll: false});
@@ -114,16 +111,16 @@ export class AreaSelectedService extends AbstractService  {
 
   
 
-  public loadMostValuableTeams():Observable<any>{
-    return this._map(this.http.get<any>(this._baseUrl + "teams/get", {withCredentials: true}));
+  public loadMostValuableTeams(pageSize: number = 10, pageNumber: number = 1):Observable<any>{
+    return this._map(this.http.get<any>(this._baseUrl + "teams/paginate?pageSize=" + pageSize + "&pageNumber="+pageNumber, {withCredentials: true}));
   }
 
-  public loadMostValuableTeamsByCountry(countryId: number):Observable<any>{
-    return this._map(this.http.get<any>(this._baseUrl + "teams/get_by_country/"+ countryId, {withCredentials: true}));
+  public loadMostValuableTeamsByCountry(countryId: number, pageSize: number = 10, pageNumber: number = 1):Observable<any>{
+    return this._map(this.http.get<any>(this._baseUrl + "teams/get_by_country/"+ countryId + "?pageSize=" + pageSize + "&pageNumber="+pageNumber, {withCredentials: true}));
   }
 
-  public loadMostValuableTeamsByContinent(continentId: number):Observable<any>{
-    return this._map(this.http.get<any>(this._baseUrl + "teams/get_by_continent/"+ continentId, {withCredentials: true}));
+  public loadMostValuableTeamsByContinent(continentId: number, pageSize: number = 10, pageNumber: number = 1):Observable<any>{
+    return this._map(this.http.get<any>(this._baseUrl + "teams/get_by_continent/"+ continentId + "?pageSize=" + pageSize + "&pageNumber="+pageNumber, {withCredentials: true}));
   }
 
   setCountrySelected(value){

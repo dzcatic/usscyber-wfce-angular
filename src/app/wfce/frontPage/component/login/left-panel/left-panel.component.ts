@@ -17,7 +17,7 @@ export class LeftPanelComponent implements OnInit {
   }
 
   openDashobardTimeline(){
-    this._router.navigate(['dashboard'], { relativeTo: this._route });
+    this._router.navigate(['dashboard']);
     this.dataNavbarService.setToggleData({value: 'timeline',
                                           scroll: true});
   }

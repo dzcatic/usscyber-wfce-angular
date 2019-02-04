@@ -19,5 +19,5 @@
 
 <app-cart *ngIf="checkoutStep == 'cart'" ></app-cart>
 <app-payment *ngIf="checkoutStep == 'payment'" [payment]="payment" ></app-payment>
-<app-bill *ngIf="checkoutStep == 'bill'" ></app-bill>
+<app-bill *ngIf="checkoutStep == 'bill'" [selectedStringQr]="selectedStringQr"></app-bill>
 </div>

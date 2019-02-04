@@ -1,22 +1,20 @@
-<app-user-table-title *ngIf="isContinentSelected && !isCountrySelected" (showBy)="showByThisMany($event)">Most valuable teams in {{selectedContinent.name}}</app-user-table-title>
-<app-user-table-title *ngIf="isCountrySelected" (showBy)="showByThisMany($event)">Most valuable teams in {{selectedCountry.name}}</app-user-table-title>
+<app-user-table-title *ngIf="selectedFilter == 'continent'" (showBy)="showByThisMany($event)">Most valuable teams in {{selectedContinent.name}}</app-user-table-title>
+<app-user-table-title *ngIf="selectedFilter == 'country'" (showBy)="showByThisMany($event)">Most valuable teams in {{selectedCountry.name}}</app-user-table-title>
+<app-user-table-title *ngIf="selectedFilter == 'league'" (showBy)="showByThisMany($event)">Most valuable teams in {{selectedLeague.league_name}}</app-user-table-title>
 <app-user-table-title *ngIf="!isContinentSelected" (showBy)="showByThisMany($event)">Most valuable teams</app-user-table-title>
 
-<app-user-table-data [data]="nowShowingMostValuableTeams" [style]="styleTopTeams"></app-user-table-data>
+<app-user-table-data [data]="mostValuableTeams" [style]="styleTopTeams"></app-user-table-data>
 <div class="pagination">
     <div class="arrow" (click)="setOffset(offset - 1)"><i class="gi-slider_arrow_left"></i></div>
     <div class="pagesPagination">
-        <div class="pagePagination" (click)="setOffset(0)" [class.selected]="0==offset" *ngIf="numberOfPages > 4 && offset > 1">1</div>
-        <div class="pagePaginationDots" *ngIf="numberOfPages > 4 && offset > 1">...</div>
-       <!--  <div #page class="pagePagination"   [innerHTML]='offset < 3 ? "1" : (offset > numberOfPages-3 ? numberOfPages-2 : offset)' (click)="setOffset(page.innerHTML - 1)" [class.selected]="(page.innerHTML - 1)==offset"></div>
-        <div #page1 class="pagePagination"  [innerHTML]='offset < 3 ? "2" : (offset > numberOfPages-3 ? numberOfPages-1 : offset +1)' (click)="setOffset(page1.innerHTML - 1)" [class.selected]="(page1.innerHTML - 1)==offset"></div>
-        <div #page2 class="pagePagination"  [innerHTML]='offset < 3 ? "3" : (offset > numberOfPages-3 ? numberOfPages : offset +2)' (click)="setOffset(page2.innerHTML - 1)" [class.selected]="(page2.innerHTML - 1)==offset"></div> -->
+        <div class="pagePagination" (click)="setOffset(1)" [class.selected]="1==offset" *ngIf="numberOfPages > 4 && offset > 2">1</div>
+        <div class="pagePaginationDots" *ngIf="numberOfPages > 4 && offset > 2">...</div>
         <ng-container *ngFor="let index of pagesArray">
-            <div *ngIf=" (index == offset || index == offset - 1 || index == offset + 1)" class="pagePagination" (click)="setOffset(index)" [class.selected]="index==offset" >{{index + 1}}</div>
+            <div *ngIf=" (index == offset -1 || index == offset - 2 || index == offset)" class="pagePagination" (click)="setOffset(index + 1)" [class.selected]="(index + 1)==offset" >{{index + 1}}</div>
         </ng-container>
         
-        <div class="pagePaginationDots" *ngIf="numberOfPages > 4 && offset < (numberOfPages-2)">...</div>
-        <div class="pagePagination" (click)="setOffset(numberOfPages-1)" [class.selected]="offset==numberOfPages-1" *ngIf="numberOfPages > 4 && offset < (numberOfPages-2)">{{numberOfPages}}</div>
+        <div class="pagePaginationDots" *ngIf="numberOfPages > 4 && offset < (numberOfPages-1)">...</div>
+        <div class="pagePagination" (click)="setOffset(numberOfPages)" [class.selected]="offset==numberOfPages" *ngIf="numberOfPages > 4 && offset < (numberOfPages-1)">{{numberOfPages}}</div>
     </div>
     <div class="arrow" (click)="setOffset(offset + 1)"><i class="gi-slider_arrow_right"></i></div>
 </div>
@@ -27,7 +25,7 @@
       <app-modal-box-data class="modalBoxClass">
         <div class="modalDataGroup">
             <div class="modalDataLabel">Number of tokens</div>
-            <div class="modalDataInput"><input class="numberIput" type="number"/></div>
+            <div class="modalDataInput"><input class="numberIput" type="number" [(ngModel)]="modalData['numberOfTokens']"/></div>
         </div>
         <div class="modalDataGroup">
             <div class="modalDataLabel">Token price <div>(per token)</div></div>

@@ -4,6 +4,7 @@ import { AreaSelectedService } from '../../../services/area-selected.service';
 import { ModalService } from '../../../../shared-modules/modal/modal.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CartService } from '../../../../user/services/cart.service';
+import { LeagueSelectedService } from '../../../services/league-selected.service';
 
 @Component({
   selector: 'app-most-valuable-teams',
@@ -30,10 +31,12 @@ export class MostValuableTeamsComponent implements OnInit {
   public isContinentSelected = false;
   public selectedContinent;
   public selectedCountry;
+  public selectedLeague;
+  public selectedFilter: string;
 
 
   public showByPage = 10;
-  public offset = 0;
+  public offset = 1;
   public numberOfPages;
   pagesArray;
 
@@ -78,6 +81,7 @@ export class MostValuableTeamsComponent implements OnInit {
 
   constructor(private teamsSelectedService: TeamsSelectedService, 
               private areaSelectedService: AreaSelectedService,
+              private leagueSelectedService: LeagueSelectedService,
               private modalService: ModalService,
               private cartService: CartService) {
     
@@ -86,21 +90,38 @@ export class MostValuableTeamsComponent implements OnInit {
   ngOnInit() {
     this.teamsSelectedService.mostValuableTeams$.subscribe((value)=>{
       this.mostValuableTeams = value;
-      this.setNowShowing();
+      this.numberOfPages = this.teamsSelectedService.getNumberOfPages();
+      this.pagesArray= Array.from(Array(this.numberOfPages).keys());
+      //this.setNowShowing();
     })
     this.areaSelectedService.countrySelected$.subscribe((value)=>{
       this.isCountrySelected = value;
+      this.selectedFilter = this.isCountrySelected ? 'country' : 'all';
+      this.offset = 1;
+      if(this.selectedFilter !== 'country'){
+        this.setNowShowing();
+      }
+      
     });
     this.areaSelectedService.continentSelected$.subscribe((value)=>{
       this.isContinentSelected = value;
-      console.log(this.isContinentSelected);
+      this.selectedFilter = this.isContinentSelected ? 'continent' : 'all';
+      this.offset = 1;
+      if(this.selectedFilter !== 'continent'){
+        this.setNowShowing();
+      }
     });
-    /* this.areaSelectedService.currentContinent$.subscribe((value)=>{
-      this.selectedContinent = value;
-      console.log(this.selectedContinent);
-    }) */
+    this.leagueSelectedService.currentLeague$.subscribe((value)=>{
+      this.selectedFilter = value !== "" ? 'league' : 'country';
+      this.selectedLeague = value !== "" ? value : null;
+
+      this.offset = 1;
+      if(value !== ""){
+        this.setNowShowing();
+      }
+      
+    })
     this.areaSelectedService.currentContinent$.subscribe((value)=>{
-      console.log(value);
       this.selectedContinent = value;
     })
     this.areaSelectedService.currentCountry$.subscribe((value)=>{
@@ -123,34 +144,80 @@ export class MostValuableTeamsComponent implements OnInit {
   }
 
   setNowShowing(){
-    this.calculatePages();
-    if(this.numberOfPages < this.offset + 1){
-      this.offset = this.numberOfPages -1;
+    //this.calculatePages();
+    switch(this.selectedFilter) { 
+      case 'continent': {
+        this.areaSelectedService.loadMostValuableTeamsByContinent(this.selectedContinent.id, this.showByPage, this.offset).subscribe((topTeams)=>{
+          if(topTeams['data'].length > 0){
+            this.teamsSelectedService.setNumberOfPages(topTeams['numberOfPages']);
+            this.teamsSelectedService.setMostValuableTeams(topTeams['data']);
+            
+          }
+        });
+        //statements; 
+        break; 
+     } 
+     case 'country': {
+      this.areaSelectedService.loadMostValuableTeamsByCountry(this.selectedCountry.id, this.showByPage, this.offset).subscribe((topTeams)=>{
+        if(topTeams['data'].length > 0){
+          this.teamsSelectedService.setNumberOfPages(topTeams['numberOfPages']);
+          this.teamsSelectedService.setMostValuableTeams(topTeams['data']);
+            
+        }
+      });
+      //statements; 
+      break; 
+   }
+   case 'league': {
+    this.leagueSelectedService.loadMostValuableTeamsByLeague(this.selectedLeague.league_id, this.showByPage, this.offset).subscribe((topTeams)=>{
+      if(topTeams['data'].length > 0){
+        this.teamsSelectedService.setNumberOfPages(topTeams['numberOfPages']);
+        this.teamsSelectedService.setMostValuableTeams(topTeams['data']);
+          
+      }
+    });
+    //statements; 
+    break; 
+ }
+   default: { 
+    this.areaSelectedService.loadMostValuableTeams(this.showByPage, this.offset).subscribe((topTeams)=>{
+      if(topTeams['data'].length > 0){
+        this.teamsSelectedService.setNumberOfPages(topTeams['numberOfPages']);
+        this.teamsSelectedService.setMostValuableTeams(topTeams['data']);
+          
+      }
+    });
+    //statements; 
+    break;
+  } 
     }
-    this.nowShowingMostValuableTeams = this.mostValuableTeams.slice(this.offset*Number(this.showByPage), this.offset*Number(this.showByPage) + Number(this.showByPage));
+    if(this.numberOfPages < this.offset + 1){
+      this.offset = this.numberOfPages;
+    }
     
   }
 
-  calculatePages(){
+  /* calculatePages(){
     let length = this.mostValuableTeams.length;
     let currentAmount = Number(this.showByPage);
     this.numberOfPages = Math.ceil(length/currentAmount);
     this.pagesArray= Array.from(Array(this.numberOfPages).keys());
-  }
+  } */
 
   setOffset(value){
     if(value < 0){
       value = 0;
     }
-    if(value>this.numberOfPages-1){
-      value = this.numberOfPages - 1;
+    if(value>this.numberOfPages){
+      value = this.numberOfPages;
     }
     this.offset = value;
+    console.log(this.offset)
     this.setNowShowing();
   }
 
   buyToken(){
-    this.cartService.addToCart(this.modalData['id'], this.modalData['tokens']['name']);
+    this.cartService.addToCart(this.modalData['id'], this.modalData['numberOfTokens']);
   }
 
 }

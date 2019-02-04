@@ -138,6 +138,18 @@ export class UserTeamsComponent implements OnInit {
          //statements; 
          break; 
       } 
+      case 'league': { 
+        this.topTeamsService.loadTeamsByLeague(this.topTeamsService.getFilterId(), 10, nextPage).subscribe((topTeams)=>{
+          if(topTeams['data'].length > 0){
+            this.topTeamsService.setNumberOfPages(topTeams['numberOfPages']);
+            this.numberOfPages = topTeams['numberOfPages'];
+            this.topTeamsService.setTopTeams(topTeams['data']); 
+            this.currentPage = nextPage;
+          }
+        });
+         //statements; 
+         break; 
+      } 
       default: { 
         this.topTeamsService.loadTeamsByWFCE( 10, nextPage).subscribe((topTeams)=>{
           if(topTeams['data'].length > 0){
@@ -154,7 +166,7 @@ export class UserTeamsComponent implements OnInit {
   }
 
   buyToken(){
-    this.cartService.addToCart(this.modalData['id'], this.modalData['tokens']['name']);
+    this.cartService.addToCart(this.modalData['id'], this.modalData['numberOfTokens']);
   }
 
 }
