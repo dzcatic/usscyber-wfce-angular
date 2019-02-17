@@ -1,11 +1,11 @@
 
 <div class="modal-header">
-  <h4 class="modal-title">Congratulations</h4>
+  <h4 class="modal-title">{{ 'checkout.modal.title' | userTranslation | translate  }}</h4>
 </div>
 <div class="modal-body">
-  <img src="assets/img/checkout/rocket@2x.png" alt="">
-  <p>All done. You have successfully made purchase.</p>
-  <p>Keep an eye out on your teams and besto of luck!</p>
+  <img [src]="imageBaseUrl + 'assets/img/checkout/rocket@2x.png'" alt="">
+  <p>{{ 'checkout.modal.contentTop' | userTranslation | translate  }}.</p>
+  <p>{{ 'checkout.modal.contentBottom' | userTranslation | translate  }}!</p>
 </div>
 <div class="modal-footer">
   <button type="button" (click)="closeModal()" >OK</button>

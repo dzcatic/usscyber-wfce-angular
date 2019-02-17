@@ -4,6 +4,7 @@ import { AuthService } from '../../../../auth/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { UserProfileFormControls } from '../../../../interfaces/user.profile.interface';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-user-box',
@@ -45,15 +46,17 @@ export class UserBoxComponent implements OnInit {
     language: ['', Validators.required]
   });
 
+  _baseUrl = environment.apiUrl;
+
   constructor(private userService: UserService, private authService: AuthService, private fb: FormBuilder, private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('http://13.66.167.226/wfceApp/public/api/countries/get')
+    this.http.get(this._baseUrl + 'countries/get')
               .subscribe((countries) => {
           this.countries = countries['payload'];
     });
      // load languages
-     this.http.get('http://13.66.167.226/wfceApp/public/api/global/languages')
+     this.http.get(this._baseUrl + 'global/languages')
      .subscribe((language) => {
         this.languages = language['payload'];
         // this.form.patchValue({language: this.languages[0]});

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../../auth/auth.service';
+import { environment } from '../../../../../environments/environment';
 
 
 declare const FB: any;
@@ -17,6 +18,7 @@ export class SignupComponent implements OnInit {
   public microsoftUser = {};
   public googleUser = {};
   public auth2: any;
+  imageBaseUrl = environment.imageBaseUrl;
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 

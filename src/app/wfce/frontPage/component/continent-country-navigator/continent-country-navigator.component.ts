@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AreaSelectedService } from '../../services/area-selected.service';
 import { WorldMapService } from '../../services/world-map.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-continent-country-navigator',
@@ -13,6 +14,7 @@ export class ContinentCountryNavigatorComponent implements OnInit {
   currentContinent;
 
   public countries;
+  imageBaseUrl = environment.imageBaseUrl;
 
   constructor(private areaSelectedService: AreaSelectedService, private worldMapService: WorldMapService) { }
 

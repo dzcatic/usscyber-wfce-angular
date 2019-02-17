@@ -4,6 +4,7 @@ import { ModalService } from '../../../shared-modules/modal/modal.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-user-teams',
@@ -33,6 +34,8 @@ export class UserTeamsComponent implements OnInit {
   modalData;
   showSpinner = false;
 
+  imageBaseUrl = environment.imageBaseUrl;
+
   public styleTopTeams={
     rank: {},
     team: {
@@ -42,7 +45,7 @@ export class UserTeamsComponent implements OnInit {
     },
     points: {},
     marketPrice: {
-      image: "assets/img/dashboard/Bitmap.png",
+      image: this.imageBaseUrl + "assets/img/dashboard/Bitmap.png",
       component: "image-rows",
       currentPrice: {},
       priceFluxPercentage: "small fade",

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CheckoutService } from '../../../services/checkout.service';
+import { environment } from '../../../../../../environments/environment';
 
 
 @Component({
@@ -8,6 +9,8 @@ import { CheckoutService } from '../../../services/checkout.service';
   styleUrls: ['./success.component.scss']
 })
 export class SuccessComponent implements OnInit {
+
+  imageBaseUrl = environment.imageBaseUrl;
 
   constructor(private checkoutService: CheckoutService) { }
 

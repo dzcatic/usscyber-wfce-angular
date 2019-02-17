@@ -6,7 +6,7 @@
     <p class="title">Log in to WFCE</p>
     <div content class="google" (click)="googleAuth()">
         <div class="google-img">
-            <img src="assets/img/login-signup/search@2x.png">
+            <img [src]="imageBaseUrl + 'assets/img/login-signup/search@2x.png'">
         </div>
         <div class="google-p">
             <p>Log in with Google</p>
@@ -15,7 +15,7 @@
       </div>
       <div content class="microsoft" (click)="microsoftAuth()">
           <div class="microsoft-img">
-              <img src="assets/img/login-signup/microsoft@2x.png">
+              <img [src]="imageBaseUrl + 'assets/img/login-signup/microsoft@2x.png'">
           </div>
           <div class="microsoft-p">
               <p>Log in with Microsoft</p>

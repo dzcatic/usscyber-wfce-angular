@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ModalService } from '../../../../shared-modules/modal/modal.service';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-user-dashboard-boxes',
@@ -22,6 +23,7 @@ import { ModalService } from '../../../../shared-modules/modal/modal.service';
 export class UserDashboardBoxesComponent implements OnInit {
 
   public openedModal = false;
+  imageBaseUrl = environment.imageBaseUrl;
 
   get dayOfTheWeek() : string { return new Date().toLocaleString('en-us', {  weekday: 'long' }); }
 

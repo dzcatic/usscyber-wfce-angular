@@ -3,7 +3,7 @@
     Cart
   </div>
   <div class="userDropdownNavbarData">Currently in the cart</div>
-  <div *ngIf="cart === undefined || cart.numberOfItems == 0 ; else cartItems" class="userDropdownNavbarFooter">
+  <div *ngIf="cart === null || cart['numberOfItems'] == 0 ; else cartItems" class="userDropdownNavbarFooter">
       <div class="userDropdownNavbarItem">
         No results!
       </div>

@@ -9,6 +9,7 @@ export class DataNavbarService {
    */
 
   private toggleData;
+  private lateScroll;
 
   public toggleData$ = new BehaviorSubject<any>({value: 'timeline',
                                                 scroll: true});
@@ -22,6 +23,18 @@ export class DataNavbarService {
 
   getToggleData(){
     return this.toggleData;
+  }
+
+  setLateScroll(value){
+    this.toggleData = value;
+    this.lateScroll = true;
+  }
+
+  checkAndDoLateScroll(){
+    if(this.lateScroll){
+      this.setToggleData(this.toggleData);
+    }
+    this.lateScroll = false;
   }
 
   

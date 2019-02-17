@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar.component';
 import { NavbarDropdownComponent } from './navbar-dropdown/navbar-dropdown.component';
+import { NavbarIndicatorComponent } from './navbar-indicator/navbar-indicator.component';
+import { NavbarIndicatorService } from './navbar-indicator.service';
 
 @NgModule({
   imports: [
@@ -9,10 +11,15 @@ import { NavbarDropdownComponent } from './navbar-dropdown/navbar-dropdown.compo
   ],
   declarations: [
     NavbarComponent,
-    NavbarDropdownComponent
+    NavbarDropdownComponent,
+    NavbarIndicatorComponent
   ],
   exports: [
     NavbarComponent,
+    NavbarIndicatorComponent
   ],
+  providers: [
+    NavbarIndicatorService
+  ]
 })
 export class NavbarModule { }

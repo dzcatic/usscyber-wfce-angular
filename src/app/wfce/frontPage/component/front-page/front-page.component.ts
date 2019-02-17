@@ -8,6 +8,7 @@ import { DataNavbarService } from '../../services/data-navbar.service';
 import { TeamsSelectedService } from '../../services/teams-selected.service';
 import { AuthService } from '../../../auth/auth.service';
 import { SpinnerService } from '../../../shared-modules/spinner/spinner.service';
+import { NavbarIndicatorService } from '../../../shared-modules/navbar/navbar-indicator.service';
 
 
 @Component({
@@ -37,6 +38,10 @@ export class FrontPageComponent implements OnInit {
   public isLeagueSelected: boolean;
   public timelineSelected: boolean;
 
+  public message = "";
+  public messageSuccess = true;
+  public indicator = false;
+
   /**
    * Getting countries from api in resolver service
    */
@@ -51,7 +56,8 @@ export class FrontPageComponent implements OnInit {
               private worldMapService: WorldMapService,
               private dataNavbarService: DataNavbarService,
               private teamsSelectedService: TeamsSelectedService,
-              private spinnerService: SpinnerService) {
+              private spinnerService: SpinnerService,
+              private indicatorService: NavbarIndicatorService) {
     this.backendCountries =  this._route.snapshot.data["backendCountries"];
     if(this.dataNavbarService.getToggleData() != undefined){
       this.toggleData = this.dataNavbarService.getToggleData();
@@ -64,6 +70,7 @@ export class FrontPageComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.dataNavbarService.checkAndDoLateScroll();
     this.leagueSelected.currentLeague$.subscribe((value)=>{
       if(value)
       {
@@ -84,6 +91,17 @@ export class FrontPageComponent implements OnInit {
     this.authService.openSignupDialog.subscribe(show => {
       this.showSignupDialog = show;
     });
+    this.indicatorService.toggleIndicator$.subscribe((value)=>{
+      this.indicator = value;
+    })
+    this.indicatorService.data$.subscribe((value)=>{
+      this.message = value['message'];
+      this.messageSuccess = value['success']
+      console.log(value);
+      if(this.message !== undefined){
+        this.indicatorService.openIndicator();
+      }
+    })
 
     this.user = this.authService.user;
   }

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CartService } from '../../user/services/cart.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Cart } from '../../interfaces/cart.interface';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -24,6 +25,7 @@ import { Cart } from '../../interfaces/cart.interface';
 export class NavbarComponent implements OnInit {
 
   dropdownSelected = false;
+  imageBaseUrl = environment.imageBaseUrl;
 
   numberOfCartItems;
   cart: Cart;

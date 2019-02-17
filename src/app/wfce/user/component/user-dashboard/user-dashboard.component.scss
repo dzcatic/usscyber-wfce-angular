@@ -23,5 +23,16 @@
         display: grid;
         grid-template-columns: auto auto auto;
         grid-column-gap: 20px;
+        .additionToTitle{
+            display: flex;
+            align-items: flex-end;
+            .greenMarginLeft{
+                color: $green-color;
+                padding: 5px;
+                font-size: 15px;
+                @include selectable;
+            }
+        }
+        
     }
 }

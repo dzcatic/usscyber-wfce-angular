@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AreaSelectedService } from '../../services/area-selected.service';
 import { LeagueSelectedService } from '../../services/league-selected.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-country-leagues-navigator',
@@ -13,6 +14,7 @@ export class CountryLeaguesNavigatorComponent implements OnInit {
   currentCountry;
 
   public leagues;
+  imageBaseUrl = environment.imageBaseUrl;
 
 
   constructor(private areaSelectedService: AreaSelectedService, private leagueSelectedService: LeagueSelectedService) { }

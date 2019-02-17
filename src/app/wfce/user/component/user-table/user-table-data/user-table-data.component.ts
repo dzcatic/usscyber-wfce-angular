@@ -33,7 +33,7 @@ export class UserTableDataComponent implements OnInit {
 
   get month() : string { return new Date().toLocaleString('en-us', {  month: 'long' }); }
 
-  get dayOfTheMonth() : string { 
+  get dayOfTheMonth() : string {
     let day = new Date().getDate();
     return day + this.getDayOfMonthSuffix(day);
   }

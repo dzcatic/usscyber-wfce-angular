@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { ModalService } from '../../../shared-modules/modal/modal.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-user-manage-teams',
@@ -37,6 +38,8 @@ export class UserManageTeamsComponent implements OnInit {
   watchedTeamsArea = false;
   myTeamsArea = false;
 
+  imageBaseUrl = environment.imageBaseUrl;
+
   public styleTopTeams={
     team: {
         component: "image-rows",
@@ -57,13 +60,15 @@ export class UserManageTeamsComponent implements OnInit {
     marketPrice: {
       revert: true,
       icon: true,
-      src: "assets/img/dashboard/Bitmap.png",
+      src: this.imageBaseUrl + "assets/img/dashboard/Bitmap.png",
       component: "image-rows-image",
       currentPrice: {},
       priceFluxPercentage: "small fade",
       
     }
   };
+
+  
 
   /* styleTopTeams={
     club: {

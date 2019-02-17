@@ -10,9 +10,9 @@
     <circle [class.active]="checkoutStep == 'bill'" class="cls-1" cx="2595" cy="530.5" r="38.5"></circle>
     </svg>
     <div class="stepper-content">
-      <p>Cart</p>
-      <p>Payment</p>
-      <p>Bill</p>
+      <p>{{ 'checkout.cart' | userTranslation | translate  }}</p>
+      <p>{{ 'checkout.payment' | userTranslation | translate  }}</p>
+      <p>{{ 'checkout.bill' | userTranslation | translate  }}</p>
     </div>
   </div>
 </div>

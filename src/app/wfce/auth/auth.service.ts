@@ -6,6 +6,7 @@ import { UserLogin } from '../model/user.login.interface';
 import { UserSignup } from '../model/user.signup.interface';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { ServerResponse } from '../interfaces/server.resposne.interface';
+import { environment } from '../../../environments/environment';
 
 
 (window as any).global = window;
@@ -62,9 +63,11 @@ export class AuthService {
     clientID: 'aq5W8YIBfbbEaWkdXba9VBvFUF04AB6S',
     domain: 'codegeass.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:4200',
+    redirectUri: environment.redirectUrl,
     scope: 'openid profile email'
   });
+
+  private _baseUrl: string = environment.apiUrl;
 
 
 
@@ -88,7 +91,7 @@ export class AuthService {
     // if there is no hash in url, it's not redirected by oAuth
     if(!window.location.hash) {
       // check if user is autheticated (access token valid), and set data about user
-      this.http.get<ServerResponse>('http://13.66.167.226/wfceApp/public/api/userdata')
+      this.http.get<ServerResponse>(this._baseUrl + 'userdata')
           .subscribe(
             (data) => {
               console.log(data);
@@ -155,7 +158,7 @@ export class AuthService {
       this.userLogin.laravel_session = localStorage.getItem('laravel_session');
 
       // send to loginAPI
-      this.http.post('http://13.66.167.226/wfceApp/public/api/login', this.userLogin)
+      this.http.post(this._baseUrl + 'login', this.userLogin)
       .subscribe(
 
         (user) => {
@@ -211,7 +214,7 @@ export class AuthService {
   }
 
   public getUserData() {
-    return this.http.get('http://13.66.167.226/wfceApp/public/api/userdata')
+    return this.http.get(this._baseUrl + 'userdata')
   }
 
   public getAccessToken(): string {

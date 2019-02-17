@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-timeline-coin',
@@ -54,6 +55,7 @@ export class TimelineCoinComponent implements OnInit {
   
   active: boolean;
   inViewPort: string;
+  imageBaseUrl = environment.imageBaseUrl;
 
   constructor(private elementRef: ElementRef) { }
 

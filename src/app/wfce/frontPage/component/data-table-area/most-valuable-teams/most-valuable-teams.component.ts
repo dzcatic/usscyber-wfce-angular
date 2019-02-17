@@ -5,6 +5,7 @@ import { ModalService } from '../../../../shared-modules/modal/modal.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CartService } from '../../../../user/services/cart.service';
 import { LeagueSelectedService } from '../../../services/league-selected.service';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-most-valuable-teams',
@@ -34,6 +35,8 @@ export class MostValuableTeamsComponent implements OnInit {
   public selectedLeague;
   public selectedFilter: string;
 
+  showSpinner = false;
+
 
   public showByPage = 10;
   public offset = 1;
@@ -42,6 +45,7 @@ export class MostValuableTeamsComponent implements OnInit {
 
   openedModal = false;
   modalData;
+  imageBaseUrl = environment.imageBaseUrl;
 
   public styleTopTeams={
     rank: {},
@@ -52,7 +56,7 @@ export class MostValuableTeamsComponent implements OnInit {
     },
     points: {},
     marketPrice: {
-      image: "assets/img/dashboard/Bitmap.png",
+      image: this.imageBaseUrl + "assets/img/dashboard/Bitmap.png",
       component: "image-rows",
       currentPrice: {},
       priceFluxPercentage: "small fade",
@@ -88,26 +92,32 @@ export class MostValuableTeamsComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.showSpinner = true;
     this.teamsSelectedService.mostValuableTeams$.subscribe((value)=>{
       this.mostValuableTeams = value;
+      console.log(this.mostValuableTeams)
       this.numberOfPages = this.teamsSelectedService.getNumberOfPages();
       this.pagesArray= Array.from(Array(this.numberOfPages).keys());
+      this.showSpinner = false;
       //this.setNowShowing();
     })
     this.areaSelectedService.countrySelected$.subscribe((value)=>{
       this.isCountrySelected = value;
+      let previousState = this.selectedFilter;
       this.selectedFilter = this.isCountrySelected ? 'country' : 'all';
+      
       this.offset = 1;
-      if(this.selectedFilter !== 'country'){
+      if(this.selectedFilter !== 'country' && previousState !== 'continent'){
         this.setNowShowing();
       }
       
     });
     this.areaSelectedService.continentSelected$.subscribe((value)=>{
       this.isContinentSelected = value;
+      let previousState = this.selectedFilter;
       this.selectedFilter = this.isContinentSelected ? 'continent' : 'all';
       this.offset = 1;
-      if(this.selectedFilter !== 'continent'){
+      if(this.selectedFilter !== 'continent' && previousState !== 'all'){
         this.setNowShowing();
       }
     });
@@ -144,6 +154,7 @@ export class MostValuableTeamsComponent implements OnInit {
   }
 
   setNowShowing(){
+    this.showSpinner = true;
     //this.calculatePages();
     switch(this.selectedFilter) { 
       case 'continent': {
@@ -151,7 +162,7 @@ export class MostValuableTeamsComponent implements OnInit {
           if(topTeams['data'].length > 0){
             this.teamsSelectedService.setNumberOfPages(topTeams['numberOfPages']);
             this.teamsSelectedService.setMostValuableTeams(topTeams['data']);
-            
+            this.showSpinner = false;
           }
         });
         //statements; 
@@ -162,7 +173,7 @@ export class MostValuableTeamsComponent implements OnInit {
         if(topTeams['data'].length > 0){
           this.teamsSelectedService.setNumberOfPages(topTeams['numberOfPages']);
           this.teamsSelectedService.setMostValuableTeams(topTeams['data']);
-            
+          this.showSpinner = false;  
         }
       });
       //statements; 
@@ -173,7 +184,7 @@ export class MostValuableTeamsComponent implements OnInit {
       if(topTeams['data'].length > 0){
         this.teamsSelectedService.setNumberOfPages(topTeams['numberOfPages']);
         this.teamsSelectedService.setMostValuableTeams(topTeams['data']);
-          
+        this.showSpinner = false; 
       }
     });
     //statements; 
@@ -184,7 +195,7 @@ export class MostValuableTeamsComponent implements OnInit {
       if(topTeams['data'].length > 0){
         this.teamsSelectedService.setNumberOfPages(topTeams['numberOfPages']);
         this.teamsSelectedService.setMostValuableTeams(topTeams['data']);
-          
+        this.showSpinner = false;  
       }
     });
     //statements; 

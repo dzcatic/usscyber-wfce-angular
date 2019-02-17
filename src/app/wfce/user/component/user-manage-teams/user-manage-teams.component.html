@@ -1,6 +1,6 @@
 <div class="content">
   <app-user-table>
-    <app-user-table-title>Top teams</app-user-table-title>
+    <app-user-table-title>{{ 'dashboard.topTeams' | userTranslation | translate  }}</app-user-table-title>
     <app-user-table-data [selectedTeam]="selectedMyTeam" (setSelected)="setMySelectedValue($event)" [selectable]="true" [style]="styleTopTeams" [data]="watchedTeams"></app-user-table-data>
   </app-user-table>
   <!-- "team_id": "506",
@@ -17,11 +17,11 @@
       <app-user-manage-teams-boxes>
           <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
             <app-user-dashboard-box-data class="boxBigGreen1">{{boxesData['total_token_number']}}</app-user-dashboard-box-data>
-            <app-user-dashboard-box-footer class="boxFooter1">TOTAL TOKEN NUMBER</app-user-dashboard-box-footer>
+            <app-user-dashboard-box-footer class="boxFooter1">{{ 'manageTeams.totalTokenNumber' | userTranslation | translate | uppercase  }}</app-user-dashboard-box-footer>
           </app-user-dashboard-box>
           <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
             <app-user-dashboard-box-data class="boxBigGreen1">${{boxesData['token_price']}}</app-user-dashboard-box-data>
-            <app-user-dashboard-box-footer class="boxFooter1">TOKEN PRICE</app-user-dashboard-box-footer>
+            <app-user-dashboard-box-footer class="boxFooter1">{{ 'manageTeams.tokenPrice' | userTranslation | translate | uppercase  }}</app-user-dashboard-box-footer>
           </app-user-dashboard-box>
           <app-user-dashboard-box [style.width]="'140px'" [style.height]="'110px'">
               <app-user-dashboard-box-title class="titleBox">
@@ -42,8 +42,8 @@
             <app-user-dashboard-box-footer class="boxFooter1">TOKEN VALUE</app-user-dashboard-box-footer>
         </app-user-dashboard-box>
           <div class="buttons">
-            <div class="green"(click)="buyTokenButon(selectedMyTeam)">BUY TOKENS</div>
-            <div class="white" (click)="sellTokenButon(selectedMyTeam)" >SELL TOKENS</div>
+            <div class="green"(click)="buyTokenButon(selectedMyTeam)">{{ 'manageTeams.buyTokens' | userTranslation | translate | uppercase  }}</div>
+            <div class="white" (click)="sellTokenButon(selectedMyTeam)" >{{ 'manageTeams.sellTokens' | userTranslation | translate | uppercase  }}</div>
           </div>
         </app-user-manage-teams-boxes>
       
@@ -59,18 +59,18 @@
       <app-user-manage-teams-boxes>
           <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
             <app-user-dashboard-box-data class="boxBigGreen">{{boxesData['total_token_number']}}</app-user-dashboard-box-data>
-            <app-user-dashboard-box-footer class="boxFooter1">TOTAL TOKEN NUMBER</app-user-dashboard-box-footer>
+            <app-user-dashboard-box-footer class="boxFooter1">{{ 'manageTeams.totalTokenNumber' | userTranslation | translate | uppercase  }}</app-user-dashboard-box-footer>
           </app-user-dashboard-box>
           <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
             <app-user-dashboard-box-data class="boxBigGreen">${{boxesData['token_price']}}</app-user-dashboard-box-data>
-            <app-user-dashboard-box-footer class="boxFooter1">TOKEN PRICE</app-user-dashboard-box-footer>
+            <app-user-dashboard-box-footer class="boxFooter1">{{ 'manageTeams.tokenPrice' | userTranslation | translate | uppercase  }}</app-user-dashboard-box-footer>
           </app-user-dashboard-box>
           <app-user-dashboard-box [style.width]="'176px'" [style.height]="'110px'">
               <app-user-dashboard-box-data class="boxBigGreen">{{boxesData['total_value']}}</app-user-dashboard-box-data>
               <app-user-dashboard-box-footer class="boxFooter1">TOKEN VALUE</app-user-dashboard-box-footer>
           </app-user-dashboard-box>
           <div class="buttons">
-            <div class="green" (click)="buyTokenButon(selectedWatchedTeam)">BUY TOKENS</div>
+            <div class="green" (click)="buyTokenButon(selectedWatchedTeam)">{{ 'manageTeams.buyTokens' | userTranslation | translate | uppercase  }}</div>
           </div>
         </app-user-manage-teams-boxes>
       <app-user-chart-area [selectedTeam]="selectedTeam"></app-user-chart-area>

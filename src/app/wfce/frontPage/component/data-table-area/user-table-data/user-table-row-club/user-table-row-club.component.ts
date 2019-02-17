@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { environment } from '../../../../../../../environments/environment';
 
 @Component({
   selector: 'app-user-table-row-club',
@@ -8,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserTableRowClubComponent implements OnInit {
 
   public rowNames;
+  imageBaseUrl = environment.imageBaseUrl;
 
   @Input()
   data;
@@ -34,10 +36,10 @@ export class UserTableRowClubComponent implements OnInit {
 
   adjustLogoUrl(logo){
     if(logo.includes("content") !== false){
-      return  logo.replace('~/content/', 'assets/');
+      return  logo.replace('~/content/', this.imageBaseUrl + 'assets/');
     }
     if(logo.includes("images") !== false){
-      return  logo.replace('~/images/', 'assets/img/');
+      return  logo.replace('~/images/', this.imageBaseUrl + 'assets/img/');
     }
    
   }

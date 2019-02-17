@@ -57,6 +57,8 @@ import { ManageTeamsResolverService } from './services/resolver-service/manage-t
 import { DashboardResolverService } from './services/resolver-service/dashboard-resolver.service';
 import { QRCodeModule } from 'angularx-qrcode';
 
+import { UserTranslationModule } from './pipes/translation.pipe.module';
+import { SharedTranslationModule } from '../shared-modules/pipes/translation.pipe.module';
 
 
 @NgModule({
@@ -72,7 +74,9 @@ import { QRCodeModule } from 'angularx-qrcode';
     NgbTooltipModule,
     NgxChartsModule,
     SpinnerModule,
-    QRCodeModule
+    QRCodeModule,
+    UserTranslationModule,
+    SharedTranslationModule
   ],
   declarations: [UserComponent,
                  UserNavbarComponent,

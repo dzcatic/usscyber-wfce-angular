@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject, Subject, of } from 'rxjs';
 import { Cart } from '../../interfaces/cart.interface';
+import { ModalService } from '../../shared-modules/modal/modal.service';
+import { NavbarIndicatorService } from '../../shared-modules/navbar/navbar-indicator.service';
 
 @Injectable()
 export class CartService extends AbstractService {
@@ -19,7 +21,9 @@ export class CartService extends AbstractService {
   http: HttpClient;
   _router: Router;
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector, 
+              private modalService: ModalService,
+              private indicatorService: NavbarIndicatorService) {
     super(injector);
     this.http = injector.get(HttpClient);
     this._router = injector.get(Router);
@@ -39,7 +43,8 @@ export class CartService extends AbstractService {
         let objectToSend = {teamId : teamId,
                             amount : amount};
         this._map(this.http.post<any>(this._baseUrl + "cart/add",objectToSend, {withCredentials: true})).subscribe((data)=>{
-          
+          this.modalService.closeModal();
+          this.indicatorService.setIndicatorData({message: data.message, success: true});
           this.refreshCart(data);
         });
   }
@@ -48,7 +53,8 @@ export class CartService extends AbstractService {
     let objectToSend = {teamId : teamId,
                         amount : amount};
     this._map(this.http.put<any>(this._baseUrl + "cart/update",objectToSend, {withCredentials: true})).subscribe((data)=>{
-      
+      this.modalService.closeModal();
+      this.indicatorService.setIndicatorData({message: data.message, success: true});
       this.refreshCart(data);
     });
 }

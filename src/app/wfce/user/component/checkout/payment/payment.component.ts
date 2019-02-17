@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CheckoutService } from '../../../services/checkout.service';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-payment',
@@ -13,23 +14,24 @@ export class PaymentComponent implements OnInit {
 
   selectedPaymentMethod: string;
   selectedStringQr: string;
+  imageBaseUrl = environment.imageBaseUrl;
 
   paymentLogos = [ 
     {
       name: "bitcoin",
-      logo: "assets/img/checkout/bitcoin@2x.png"
+      logo: this.imageBaseUrl + "assets/img/checkout/crypto/bitcoin_PNG48.png"
     },
     {
       name: "bitcoincash",
-      logo: "assets/img/checkout/bitcoin@2x.png"
+      logo: this.imageBaseUrl + "assets/img/checkout/crypto/nus982esrz901.png"
     },
     {
       name: "etherium",
-      logo: "assets/img/checkout/Eth.png"
+      logo: this.imageBaseUrl + "assets/img/checkout/crypto/eth.png"
     },
     {
       name: "litecoin",
-      logo: "assets/img/checkout/litecoin@2x.png"
+      logo: this.imageBaseUrl + "assets/img/checkout/crypto/Litecoin.png"
     },
   ]
 

@@ -3,20 +3,20 @@
   <div class="table-wrapper">
       <div *ngIf="cart === null || (cart !== null && cart.numberOfItems == 0) ; else cartItems" class="userDropdownNavbarFooter">
           <div class="userDropdownNavbarItem">
-            No results!
+            {{ 'checkout.noResults' | userTranslation | translate  }}!
           </div>
       </div>
       <ng-template #cartItems>
 
-     
+
       <div class="table">
           <table>
             <thead>
               <tr>
-                <th>Team</th>
-                <th>Quantity</th>
-                <th>Amount</th>
-                <th>Total</th>
+                <th>{{ 'table.team' | userTranslation | translate  }}</th>
+                <th>{{ 'table.quantity' | userTranslation | translate  }}</th>
+                <th>{{ 'table.amount' | userTranslation | translate  }}</th>
+                <th>{{ 'table.total' | userTranslation | translate  }}</th>
               </tr>
             </thead>
             <tbody>
@@ -46,16 +46,16 @@
                       <input #quantityRef class="custom-select-list-value" (input)="onInputChange($event.target.value, item)" [attr.value]="item.amount" type="number"/>
                       <div class="custom-select-list-arrows">
                         <div class="arrow-up" (click)="arrowUpPressed(item)">
-                          <img src="assets/img/checkout/arrow@2x.png">
+                          <img [src]="imageBaseUrl + 'assets/img/checkout/arrow@2x.png'">
                         </div>
                         <div class="arrow-down" (click)="arrowDownPressed(item)" >
-                          <img src="assets/img/checkout/arrow@2x.png">
+                          <img [src]="imageBaseUrl + 'assets/img/checkout/arrow@2x.png'">
                         </div>
                       </div>
                     </div>
                 </td>
                 <td>$ {{item.price}} USD</td>
-                <td class="total-quantity">${{ +quantityRef.value * item.price}} USD</td>
+                <td class="total-quantity">${{ (+quantityRef.value * item.price).toFixed(2)}} USD</td>
               </tr>
 
             </tbody>
@@ -68,7 +68,7 @@
               </tr>
             </tfoot>
           </table>
-        
+
 
         </div>
       </ng-template>
@@ -76,11 +76,11 @@
 
   <div class="buttons">
       <div class="buttons-prev">
-          Back to shopping
+        {{ 'checkout.backToShopping' | userTranslation | translate  }}
         </div>
 
        <div class="buttons-next" (click)="goToStep('payment')">
-         Next Step
+        {{ 'checkout.nextStep' | userTranslation | translate  }}
        </div>
 
   </div>

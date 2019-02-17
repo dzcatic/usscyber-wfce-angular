@@ -5,6 +5,7 @@ import 'rxjs/add/operator/filter';
 import { AuthService } from '../../../auth/auth.service';
 import { Cart } from '../../../interfaces/cart.interface';
 import { CartService } from '../../services/cart.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-user-navbar',
@@ -29,6 +30,7 @@ export class UserNavbarComponent implements OnInit {
   dashboardActivated = true;
   numberOfCartItems;
   cart: Cart;
+  imageBaseUrl = environment.imageBaseUrl;
 
   @Input()
   user;

@@ -7,7 +7,7 @@
 fill: green;
 stroke: green;
 ">
-  
+
 <rect  class="cls-1" height="25" width="1207" x="74" y="520" ></rect>
 <rect  class="cls-1" height="25" width="1207" x="1353" y="520"></rect>
 <circle (click)="doIt()" class="cls-1" cx="38.5" cy="530.5" r="38.5"></circle>
@@ -19,15 +19,15 @@ stroke: green;
 <!--Tables-->
 <div class="tables">
   <app-user-table >
-    <app-user-table-title>Top teams</app-user-table-title>
+    <app-user-table-title><div class="additionToTitle">{{ 'dashboard.topTeams' | userTranslation | translate }} <div (click)="seeMore('view-teams')" class="greenMarginLeft">{{ 'dashboard.seeMore' | userTranslation | translate }}</div></div></app-user-table-title>
     <app-user-table-data [style]="styleTopTeams" [data]="topTeams"></app-user-table-data>
   </app-user-table>
   <app-user-table >
-      <app-user-table-title>Scheduled matches</app-user-table-title>
+      <app-user-table-title>{{ 'dashboard.scheduledMatches' | userTranslation | translate }}</app-user-table-title>
       <app-user-table-data [style]="styleScheduledMatches" [data]="scheduledMatches"></app-user-table-data>
     </app-user-table>
     <app-user-table>
-        <app-user-table-title>My top teams</app-user-table-title>
+        <app-user-table-title><div class="additionToTitle">{{ 'dashboard.myTopTeams' | userTranslation | translate }} <div (click)="seeMore('manage-teams')" class="greenMarginLeft">{{ 'dashboard.seeMore' | userTranslation | translate }}</div></div></app-user-table-title>
         <app-user-table-data [style]="styleTopTeams" [data]="myTopTeams"></app-user-table-data>
       </app-user-table>
 </div>

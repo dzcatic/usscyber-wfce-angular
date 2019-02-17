@@ -9,6 +9,7 @@
     border: solid 1px  $border-color;
     border-radius: 6px;
     color: black;
+    min-width: 615px;
     .pagination{
         display: flex;
         height: $navbar-height;

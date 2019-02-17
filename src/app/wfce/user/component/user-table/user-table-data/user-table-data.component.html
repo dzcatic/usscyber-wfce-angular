@@ -2,7 +2,7 @@
         <tr class="tableHeading">
           <th class="oneColumnHeading" *ngIf="style['component']=='match'; else defaultHeading">{{dayOfTheWeek + ', ' + month + " " + dayOfTheMonth + ", " + year}}</th>
           <ng-template #defaultHeading>
-            <th *ngFor="let columnName of columnNames">{{columnName}}</th> <!--Translations will take care of the column names-->
+            <th *ngFor="let columnName of columnNames">{{ 'table.' + columnName | userTranslation | translate }}</th> <!--Translations will take care of the column names-->
             <!-- <th *ngIf="style['options'] != undefined">Options</th> -->
           </ng-template>
         </tr>

@@ -1,6 +1,6 @@
 <div class="heading countryLeaguesDiv">
   <div>
-    <img [src]="'assets/img/flags/'+currentCountry.alpha2Code.toLowerCase()+'.png'" onError="this.src='assets/img/logo/bitmap.png';">
+    <img [src]="imageBaseUrl + 'assets/img/flags/'+currentCountry.alpha2Code.toLowerCase()+'.png'" onError="this.src=imageBaseUrl + 'assets/img/logo/bitmap.png';">
     <label>{{currentCountry.name}} leagues</label>
   </div>
   <div class="close" (click)="close()"><i class="gi-cross"></i></div>

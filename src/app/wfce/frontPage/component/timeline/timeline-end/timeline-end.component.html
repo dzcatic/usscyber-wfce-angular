@@ -1,11 +1,11 @@
 <div [@bounceIn]="''" *ngIf="inViewPort" class="lastTimelineNode">
   <app-timeline-line [style.opacity]="0.1" [height]="'30%'"></app-timeline-line>
   <!-- <app-timeline-side-point [inViewPort]="inViewPort" [leftOriented]="false" [centered]="true"></app-timeline-side-point> -->
-  
-  <div class="lastTimelineNodeHeading">Convinced now?</div>
-  <div>Get started today</div>
+
+  <div class="lastTimelineNodeHeading">{{ 'timeline.convincedNow' | frontPageTranslation | translate }}?</div>
+  <div>{{ 'timeline.getStartedToday' | frontPageTranslation | translate }}</div>
   <app-timeline-centered-point [style.top]="'150px'"></app-timeline-centered-point>
-  <div class="startNowButton" (click)="openSignUp()">Start NOW</div>
+  <div class="startNowButton" (click)="openSignUp()">{{ 'timeline.startNow' | frontPageTranslation | translate }}</div>
 </div>
 
 <app-world-map-image class="map"></app-world-map-image>

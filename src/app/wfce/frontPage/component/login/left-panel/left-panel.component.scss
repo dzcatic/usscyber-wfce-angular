@@ -76,6 +76,7 @@
             list-style-type: none;
             display: flex;
             li{
+                @include selectable;
                 padding: 10px;
             }
         }

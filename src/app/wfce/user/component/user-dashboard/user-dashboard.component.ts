@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TopTeamsService } from '../../services/teams.service';
 import { ScheduledMatchesService } from '../../services/scheduled-matches.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -28,6 +29,9 @@ export class UserDashboardComponent implements OnInit {
         image: "assets/img/dashboard/Bitmap.png"
     }
   }; */
+
+  imageBaseUrl = environment.imageBaseUrl;
+
   public styleTopTeams={
     team: {
         component: "image-rows",
@@ -36,7 +40,7 @@ export class UserDashboardComponent implements OnInit {
     },
     points: {},
     marketPrice: {
-      image: "assets/img/dashboard/Bitmap.png",
+      image: this.imageBaseUrl + "assets/img/dashboard/Bitmap.png",
       component: "image-rows",
       currentPrice: {},
       priceFluxPercentage: "small fade",
@@ -62,7 +66,8 @@ export class UserDashboardComponent implements OnInit {
 
   constructor(private topTeamsService: TopTeamsService, 
               private scheduledMatchesService: ScheduledMatchesService,
-              private _route: ActivatedRoute) { 
+              private _route: ActivatedRoute,
+              private router: Router) { 
                 let latestValues = this._route.snapshot.data["dashboardTeams"];
                 const [ topTeams, myTopTeams ] = latestValues;
                 console.log("topTeams", topTeams);
@@ -76,6 +81,10 @@ export class UserDashboardComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  seeMore(navigate){
+    this.router.navigate([navigate]);
   }
 
 }

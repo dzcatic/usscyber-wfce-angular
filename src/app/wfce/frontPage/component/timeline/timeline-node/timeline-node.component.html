@@ -1,8 +1,8 @@
 <app-timeline-horizontal-line [@connect]="''" *ngIf="inViewPort" [leftOriented]="leftOriented"></app-timeline-horizontal-line>
 <div class="nodeInformation" (mouseover)="handleMouseOver($event)" (mouseleave)="handleMouseLeave($event)" [@fadeInOut]="''" *ngIf="inViewPort"  [ngClass]="{'left': leftOriented, 'right': !leftOriented }">
-    <div class="nodeTitle">{{data.title}}</div>
-    <div class="nodeText">{{data.description}}</div>
-    <div class="learnMore">Learn more</div>
+    <div class="nodeTitle">{{ 'timeline.' + data.title | frontPageTranslation | translate }}</div>
+    <div class="nodeText">{{ 'timeline.' + data.title + 'Description' | frontPageTranslation | translate}}</div>
+    <div class="learnMore">{{ 'timeline.learnMore' | frontPageTranslation | translate }}</div>
 </div>
 <app-timeline-side-point [@fadeInOut]="''" *ngIf="inViewPort"  [inViewPort]="inViewPort" [leftOriented]="leftOriented" ></app-timeline-side-point>
 <img class="icon" [class.hovered]="active" (mouseover)="handleMouseOver($event)" (mouseleave)="handleMouseLeave($event)" [attr.src]="data.src">

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CheckoutService } from '../../../services/checkout.service';
 import { CartService } from '../../../services/cart.service';
 import { Cart, Item } from '../../../../interfaces/cart.interface';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -9,6 +10,8 @@ import { Cart, Item } from '../../../../interfaces/cart.interface';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+
+  imageBaseUrl = environment.imageBaseUrl;
 
   quantity = 1;
   public cart: Cart;

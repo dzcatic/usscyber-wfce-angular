@@ -1,7 +1,7 @@
 <div class="navbarContent row">
   <div class="col-6 logo">
-    <div><img (click)="openDashboard()" src="assets/img/logo/bitmap.png"></div>
-    <div class="logo-links">Quick links</div>
+    <div><img (click)="openDashboard()" [src]="imageBaseUrl + 'assets/img/logo/bitmap.png'"></div>
+    <div class="logo-links">{{ 'dashboard.quickLinks' | userTranslation | translate  }}</div>
     <!-- <div class="logo-links">All teams</div> -->
     <div class="logo-links">Hello {{user.name}}!</div>
   </div>

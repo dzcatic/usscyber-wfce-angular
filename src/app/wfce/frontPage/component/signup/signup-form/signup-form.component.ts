@@ -12,6 +12,7 @@ import {
 import { Router } from '@angular/router';
 import { UserProfileFormControls } from '../../../../interfaces/user.profile.interface';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from '../../../../../../environments/environment';
 
 
 
@@ -57,6 +58,8 @@ export class SignupFormComponent implements OnInit {
 
   userSignup;
 
+  _baseUrl = environment.apiUrl;
+
   form = this.fb.group({
     first_name: ['', Validators.required],
     family_name: ['', Validators.required],
@@ -85,7 +88,7 @@ export class SignupFormComponent implements OnInit {
   ngOnInit() {
     // load all countries
 
-    this.http.get('http://13.66.167.226/wfceApp/public/api/countries/get')
+    this.http.get(this._baseUrl + 'countries/get')
               .subscribe((countries) => {
           this.countries = countries['payload'];
 
@@ -93,14 +96,14 @@ export class SignupFormComponent implements OnInit {
     });
 
     // load genders
-    this.http.get('http://13.66.167.226/wfceApp/public/api/global/genders')
+    this.http.get(this._baseUrl + 'global/genders')
               .subscribe((genders) => {
           this.genders = genders['payload'];
           this.form.patchValue({gender: this.genders[0]});
     });
 
     // load languages
-    this.http.get('http://13.66.167.226/wfceApp/public/api/global/languages')
+    this.http.get(this._baseUrl + 'global/languages')
               .subscribe((language) => {
           this.languages = language['payload'];
           this.form.patchValue({language: this.languages[0]});
@@ -230,14 +233,14 @@ export class SignupFormComponent implements OnInit {
       this.userSignup[control] = this.form.controls[control].value;
     }
 
-    this.http.post('http://13.66.167.226/wfceApp/public/api/signup', this.userSignup)
+    this.http.post(this._baseUrl + 'signup', this.userSignup)
     .subscribe(
 
       (user) => {
         // console.log(this.userSignup);
         // this.authService.openSignupDialog.next(false);
         this.authService.user = user['payload'];
-        this.http.get(`http://13.66.167.226/wfceApp/public/api/users/verify_mail/${user['payload']['verify_token']}`)
+        this.http.get(this._baseUrl + `users/verify_mail/${user['payload']['verify_token']}`)
             .subscribe((verfied) => {
               // console.log(verfied)
               this.showSignupForm = false;
